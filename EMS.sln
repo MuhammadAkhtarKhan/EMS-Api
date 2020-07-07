@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.779
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EMS", "EMS\EMS.csproj", "{C94337CA-0814-49E2-BA69-D0FB6CBA1CA3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C94337CA-0814-49E2-BA69-D0FB6CBA1CA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C94337CA-0814-49E2-BA69-D0FB6CBA1CA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C94337CA-0814-49E2-BA69-D0FB6CBA1CA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C94337CA-0814-49E2-BA69-D0FB6CBA1CA3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3098552F-ABAD-490B-A7DC-5B1BCCED4147}
+	EndGlobalSection
+EndGlobal

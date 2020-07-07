@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ffd8b5e64fef434786b6d4b82acc2da3" Name="Diagram1">
+        <EntityTypeShape EntityType="EMSModel.BP" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EMSModel.CLASS" Width="1.5" PointX="0.75" PointY="25.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EMSModel.CLFEEDTL" Width="1.5" PointX="5.25" PointY="22.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EMSModel.CLFEEMST" Width="1.5" PointX="3" PointY="22.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EMSModel.COUTLINE" Width="1.5" PointX="5.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EMSModel.CST" Width="1.5" PointX="3" PointY="32.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EMSModel.CTTDTL" Width="1.5" PointX="8" PointY="25.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="EMSModel.CTTMST" Width="1.5" PointX="7.5" PointY="37.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="EMSModel.DEPT" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="EMSModel.EDUCATION" Width="1.5" PointX="8.25" PointY="49.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EMSModel.EM" Width="1.5" PointX="5.25" PointY="31.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EMSModel.EMDTL" Width="1.5" PointX="7.5" PointY="31.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EMSModel.EMDTL1" Width="1.5" PointX="7.5" PointY="33.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EMSModel.EMDTL2" Width="1.5" PointX="10.5" PointY="34.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EMSModel.EXAM" Width="1.5" PointX="5.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EMSModel.FEECOLLECTDTL" Width="1.5" PointX="9.75" PointY="41.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="EMSModel.FEECOLLECTMST" Width="1.5" PointX="7.5" PointY="40.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EMSModel.FEETYPE" Width="1.5" PointX="7.5" PointY="58.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EMSModel.FISCAL_YEAR" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EMSModel.GRPCHANGE" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EMSModel.GRPMST" Width="1.5" PointX="5.75" PointY="19.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EMSModel.LEAVECAL" Width="1.5" PointX="2.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EMSModel.LEAVECERTMST" Width="1.5" PointX="7.5" PointY="45.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EMSModel.LEAVETYPE" Width="1.5" PointX="7.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EMSModel.LSCHOOLDTL" Width="1.5" PointX="5.25" PointY="29.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EMSModel.LSCHOOLMST" Width="1.5" PointX="3" PointY="29.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EMSModel.MARKSDTL" Width="1.5" PointX="10.5" PointY="31.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="EMSModel.MARKSDTL1" Width="1.5" PointX="12.75" PointY="31.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="EMSModel.MARKSMST" Width="1.5" PointX="8.25" PointY="18.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="EMSModel.MARKSMSTOLD" Width="1.5" PointX="8" PointY="21.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EMSModel.MARKTOTAL" Width="1.5" PointX="5.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EMSModel.MARKTOTALDTL" Width="1.5" PointX="8" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EMSModel.MODULE" Width="1.5" PointX="7.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EMSModel.OBJECTMST" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EMSModel.PROMDTL" Width="1.5" PointX="12.5" PointY="39.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="EMSModel.PROMMST" Width="1.5" PointX="10.25" PointY="44.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EMSModel.SECCHANGE" Width="1.5" PointX="7.5" PointY="54.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EMSModel.SECDTL" Width="1.5" PointX="5.25" PointY="52" IsExpanded="true" />
+        <EntityTypeShape EntityType="EMSModel.SECMST" Width="1.5" PointX="3" PointY="35.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EMSModel.SPFEEDTL" Width="1.5" PointX="13.5" PointY="35.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="EMSModel.SPFEEMST" Width="1.5" PointX="11.25" PointY="28.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EMSModel.STIME" Width="1.5" PointX="3.5" PointY="25.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EMSModel.STIMEDTL" Width="1.5" PointX="5.75" PointY="25.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EMSModel.SUBDEPT" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EMSModel.SUBJECT" Width="1.5" PointX="5.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EMSModel.TMST" Width="1.5" PointX="9.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EMSModel.CIO" Width="1.5" PointX="9.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EMSModel.GRPDTL" Width="1.5" PointX="11" PointY="17.75" IsExpanded="true" />
+        <AssociationConnector Association="EMSModel.FK_CLFEE" ManuallyRouted="false" />
+        <AssociationConnector Association="EMSModel.FK_CTTDTL_CLASS" ManuallyRouted="false" />
+        <AssociationConnector Association="EMSModel.FK_LSCHOOLMST" ManuallyRouted="false" />
+        <AssociationConnector Association="EMSModel.FK_MMST" ManuallyRouted="false" />
+        <AssociationConnector Association="EMSModel.FK_SECMST" ManuallyRouted="false" />
+        <AssociationConnector Association="EMSModel.FK_CLFEEDTL" ManuallyRouted="false" />
+        <AssociationConnector Association="EMSModel.FK_CST" ManuallyRouted="false" />
+        <AssociationConnector Association="EMSModel.FK_CTT_STIME" ManuallyRouted="false" />
+        <AssociationConnector Association="EMSModel.FK_CTTDTL" ManuallyRouted="false" />
+        <AssociationConnector Association="EMSModel.FK_CTTDTL_SUBJECT" ManuallyRouted="false" />
+        <AssociationConnector Association="EMSModel.FK_CTTMST_EM" ManuallyRouted="false" />
+        <AssociationConnector Association="EMSModel.FK_STIME" ManuallyRouted="false" />
+        <AssociationConnector Association="EMSModel.FK_DEPT" ManuallyRouted="false" />
+        <AssociationConnector Association="EMSModel.FK_EMDTL2_EDU" ManuallyRouted="false" />
+        <AssociationConnector Association="EMSModel.FK_EM_PROMDTL" ManuallyRouted="false" />
+        <AssociationConnector Association="EMSModel.FK_EM_SECMST" ManuallyRouted="false" />
+        <AssociationConnector Association="EMSModel.FK_EMDTL" ManuallyRouted="false" />
+        <AssociationConnector Association="EMSModel.FK_EMDTL1" ManuallyRouted="false" />
+        <AssociationConnector Association="EMSModel.FK_EMDTL2" ManuallyRouted="false" />
+        <AssociationConnector Association="EMSModel.FK_FEECOLLECTMST" ManuallyRouted="false" />
+        <AssociationConnector Association="EMSModel.FK_LEAVECERTMST" ManuallyRouted="false" />
+        <AssociationConnector Association="EMSModel.FK_MARKS_EM" ManuallyRouted="false" />
+        <AssociationConnector Association="EMSModel.FK_SECCHAGE_EM" ManuallyRouted="false" />
+        <AssociationConnector Association="EMSModel.FK_SPDTL_EM" ManuallyRouted="false" />
+        <AssociationConnector Association="EMSModel.FK_FEEDTL" ManuallyRouted="false" />
+        <AssociationConnector Association="EMSModel.FK_FEETYPE" ManuallyRouted="false" />
+        <AssociationConnector Association="EMSModel.FK_GRPDTL" ManuallyRouted="false" />
+        <AssociationConnector Association="EMSModel.FK_GRPMST_MARKS" ManuallyRouted="false" />
+        <AssociationConnector Association="EMSModel.FK_PROMMST_GRP" ManuallyRouted="false" />
+        <AssociationConnector Association="EMSModel.FK_LSCOOLDTL" ManuallyRouted="false" />
+        <AssociationConnector Association="EMSModel.FK_MARKSDTL" ManuallyRouted="false" />
+        <AssociationConnector Association="EMSModel.FK_MARKSDTL1" ManuallyRouted="false" />
+        <AssociationConnector Association="EMSModel.FK_MARKTOTALDTL" ManuallyRouted="false" />
+        <AssociationConnector Association="EMSModel.FK_SUBJECT_TRNNO" ManuallyRouted="false" />
+        <AssociationConnector Association="EMSModel.FK_PROMDTL" ManuallyRouted="false" />
+        <AssociationConnector Association="EMSModel.FK_SECDTL" ManuallyRouted="false" />
+        <AssociationConnector Association="EMSModel.FK_SPDTL" ManuallyRouted="false" />
+        <AssociationConnector Association="EMSModel.FK_STIMEDTL" ManuallyRouted="false" />
+        <AssociationConnector Association="EMSModel.FK_GRPDTL1" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="EMSModel.COMPANY" Width="1.5" PointX="7.375" PointY="9.875" />
+        <EntityTypeShape EntityType="EMSModel.COMPANYDTL" Width="1.5" PointX="9.625" PointY="9.875" />
+        <AssociationConnector Association="EMSModel.FK_COMP" />
+        <EntityTypeShape EntityType="EMSModel.USER" Width="1.5" PointX="0.75" PointY="4.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,3170 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="EMSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BP">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+          </Key>
+          <Property Name="TRNNO" Type="float" Nullable="false" />
+          <Property Name="BPNAME" Type="varchar" MaxLength="3" />
+          <Property Name="STATUS" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'EMS.EMS.CIO' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="CIO">
+          <Key>
+            <PropertyRef Name="ROWID" />
+          </Key>
+          <Property Name="EMP_ID" Type="varchar" MaxLength="10" />
+          <Property Name="I_DT" Type="datetime2" Precision="0" />
+          <Property Name="O_DT" Type="datetime2" Precision="0" />
+          <Property Name="ATT_DATE" Type="datetime2" Precision="0" />
+          <Property Name="ROWID" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CLASS">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+          </Key>
+          <Property Name="TRNNO" Type="float" Nullable="false" />
+          <Property Name="CNAME" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CABR" Type="varchar" MaxLength="5" />
+        </EntityType>
+        <EntityType Name="CLFEEDTL">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+            <PropertyRef Name="SR" />
+          </Key>
+          <Property Name="TRNNO" Type="float" Nullable="false" />
+          <Property Name="SR" Type="float" Nullable="false" />
+          <Property Name="FEE" Type="float" />
+          <Property Name="ADT" Type="datetime2" Precision="0" />
+        </EntityType>
+        <EntityType Name="CLFEEMST">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+          </Key>
+          <Property Name="TRNNO" Type="float" Nullable="false" />
+          <Property Name="CLASS_TRNNO" Type="float" />
+        </EntityType>
+        <EntityType Name="COMPANY">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+          </Key>
+          <Property Name="TRNNO" Type="float" Nullable="false" />
+          <Property Name="CNAME" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="PIC" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="COMPANYDTL">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+          </Key>
+          <Property Name="TRNNO" Type="float" Nullable="false" />
+          <Property Name="BNAME" Type="varchar" MaxLength="200" />
+          <Property Name="C_TRNNO" Type="float" />
+        </EntityType>
+        <EntityType Name="COUTLINE">
+          <Key>
+            <PropertyRef Name="CODE" />
+          </Key>
+          <Property Name="CODE" Type="float" Nullable="false" />
+          <Property Name="CNAME" Type="varchar" MaxLength="100" />
+          <Property Name="REF_ID" Type="float" />
+        </EntityType>
+        <EntityType Name="CST">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+          </Key>
+          <Property Name="TRNNO" Type="float" Nullable="false" />
+          <Property Name="CDESC" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="STATUS" Type="varchar" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CTTDTL">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+            <PropertyRef Name="SR" />
+          </Key>
+          <Property Name="TRNNO" Type="float" Nullable="false" />
+          <Property Name="SR" Type="float" Nullable="false" />
+          <Property Name="SUBJECT_TRNNO" Type="float" />
+          <Property Name="CLASS_TRNNO" Type="float" />
+          <Property Name="STIMEDTL_SR" Type="float" />
+          <Property Name="STIMEDTL_TRNNO" Type="float" />
+        </EntityType>
+        <EntityType Name="CTTMST">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+          </Key>
+          <Property Name="TRNNO" Type="float" Nullable="false" />
+          <Property Name="TIME_TRNNO" Type="float" />
+          <Property Name="EM_TRNNO" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DEPT">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+          </Key>
+          <Property Name="TRNNO" Type="float" Nullable="false" />
+          <Property Name="ABR" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="DESCRIP" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="STATUS" Type="varchar" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EDUCATION">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+          </Key>
+          <Property Name="TRNNO" Type="float" Nullable="false" />
+          <Property Name="DNAME" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DABRV" Type="varchar" MaxLength="6" />
+          <Property Name="STATUS" Type="varchar" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EM">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+          </Key>
+          <Property Name="TRNNO" Type="float" Nullable="false" />
+          <Property Name="EMP_ID" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="EMP_NAME" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="DOB" Type="datetime2" Precision="0" Nullable="false" />
+          <Property Name="DOJ" Type="datetime2" Precision="0" />
+          <Property Name="CST_TRNNO" Type="float" />
+          <Property Name="EMP_F_NAME" Type="varchar" MaxLength="200" />
+          <Property Name="COMP_TRNNO" Type="float" />
+          <Property Name="BP_TRNNO" Type="float" />
+          <Property Name="ETYPE" Type="varchar" MaxLength="1" />
+          <Property Name="CL_TRNNO" Type="float" />
+          <Property Name="CL_TRNNO1" Type="float" />
+          <Property Name="CERTIFICATE" Type="varchar" MaxLength="1" />
+          <Property Name="PSCHDT" Type="datetime2" Precision="0" />
+          <Property Name="EMAIL" Type="varchar" MaxLength="100" />
+          <Property Name="ADT" Type="datetime2" Precision="0" />
+          <Property Name="FTYPE" Type="varchar" MaxLength="1" />
+          <Property Name="FEE" Type="float" />
+          <Property Name="EMAILST" Type="varchar" MaxLength="1" />
+          <Property Name="GRPMST_TRNNO" Type="float" />
+          <Property Name="CNIC" Type="varchar" MaxLength="13" />
+          <Property Name="SECMST_TRNNO" Type="float" />
+          <Property Name="SECDTL_SR" Type="float" />
+          <Property Name="SEX" Type="varchar" MaxLength="1" />
+          <Property Name="BSAL" Type="float" />
+          <Property Name="FCNIC" Type="varchar" MaxLength="13" />
+          <Property Name="ADIMNO" Type="float" />
+          <Property Name="STYPE" Type="varchar" MaxLength="2" />
+        </EntityType>
+        <EntityType Name="EMDTL">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+            <PropertyRef Name="SR" />
+          </Key>
+          <Property Name="TRNNO" Type="float" Nullable="false" />
+          <Property Name="SR" Type="float" Nullable="false" />
+          <Property Name="ADDDESC" Type="varchar" MaxLength="250" />
+          <Property Name="ADDTYPE" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="EMDTL1">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+            <PropertyRef Name="SR" />
+          </Key>
+          <Property Name="TRNNO" Type="float" Nullable="false" />
+          <Property Name="SR" Type="float" Nullable="false" />
+          <Property Name="PHNO" Type="varchar" MaxLength="12" />
+          <Property Name="PHTYPE" Type="varchar" MaxLength="1" />
+          <Property Name="RELTION" Type="float" />
+        </EntityType>
+        <EntityType Name="EMDTL2">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+            <PropertyRef Name="SR" />
+          </Key>
+          <Property Name="TRNNO" Type="float" Nullable="false" />
+          <Property Name="SR" Type="float" Nullable="false" />
+          <Property Name="EDU_TRNNO" Type="float" />
+          <Property Name="PTYPE" Type="varchar" MaxLength="1" />
+          <Property Name="YEAR" Type="varchar" MaxLength="7" />
+          <Property Name="GRD" Type="varchar" MaxLength="2" />
+          <Property Name="PERCENT" Type="float" />
+        </EntityType>
+        <EntityType Name="EXAM">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+          </Key>
+          <Property Name="TRNNO" Type="float" Nullable="false" />
+          <Property Name="ETYPE" Type="varchar" MaxLength="50" />
+          <Property Name="STATUS" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="FEECOLLECTDTL">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+            <PropertyRef Name="SR" />
+          </Key>
+          <Property Name="TRNNO" Type="float" Nullable="false" />
+          <Property Name="FMONTH" Type="varchar" MaxLength="3" />
+          <Property Name="FEETYPE_TRNNO" Type="float" />
+          <Property Name="SR" Type="float" Nullable="false" />
+          <Property Name="AMT" Type="float" />
+          <Property Name="FEEMON" Type="float" />
+        </EntityType>
+        <EntityType Name="FEECOLLECTMST">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+          </Key>
+          <Property Name="TRNNO" Type="float" Nullable="false" />
+          <Property Name="RDATE" Type="datetime2" Precision="0" />
+          <Property Name="EM_TRNNO" Type="float" />
+          <Property Name="FMONTH" Type="float" />
+          <Property Name="DDATE" Type="datetime2" Precision="0" />
+          <Property Name="LDATE" Type="datetime2" Precision="0" />
+          <Property Name="FSTATUS" Type="varchar" MaxLength="1" />
+          <Property Name="DISCOUNT" Type="float" />
+          <Property Name="DISCOUNTTYPE" Type="varchar" MaxLength="1" />
+          <Property Name="CLASS_TRNNO" Type="float" />
+          <Property Name="SECDTL_TRNNO" Type="float" />
+          <Property Name="SECDTL_SR" Type="float" />
+          <Property Name="PDATE" Type="datetime2" Precision="0" />
+          <Property Name="ARRFLG" Type="float" />
+        </EntityType>
+        <EntityType Name="FEETYPES">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+          </Key>
+          <Property Name="TRNNO" Type="float" Nullable="false" />
+          <Property Name="FTYPE" Type="varchar" MaxLength="100" />
+          <Property Name="STATUS" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="FISCAL_YEAR">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+          </Key>
+          <Property Name="TRNNO" Type="float" Nullable="false" />
+          <Property Name="FDATE" Type="datetime2" Precision="0" />
+          <Property Name="TDATE" Type="datetime2" Precision="0" />
+          <Property Name="YEAR_DESC" Type="varchar" MaxLength="11" />
+          <Property Name="ACTIVE" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="GRPCHANGE">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+          </Key>
+          <Property Name="TRNNO" Type="float" Nullable="false" />
+          <Property Name="GRPMST_TRNNO" Type="float" />
+          <Property Name="EM_TRNNO" Type="float" />
+          <Property Name="CHDATE" Type="datetime2" Precision="0" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'EMS.EMS.GRPDTL' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="GRPDTL">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+            <PropertyRef Name="SUBJECT_TRNNO" />
+          </Key>
+          <Property Name="TRNNO" Type="float" Nullable="false" />
+          <Property Name="SUBJECT_TRNNO" Type="float" Nullable="false" />
+          <Property Name="id" Type="float" />
+        </EntityType>
+        <EntityType Name="GRPMST">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+          </Key>
+          <Property Name="TRNNO" Type="float" Nullable="false" />
+          <Property Name="GRPNAME" Type="varchar" MaxLength="100" />
+          <Property Name="DT" Type="datetime2" Precision="0" />
+          <Property Name="COMPDTL_TRNNO" Type="float" />
+        </EntityType>
+        <EntityType Name="LEAVECAL">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+          </Key>
+          <Property Name="TRNNO" Type="float" Nullable="false" />
+          <Property Name="FDT" Type="datetime2" Precision="0" Nullable="false" />
+          <Property Name="TDT" Type="datetime2" Precision="0" Nullable="false" />
+          <Property Name="STATUS" Type="varchar" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LEAVECERTMST">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+          </Key>
+          <Property Name="TRNNO" Type="float" Nullable="false" />
+          <Property Name="EM_TRNNO" Type="float" />
+          <Property Name="LDATE" Type="datetime2" Precision="0" Nullable="false" />
+          <Property Name="LCOND" Type="varchar" MaxLength="100" />
+          <Property Name="REMARK" Type="varchar" MaxLength="200" />
+          <Property Name="DPAIDDT" Type="datetime2" Precision="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LEAVETYPE">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+          </Key>
+          <Property Name="TRNNO" Type="float" Nullable="false" />
+          <Property Name="LDESC" Type="varchar" MaxLength="50" />
+          <Property Name="LWEIGHT" Type="float" />
+          <Property Name="STATUS" Type="varchar" MaxLength="1" />
+          <Property Name="LABRV" Type="varchar" MaxLength="5" />
+        </EntityType>
+        <EntityType Name="LSCHOOLDTL">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+            <PropertyRef Name="SR" />
+          </Key>
+          <Property Name="TRNNO" Type="float" Nullable="false" />
+          <Property Name="SR" Type="float" Nullable="false" />
+          <Property Name="EM_TRNNO" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LSCHOOLMST">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+          </Key>
+          <Property Name="TRNNO" Type="float" Nullable="false" />
+          <Property Name="CLASS_TRNNO" Type="float" />
+          <Property Name="LDATE" Type="datetime2" Precision="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MARKSDTL">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+            <PropertyRef Name="SR" />
+          </Key>
+          <Property Name="TRNNO" Type="float" Nullable="false" />
+          <Property Name="SR" Type="float" Nullable="false" />
+          <Property Name="EM_TRNNO" Type="float" />
+        </EntityType>
+        <EntityType Name="MARKSDTL1">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+            <PropertyRef Name="SR" />
+            <PropertyRef Name="SR1" />
+          </Key>
+          <Property Name="TRNNO" Type="float" Nullable="false" />
+          <Property Name="SR" Type="float" Nullable="false" />
+          <Property Name="SR1" Type="float" Nullable="false" />
+          <Property Name="GMARKS" Type="float" />
+          <Property Name="MARKTOTALDTL_TRNNO" Type="float" />
+          <Property Name="MARKTOTALDTL_SR" Type="float" />
+        </EntityType>
+        <EntityType Name="MARKSMST">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+          </Key>
+          <Property Name="TRNNO" Type="float" Nullable="false" />
+          <Property Name="MDT" Type="datetime2" Precision="0" />
+          <Property Name="EXAM_TRNNO" Type="float" />
+          <Property Name="CLASS_TRNNO" Type="float" />
+          <Property Name="GRPMST_TRNNO" Type="float" />
+          <Property Name="EM_TRNNO" Type="float" />
+        </EntityType>
+        <EntityType Name="MARKSMSTOLD">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+          </Key>
+          <Property Name="TRNNO" Type="float" Nullable="false" />
+          <Property Name="MDT" Type="datetime2" Precision="0" />
+          <Property Name="EXAM_TRNNO" Type="float" />
+          <Property Name="CLASS_TRNNO" Type="float" />
+          <Property Name="GRPMST_TRNNO" Type="float" />
+          <Property Name="EM_TRNNO" Type="float" />
+        </EntityType>
+        <EntityType Name="MARKTOTAL">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+          </Key>
+          <Property Name="TRNNO" Type="float" Nullable="false" />
+          <Property Name="CLASS_TRNNO" Type="float" />
+          <Property Name="EXAM_TRNNO" Type="float" />
+          <Property Name="GRPMST_TRNNO" Type="float" />
+          <Property Name="MDT" Type="datetime2" Precision="0" />
+        </EntityType>
+        <EntityType Name="MARKTOTALDTL">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+            <PropertyRef Name="SR" />
+          </Key>
+          <Property Name="TRNNO" Type="float" Nullable="false" />
+          <Property Name="SR" Type="float" Nullable="false" />
+          <Property Name="SUBJECT_TRNNO" Type="float" />
+          <Property Name="TOTMARKS" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MODULES">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+          </Key>
+          <Property Name="TRNNO" Type="float" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="varchar" MaxLength="100" />
+          <Property Name="STATUS" Type="numeric" Precision="1" Scale="0" />
+          <Property Name="MODULEID" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="OBJECTMST">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+          </Key>
+          <Property Name="TRNNO" Type="float" Nullable="false" />
+          <Property Name="TYPE" Type="varchar" MaxLength="1" />
+          <Property Name="UCODE" Type="float" />
+          <Property Name="MODULE_TRNNO" Type="float" />
+          <Property Name="COMPANY_TRNNO" Type="float" />
+        </EntityType>
+        <EntityType Name="PROMDTL">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+            <PropertyRef Name="SR" />
+          </Key>
+          <Property Name="TRNNO" Type="float" Nullable="false" />
+          <Property Name="SR" Type="float" Nullable="false" />
+          <Property Name="EM_TRNNO" Type="float" />
+          <Property Name="STATUS" Type="varchar" MaxLength="1" />
+          <Property Name="ADIMNO" Type="float" />
+        </EntityType>
+        <EntityType Name="PROMMST">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+          </Key>
+          <Property Name="TRNNO" Type="float" Nullable="false" />
+          <Property Name="PDT" Type="datetime2" Precision="0" />
+          <Property Name="GRPMST_TRNNO" Type="float" />
+          <Property Name="CLASS_TRNNO" Type="float" />
+          <Property Name="FCLASS_TRNNO" Type="float" />
+          <Property Name="SECDTL_TRNNO" Type="float" />
+          <Property Name="SECDTL_SR" Type="float" />
+        </EntityType>
+        <EntityType Name="SECCHANGE">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+          </Key>
+          <Property Name="TRNNO" Type="float" Nullable="false" />
+          <Property Name="EM_TRNNO" Type="float" />
+          <Property Name="CHDATE" Type="datetime2" Precision="0" Nullable="false" />
+          <Property Name="SECDTL_TRNNO" Type="float" />
+          <Property Name="SECDTL_SR" Type="float" />
+          <Property Name="EDATE" Type="datetime2" Precision="0" />
+        </EntityType>
+        <EntityType Name="SECDTL">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+            <PropertyRef Name="SR" />
+          </Key>
+          <Property Name="TRNNO" Type="float" Nullable="false" />
+          <Property Name="SR" Type="float" Nullable="false" />
+          <Property Name="SNAME" Type="varchar" MaxLength="100" />
+          <Property Name="STATUS" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="SECMST">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+          </Key>
+          <Property Name="TRNNO" Type="float" Nullable="false" />
+          <Property Name="CLASS_TRNNO" Type="float" />
+        </EntityType>
+        <EntityType Name="SPFEEDTL">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+            <PropertyRef Name="SR" />
+          </Key>
+          <Property Name="TRNNO" Type="float" Nullable="false" />
+          <Property Name="SR" Type="float" Nullable="false" />
+          <Property Name="EM_TRNNO" Type="float" />
+          <Property Name="SPFEE" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SPFEEMST">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+          </Key>
+          <Property Name="TRNNO" Type="float" Nullable="false" />
+          <Property Name="SPDATE" Type="datetime2" Precision="0" Nullable="false" />
+          <Property Name="CLASS_TRNNO" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="STIME">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+          </Key>
+          <Property Name="TRNNO" Type="float" Nullable="false" />
+          <Property Name="STIME" Type="datetime2" Precision="0" />
+          <Property Name="ETIME" Type="datetime2" Precision="0" />
+          <Property Name="SDATE" Type="datetime2" Precision="0" />
+          <Property Name="TDATE" Type="datetime2" Precision="0" />
+        </EntityType>
+        <EntityType Name="STIMEDTL">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+            <PropertyRef Name="SR" />
+          </Key>
+          <Property Name="TRNNO" Type="float" Nullable="false" />
+          <Property Name="SR" Type="float" Nullable="false" />
+          <Property Name="LECSTIME" Type="datetime2" Precision="0" Nullable="false" />
+          <Property Name="LECETIME" Type="datetime2" Precision="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SUBDEPT">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+          </Key>
+          <Property Name="TRNNO" Type="float" Nullable="false" />
+          <Property Name="ABR" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="DESCRIP" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="STATUS" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="DEPT_TRNNO" Type="float" />
+        </EntityType>
+        <EntityType Name="SUBJECT">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+          </Key>
+          <Property Name="TRNNO" Type="float" Nullable="false" />
+          <Property Name="SNAME" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="SCODE" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="TMST">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+          </Key>
+          <Property Name="TRNNO" Type="float" Nullable="false" />
+          <Property Name="COMP_TRNNO" Type="float" />
+          <Property Name="CLASS_TRNNO" Type="float" />
+          <Property Name="SUB_TRNNO" Type="float" />
+          <Property Name="CHNAME" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="USERS">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="float" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+          <Property Name="STATUS" Type="numeric" Precision="1" Scale="0" />
+        </EntityType>
+        <Association Name="FK_CLFEE">
+          <End Role="CLASS" Type="Self.CLASS" Multiplicity="0..1" />
+          <End Role="CLFEEMST" Type="Self.CLFEEMST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLASS">
+              <PropertyRef Name="TRNNO" />
+            </Principal>
+            <Dependent Role="CLFEEMST">
+              <PropertyRef Name="CLASS_TRNNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CLFEEDTL">
+          <End Role="CLFEEMST" Type="Self.CLFEEMST" Multiplicity="1" />
+          <End Role="CLFEEDTL" Type="Self.CLFEEDTL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLFEEMST">
+              <PropertyRef Name="TRNNO" />
+            </Principal>
+            <Dependent Role="CLFEEDTL">
+              <PropertyRef Name="TRNNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COMP">
+          <End Role="COMPANY" Type="Self.COMPANY" Multiplicity="0..1" />
+          <End Role="COMPANYDTL" Type="Self.COMPANYDTL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COMPANY">
+              <PropertyRef Name="TRNNO" />
+            </Principal>
+            <Dependent Role="COMPANYDTL">
+              <PropertyRef Name="C_TRNNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CST">
+          <End Role="CST" Type="Self.CST" Multiplicity="0..1" />
+          <End Role="EM" Type="Self.EM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CST">
+              <PropertyRef Name="TRNNO" />
+            </Principal>
+            <Dependent Role="EM">
+              <PropertyRef Name="CST_TRNNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CTT_STIME">
+          <End Role="STIMEDTL" Type="Self.STIMEDTL" Multiplicity="0..1" />
+          <End Role="CTTDTL" Type="Self.CTTDTL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STIMEDTL">
+              <PropertyRef Name="TRNNO" />
+              <PropertyRef Name="SR" />
+            </Principal>
+            <Dependent Role="CTTDTL">
+              <PropertyRef Name="STIMEDTL_TRNNO" />
+              <PropertyRef Name="STIMEDTL_SR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CTTDTL">
+          <End Role="CTTMST" Type="Self.CTTMST" Multiplicity="1" />
+          <End Role="CTTDTL" Type="Self.CTTDTL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CTTMST">
+              <PropertyRef Name="TRNNO" />
+            </Principal>
+            <Dependent Role="CTTDTL">
+              <PropertyRef Name="TRNNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CTTDTL_CLASS">
+          <End Role="CLASS" Type="Self.CLASS" Multiplicity="0..1" />
+          <End Role="CTTDTL" Type="Self.CTTDTL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLASS">
+              <PropertyRef Name="TRNNO" />
+            </Principal>
+            <Dependent Role="CTTDTL">
+              <PropertyRef Name="CLASS_TRNNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CTTDTL_SUBJECT">
+          <End Role="SUBJECT" Type="Self.SUBJECT" Multiplicity="0..1" />
+          <End Role="CTTDTL" Type="Self.CTTDTL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SUBJECT">
+              <PropertyRef Name="TRNNO" />
+            </Principal>
+            <Dependent Role="CTTDTL">
+              <PropertyRef Name="SUBJECT_TRNNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CTTMST_EM">
+          <End Role="EM" Type="Self.EM" Multiplicity="1" />
+          <End Role="CTTMST" Type="Self.CTTMST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EM">
+              <PropertyRef Name="TRNNO" />
+            </Principal>
+            <Dependent Role="CTTMST">
+              <PropertyRef Name="EM_TRNNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DEPT">
+          <End Role="DEPT" Type="Self.DEPT" Multiplicity="0..1" />
+          <End Role="SUBDEPT" Type="Self.SUBDEPT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DEPT">
+              <PropertyRef Name="TRNNO" />
+            </Principal>
+            <Dependent Role="SUBDEPT">
+              <PropertyRef Name="DEPT_TRNNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EM_PROMDTL">
+          <End Role="EM" Type="Self.EM" Multiplicity="0..1" />
+          <End Role="PROMDTL" Type="Self.PROMDTL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EM">
+              <PropertyRef Name="TRNNO" />
+            </Principal>
+            <Dependent Role="PROMDTL">
+              <PropertyRef Name="EM_TRNNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EM_SECMST">
+          <End Role="SECMST" Type="Self.SECMST" Multiplicity="0..1" />
+          <End Role="EM" Type="Self.EM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SECMST">
+              <PropertyRef Name="TRNNO" />
+            </Principal>
+            <Dependent Role="EM">
+              <PropertyRef Name="SECMST_TRNNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EMDTL">
+          <End Role="EM" Type="Self.EM" Multiplicity="1" />
+          <End Role="EMDTL" Type="Self.EMDTL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EM">
+              <PropertyRef Name="TRNNO" />
+            </Principal>
+            <Dependent Role="EMDTL">
+              <PropertyRef Name="TRNNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EMDTL1">
+          <End Role="EM" Type="Self.EM" Multiplicity="1" />
+          <End Role="EMDTL1" Type="Self.EMDTL1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EM">
+              <PropertyRef Name="TRNNO" />
+            </Principal>
+            <Dependent Role="EMDTL1">
+              <PropertyRef Name="TRNNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EMDTL2">
+          <End Role="EM" Type="Self.EM" Multiplicity="1" />
+          <End Role="EMDTL2" Type="Self.EMDTL2" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EM">
+              <PropertyRef Name="TRNNO" />
+            </Principal>
+            <Dependent Role="EMDTL2">
+              <PropertyRef Name="TRNNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EMDTL2_EDU">
+          <End Role="EDUCATION" Type="Self.EDUCATION" Multiplicity="0..1" />
+          <End Role="EMDTL2" Type="Self.EMDTL2" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EDUCATION">
+              <PropertyRef Name="TRNNO" />
+            </Principal>
+            <Dependent Role="EMDTL2">
+              <PropertyRef Name="EDU_TRNNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FEECOLLECTMST">
+          <End Role="EM" Type="Self.EM" Multiplicity="0..1" />
+          <End Role="FEECOLLECTMST" Type="Self.FEECOLLECTMST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EM">
+              <PropertyRef Name="TRNNO" />
+            </Principal>
+            <Dependent Role="FEECOLLECTMST">
+              <PropertyRef Name="EM_TRNNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FEEDTL">
+          <End Role="FEECOLLECTMST" Type="Self.FEECOLLECTMST" Multiplicity="1" />
+          <End Role="FEECOLLECTDTL" Type="Self.FEECOLLECTDTL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FEECOLLECTMST">
+              <PropertyRef Name="TRNNO" />
+            </Principal>
+            <Dependent Role="FEECOLLECTDTL">
+              <PropertyRef Name="TRNNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FEETYPE">
+          <End Role="FEETYPES" Type="Self.FEETYPES" Multiplicity="0..1" />
+          <End Role="FEECOLLECTDTL" Type="Self.FEECOLLECTDTL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FEETYPES">
+              <PropertyRef Name="TRNNO" />
+            </Principal>
+            <Dependent Role="FEECOLLECTDTL">
+              <PropertyRef Name="FEETYPE_TRNNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GRPDTL">
+          <End Role="GRPMST" Type="Self.GRPMST" Multiplicity="1" />
+          <End Role="GRPDTL" Type="Self.GRPDTL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GRPMST">
+              <PropertyRef Name="TRNNO" />
+            </Principal>
+            <Dependent Role="GRPDTL">
+              <PropertyRef Name="TRNNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GRPDTL1">
+          <End Role="SUBJECT" Type="Self.SUBJECT" Multiplicity="1" />
+          <End Role="GRPDTL" Type="Self.GRPDTL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SUBJECT">
+              <PropertyRef Name="TRNNO" />
+            </Principal>
+            <Dependent Role="GRPDTL">
+              <PropertyRef Name="SUBJECT_TRNNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GRPMST_MARKS">
+          <End Role="GRPMST" Type="Self.GRPMST" Multiplicity="0..1" />
+          <End Role="MARKSMSTOLD" Type="Self.MARKSMSTOLD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GRPMST">
+              <PropertyRef Name="TRNNO" />
+            </Principal>
+            <Dependent Role="MARKSMSTOLD">
+              <PropertyRef Name="GRPMST_TRNNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LEAVECERTMST">
+          <End Role="EM" Type="Self.EM" Multiplicity="0..1" />
+          <End Role="LEAVECERTMST" Type="Self.LEAVECERTMST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EM">
+              <PropertyRef Name="TRNNO" />
+            </Principal>
+            <Dependent Role="LEAVECERTMST">
+              <PropertyRef Name="EM_TRNNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LSCHOOLMST">
+          <End Role="CLASS" Type="Self.CLASS" Multiplicity="0..1" />
+          <End Role="LSCHOOLMST" Type="Self.LSCHOOLMST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLASS">
+              <PropertyRef Name="TRNNO" />
+            </Principal>
+            <Dependent Role="LSCHOOLMST">
+              <PropertyRef Name="CLASS_TRNNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LSCOOLDTL">
+          <End Role="LSCHOOLMST" Type="Self.LSCHOOLMST" Multiplicity="1" />
+          <End Role="LSCHOOLDTL" Type="Self.LSCHOOLDTL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LSCHOOLMST">
+              <PropertyRef Name="TRNNO" />
+            </Principal>
+            <Dependent Role="LSCHOOLDTL">
+              <PropertyRef Name="TRNNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MARKS_EM">
+          <End Role="EM" Type="Self.EM" Multiplicity="0..1" />
+          <End Role="MARKSDTL" Type="Self.MARKSDTL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EM">
+              <PropertyRef Name="TRNNO" />
+            </Principal>
+            <Dependent Role="MARKSDTL">
+              <PropertyRef Name="EM_TRNNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MARKSDTL">
+          <End Role="MARKSMST" Type="Self.MARKSMST" Multiplicity="1" />
+          <End Role="MARKSDTL" Type="Self.MARKSDTL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MARKSMST">
+              <PropertyRef Name="TRNNO" />
+            </Principal>
+            <Dependent Role="MARKSDTL">
+              <PropertyRef Name="TRNNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MARKSDTL1">
+          <End Role="MARKSDTL" Type="Self.MARKSDTL" Multiplicity="1" />
+          <End Role="MARKSDTL1" Type="Self.MARKSDTL1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MARKSDTL">
+              <PropertyRef Name="TRNNO" />
+              <PropertyRef Name="SR" />
+            </Principal>
+            <Dependent Role="MARKSDTL1">
+              <PropertyRef Name="TRNNO" />
+              <PropertyRef Name="SR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MARKTOTALDTL">
+          <End Role="MARKTOTAL" Type="Self.MARKTOTAL" Multiplicity="1" />
+          <End Role="MARKTOTALDTL" Type="Self.MARKTOTALDTL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MARKTOTAL">
+              <PropertyRef Name="TRNNO" />
+            </Principal>
+            <Dependent Role="MARKTOTALDTL">
+              <PropertyRef Name="TRNNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MMST">
+          <End Role="CLASS" Type="Self.CLASS" Multiplicity="0..1" />
+          <End Role="MARKSMSTOLD" Type="Self.MARKSMSTOLD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLASS">
+              <PropertyRef Name="TRNNO" />
+            </Principal>
+            <Dependent Role="MARKSMSTOLD">
+              <PropertyRef Name="CLASS_TRNNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PROMDTL">
+          <End Role="PROMMST" Type="Self.PROMMST" Multiplicity="1" />
+          <End Role="PROMDTL" Type="Self.PROMDTL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROMMST">
+              <PropertyRef Name="TRNNO" />
+            </Principal>
+            <Dependent Role="PROMDTL">
+              <PropertyRef Name="TRNNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PROMMST_GRP">
+          <End Role="GRPMST" Type="Self.GRPMST" Multiplicity="0..1" />
+          <End Role="PROMMST" Type="Self.PROMMST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GRPMST">
+              <PropertyRef Name="TRNNO" />
+            </Principal>
+            <Dependent Role="PROMMST">
+              <PropertyRef Name="GRPMST_TRNNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SECCHAGE_EM">
+          <End Role="EM" Type="Self.EM" Multiplicity="0..1" />
+          <End Role="SECCHANGE" Type="Self.SECCHANGE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EM">
+              <PropertyRef Name="TRNNO" />
+            </Principal>
+            <Dependent Role="SECCHANGE">
+              <PropertyRef Name="EM_TRNNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SECDTL">
+          <End Role="SECMST" Type="Self.SECMST" Multiplicity="1" />
+          <End Role="SECDTL" Type="Self.SECDTL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SECMST">
+              <PropertyRef Name="TRNNO" />
+            </Principal>
+            <Dependent Role="SECDTL">
+              <PropertyRef Name="TRNNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SECMST">
+          <End Role="CLASS" Type="Self.CLASS" Multiplicity="0..1" />
+          <End Role="SECMST" Type="Self.SECMST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLASS">
+              <PropertyRef Name="TRNNO" />
+            </Principal>
+            <Dependent Role="SECMST">
+              <PropertyRef Name="CLASS_TRNNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SPDTL">
+          <End Role="SPFEEMST" Type="Self.SPFEEMST" Multiplicity="1" />
+          <End Role="SPFEEDTL" Type="Self.SPFEEDTL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SPFEEMST">
+              <PropertyRef Name="TRNNO" />
+            </Principal>
+            <Dependent Role="SPFEEDTL">
+              <PropertyRef Name="TRNNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SPDTL_EM">
+          <End Role="EM" Type="Self.EM" Multiplicity="0..1" />
+          <End Role="SPFEEDTL" Type="Self.SPFEEDTL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EM">
+              <PropertyRef Name="TRNNO" />
+            </Principal>
+            <Dependent Role="SPFEEDTL">
+              <PropertyRef Name="EM_TRNNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_STIME">
+          <End Role="STIME" Type="Self.STIME" Multiplicity="0..1" />
+          <End Role="CTTMST" Type="Self.CTTMST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STIME">
+              <PropertyRef Name="TRNNO" />
+            </Principal>
+            <Dependent Role="CTTMST">
+              <PropertyRef Name="TIME_TRNNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_STIMEDTL">
+          <End Role="STIME" Type="Self.STIME" Multiplicity="1" />
+          <End Role="STIMEDTL" Type="Self.STIMEDTL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STIME">
+              <PropertyRef Name="TRNNO" />
+            </Principal>
+            <Dependent Role="STIMEDTL">
+              <PropertyRef Name="TRNNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SUBJECT_TRNNO">
+          <End Role="SUBJECT" Type="Self.SUBJECT" Multiplicity="0..1" />
+          <End Role="MARKTOTALDTL" Type="Self.MARKTOTALDTL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SUBJECT">
+              <PropertyRef Name="TRNNO" />
+            </Principal>
+            <Dependent Role="MARKTOTALDTL">
+              <PropertyRef Name="SUBJECT_TRNNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="ALLCLASSVOUCHERS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="EMS">
+          <Parameter Name="PRDATE" Type="datetime2" Mode="In" />
+          <Parameter Name="PTRNNO" Type="float" Mode="In" />
+          <Parameter Name="PDDATE" Type="datetime2" Mode="In" />
+          <Parameter Name="PFMONTH" Type="float" Mode="In" />
+          <Parameter Name="PLDATE" Type="datetime2" Mode="In" />
+        </Function>
+        <Function Name="FN_CUR_CLASS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="EMS" ReturnType="float">
+          <Parameter Name="PTNNO" Type="float" Mode="In" />
+          <Parameter Name="PDT" Type="datetime2" Mode="In" />
+        </Function>
+        <Function Name="FNCHECKVOUCHERMONTH" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="EMS" ReturnType="varchar(max)">
+          <Parameter Name="PEMTRNNO" Type="float" Mode="In" />
+          <Parameter Name="RDT" Type="datetime2" Mode="In" />
+          <Parameter Name="DDT" Type="datetime2" Mode="In" />
+          <Parameter Name="LDT" Type="datetime2" Mode="In" />
+        </Function>
+        <Function Name="SPECIFICCLASSVOUCHERS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="EMS">
+          <Parameter Name="PRDATE" Type="datetime2" Mode="In" />
+          <Parameter Name="PTRNNO" Type="float" Mode="In" />
+          <Parameter Name="PDDATE" Type="datetime2" Mode="In" />
+          <Parameter Name="PFMONTH" Type="float" Mode="In" />
+          <Parameter Name="PEMTRNNO" Type="float" Mode="In" />
+          <Parameter Name="PLDATE" Type="datetime2" Mode="In" />
+        </Function>
+        <EntityContainer Name="EMSModelStoreContainer">
+          <EntitySet Name="BP" EntityType="Self.BP" Schema="EMS" store:Type="Tables" />
+          <EntitySet Name="CLASS" EntityType="Self.CLASS" Schema="EMS" store:Type="Tables" />
+          <EntitySet Name="CLFEEDTL" EntityType="Self.CLFEEDTL" Schema="EMS" store:Type="Tables" />
+          <EntitySet Name="CLFEEMST" EntityType="Self.CLFEEMST" Schema="EMS" store:Type="Tables" />
+          <EntitySet Name="COMPANY" EntityType="Self.COMPANY" Schema="EMS" store:Type="Tables" />
+          <EntitySet Name="COMPANYDTL" EntityType="Self.COMPANYDTL" Schema="EMS" store:Type="Tables" />
+          <EntitySet Name="COUTLINE" EntityType="Self.COUTLINE" Schema="EMS" store:Type="Tables" />
+          <EntitySet Name="CST" EntityType="Self.CST" Schema="EMS" store:Type="Tables" />
+          <EntitySet Name="CTTDTL" EntityType="Self.CTTDTL" Schema="EMS" store:Type="Tables" />
+          <EntitySet Name="CTTMST" EntityType="Self.CTTMST" Schema="EMS" store:Type="Tables" />
+          <EntitySet Name="DEPT" EntityType="Self.DEPT" Schema="EMS" store:Type="Tables" />
+          <EntitySet Name="EDUCATION" EntityType="Self.EDUCATION" Schema="EMS" store:Type="Tables" />
+          <EntitySet Name="EM" EntityType="Self.EM" Schema="EMS" store:Type="Tables" />
+          <EntitySet Name="EMDTL" EntityType="Self.EMDTL" Schema="EMS" store:Type="Tables" />
+          <EntitySet Name="EMDTL1" EntityType="Self.EMDTL1" Schema="EMS" store:Type="Tables" />
+          <EntitySet Name="EMDTL2" EntityType="Self.EMDTL2" Schema="EMS" store:Type="Tables" />
+          <EntitySet Name="EXAM" EntityType="Self.EXAM" Schema="EMS" store:Type="Tables" />
+          <EntitySet Name="FEECOLLECTDTL" EntityType="Self.FEECOLLECTDTL" Schema="EMS" store:Type="Tables" />
+          <EntitySet Name="FEECOLLECTMST" EntityType="Self.FEECOLLECTMST" Schema="EMS" store:Type="Tables" />
+          <EntitySet Name="FEETYPES" EntityType="Self.FEETYPES" Schema="EMS" store:Type="Tables" />
+          <EntitySet Name="FISCAL_YEAR" EntityType="Self.FISCAL_YEAR" Schema="EMS" store:Type="Tables" />
+          <EntitySet Name="GRPCHANGE" EntityType="Self.GRPCHANGE" Schema="EMS" store:Type="Tables" />
+          <EntitySet Name="GRPMST" EntityType="Self.GRPMST" Schema="EMS" store:Type="Tables" />
+          <EntitySet Name="LEAVECAL" EntityType="Self.LEAVECAL" Schema="EMS" store:Type="Tables" />
+          <EntitySet Name="LEAVECERTMST" EntityType="Self.LEAVECERTMST" Schema="EMS" store:Type="Tables" />
+          <EntitySet Name="LEAVETYPE" EntityType="Self.LEAVETYPE" Schema="EMS" store:Type="Tables" />
+          <EntitySet Name="LSCHOOLDTL" EntityType="Self.LSCHOOLDTL" Schema="EMS" store:Type="Tables" />
+          <EntitySet Name="LSCHOOLMST" EntityType="Self.LSCHOOLMST" Schema="EMS" store:Type="Tables" />
+          <EntitySet Name="MARKSDTL" EntityType="Self.MARKSDTL" Schema="EMS" store:Type="Tables" />
+          <EntitySet Name="MARKSDTL1" EntityType="Self.MARKSDTL1" Schema="EMS" store:Type="Tables" />
+          <EntitySet Name="MARKSMST" EntityType="Self.MARKSMST" Schema="EMS" store:Type="Tables" />
+          <EntitySet Name="MARKSMSTOLD" EntityType="Self.MARKSMSTOLD" Schema="EMS" store:Type="Tables" />
+          <EntitySet Name="MARKTOTAL" EntityType="Self.MARKTOTAL" Schema="EMS" store:Type="Tables" />
+          <EntitySet Name="MARKTOTALDTL" EntityType="Self.MARKTOTALDTL" Schema="EMS" store:Type="Tables" />
+          <EntitySet Name="MODULES" EntityType="Self.MODULES" Schema="EMS" store:Type="Tables" />
+          <EntitySet Name="OBJECTMST" EntityType="Self.OBJECTMST" Schema="EMS" store:Type="Tables" />
+          <EntitySet Name="PROMDTL" EntityType="Self.PROMDTL" Schema="EMS" store:Type="Tables" />
+          <EntitySet Name="PROMMST" EntityType="Self.PROMMST" Schema="EMS" store:Type="Tables" />
+          <EntitySet Name="SECCHANGE" EntityType="Self.SECCHANGE" Schema="EMS" store:Type="Tables" />
+          <EntitySet Name="SECDTL" EntityType="Self.SECDTL" Schema="EMS" store:Type="Tables" />
+          <EntitySet Name="SECMST" EntityType="Self.SECMST" Schema="EMS" store:Type="Tables" />
+          <EntitySet Name="SPFEEDTL" EntityType="Self.SPFEEDTL" Schema="EMS" store:Type="Tables" />
+          <EntitySet Name="SPFEEMST" EntityType="Self.SPFEEMST" Schema="EMS" store:Type="Tables" />
+          <EntitySet Name="STIME" EntityType="Self.STIME" Schema="EMS" store:Type="Tables" />
+          <EntitySet Name="STIMEDTL" EntityType="Self.STIMEDTL" Schema="EMS" store:Type="Tables" />
+          <EntitySet Name="SUBDEPT" EntityType="Self.SUBDEPT" Schema="EMS" store:Type="Tables" />
+          <EntitySet Name="SUBJECT" EntityType="Self.SUBJECT" Schema="EMS" store:Type="Tables" />
+          <EntitySet Name="TMST" EntityType="Self.TMST" Schema="EMS" store:Type="Tables" />
+          <EntitySet Name="USERS" EntityType="Self.USERS" Schema="EMS" store:Type="Tables" />
+          <EntitySet Name="CIO" EntityType="Self.CIO" store:Type="Tables" store:Schema="EMS">
+            <DefiningQuery>SELECT 
+    [CIO].[EMP_ID] AS [EMP_ID], 
+    [CIO].[I_DT] AS [I_DT], 
+    [CIO].[O_DT] AS [O_DT], 
+    [CIO].[ATT_DATE] AS [ATT_DATE], 
+    [CIO].[ROWID] AS [ROWID]
+    FROM [EMS].[CIO] AS [CIO]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="GRPDTL" EntityType="Self.GRPDTL" store:Type="Tables" store:Schema="EMS">
+            <DefiningQuery>SELECT 
+    [GRPDTL].[TRNNO] AS [TRNNO], 
+    [GRPDTL].[SUBJECT_TRNNO] AS [SUBJECT_TRNNO], 
+    [GRPDTL].[id] AS [id]
+    FROM [EMS].[GRPDTL] AS [GRPDTL]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_CLFEE" Association="Self.FK_CLFEE">
+            <End Role="CLASS" EntitySet="CLASS" />
+            <End Role="CLFEEMST" EntitySet="CLFEEMST" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CLFEEDTL" Association="Self.FK_CLFEEDTL">
+            <End Role="CLFEEMST" EntitySet="CLFEEMST" />
+            <End Role="CLFEEDTL" EntitySet="CLFEEDTL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COMP" Association="Self.FK_COMP">
+            <End Role="COMPANY" EntitySet="COMPANY" />
+            <End Role="COMPANYDTL" EntitySet="COMPANYDTL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CST" Association="Self.FK_CST">
+            <End Role="CST" EntitySet="CST" />
+            <End Role="EM" EntitySet="EM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CTT_STIME" Association="Self.FK_CTT_STIME">
+            <End Role="STIMEDTL" EntitySet="STIMEDTL" />
+            <End Role="CTTDTL" EntitySet="CTTDTL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CTTDTL" Association="Self.FK_CTTDTL">
+            <End Role="CTTMST" EntitySet="CTTMST" />
+            <End Role="CTTDTL" EntitySet="CTTDTL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CTTDTL_CLASS" Association="Self.FK_CTTDTL_CLASS">
+            <End Role="CLASS" EntitySet="CLASS" />
+            <End Role="CTTDTL" EntitySet="CTTDTL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CTTDTL_SUBJECT" Association="Self.FK_CTTDTL_SUBJECT">
+            <End Role="SUBJECT" EntitySet="SUBJECT" />
+            <End Role="CTTDTL" EntitySet="CTTDTL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CTTMST_EM" Association="Self.FK_CTTMST_EM">
+            <End Role="EM" EntitySet="EM" />
+            <End Role="CTTMST" EntitySet="CTTMST" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DEPT" Association="Self.FK_DEPT">
+            <End Role="DEPT" EntitySet="DEPT" />
+            <End Role="SUBDEPT" EntitySet="SUBDEPT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EM_PROMDTL" Association="Self.FK_EM_PROMDTL">
+            <End Role="EM" EntitySet="EM" />
+            <End Role="PROMDTL" EntitySet="PROMDTL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EM_SECMST" Association="Self.FK_EM_SECMST">
+            <End Role="SECMST" EntitySet="SECMST" />
+            <End Role="EM" EntitySet="EM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EMDTL" Association="Self.FK_EMDTL">
+            <End Role="EM" EntitySet="EM" />
+            <End Role="EMDTL" EntitySet="EMDTL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EMDTL1" Association="Self.FK_EMDTL1">
+            <End Role="EM" EntitySet="EM" />
+            <End Role="EMDTL1" EntitySet="EMDTL1" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EMDTL2" Association="Self.FK_EMDTL2">
+            <End Role="EM" EntitySet="EM" />
+            <End Role="EMDTL2" EntitySet="EMDTL2" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EMDTL2_EDU" Association="Self.FK_EMDTL2_EDU">
+            <End Role="EDUCATION" EntitySet="EDUCATION" />
+            <End Role="EMDTL2" EntitySet="EMDTL2" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FEECOLLECTMST" Association="Self.FK_FEECOLLECTMST">
+            <End Role="EM" EntitySet="EM" />
+            <End Role="FEECOLLECTMST" EntitySet="FEECOLLECTMST" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FEEDTL" Association="Self.FK_FEEDTL">
+            <End Role="FEECOLLECTMST" EntitySet="FEECOLLECTMST" />
+            <End Role="FEECOLLECTDTL" EntitySet="FEECOLLECTDTL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FEETYPE" Association="Self.FK_FEETYPE">
+            <End Role="FEETYPES" EntitySet="FEETYPES" />
+            <End Role="FEECOLLECTDTL" EntitySet="FEECOLLECTDTL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GRPDTL" Association="Self.FK_GRPDTL">
+            <End Role="GRPMST" EntitySet="GRPMST" />
+            <End Role="GRPDTL" EntitySet="GRPDTL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GRPDTL1" Association="Self.FK_GRPDTL1">
+            <End Role="SUBJECT" EntitySet="SUBJECT" />
+            <End Role="GRPDTL" EntitySet="GRPDTL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GRPMST_MARKS" Association="Self.FK_GRPMST_MARKS">
+            <End Role="GRPMST" EntitySet="GRPMST" />
+            <End Role="MARKSMSTOLD" EntitySet="MARKSMSTOLD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LEAVECERTMST" Association="Self.FK_LEAVECERTMST">
+            <End Role="EM" EntitySet="EM" />
+            <End Role="LEAVECERTMST" EntitySet="LEAVECERTMST" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LSCHOOLMST" Association="Self.FK_LSCHOOLMST">
+            <End Role="CLASS" EntitySet="CLASS" />
+            <End Role="LSCHOOLMST" EntitySet="LSCHOOLMST" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LSCOOLDTL" Association="Self.FK_LSCOOLDTL">
+            <End Role="LSCHOOLMST" EntitySet="LSCHOOLMST" />
+            <End Role="LSCHOOLDTL" EntitySet="LSCHOOLDTL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MARKS_EM" Association="Self.FK_MARKS_EM">
+            <End Role="EM" EntitySet="EM" />
+            <End Role="MARKSDTL" EntitySet="MARKSDTL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MARKSDTL" Association="Self.FK_MARKSDTL">
+            <End Role="MARKSMST" EntitySet="MARKSMST" />
+            <End Role="MARKSDTL" EntitySet="MARKSDTL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MARKSDTL1" Association="Self.FK_MARKSDTL1">
+            <End Role="MARKSDTL" EntitySet="MARKSDTL" />
+            <End Role="MARKSDTL1" EntitySet="MARKSDTL1" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MARKTOTALDTL" Association="Self.FK_MARKTOTALDTL">
+            <End Role="MARKTOTAL" EntitySet="MARKTOTAL" />
+            <End Role="MARKTOTALDTL" EntitySet="MARKTOTALDTL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MMST" Association="Self.FK_MMST">
+            <End Role="CLASS" EntitySet="CLASS" />
+            <End Role="MARKSMSTOLD" EntitySet="MARKSMSTOLD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PROMDTL" Association="Self.FK_PROMDTL">
+            <End Role="PROMMST" EntitySet="PROMMST" />
+            <End Role="PROMDTL" EntitySet="PROMDTL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PROMMST_GRP" Association="Self.FK_PROMMST_GRP">
+            <End Role="GRPMST" EntitySet="GRPMST" />
+            <End Role="PROMMST" EntitySet="PROMMST" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SECCHAGE_EM" Association="Self.FK_SECCHAGE_EM">
+            <End Role="EM" EntitySet="EM" />
+            <End Role="SECCHANGE" EntitySet="SECCHANGE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SECDTL" Association="Self.FK_SECDTL">
+            <End Role="SECMST" EntitySet="SECMST" />
+            <End Role="SECDTL" EntitySet="SECDTL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SECMST" Association="Self.FK_SECMST">
+            <End Role="CLASS" EntitySet="CLASS" />
+            <End Role="SECMST" EntitySet="SECMST" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SPDTL" Association="Self.FK_SPDTL">
+            <End Role="SPFEEMST" EntitySet="SPFEEMST" />
+            <End Role="SPFEEDTL" EntitySet="SPFEEDTL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SPDTL_EM" Association="Self.FK_SPDTL_EM">
+            <End Role="EM" EntitySet="EM" />
+            <End Role="SPFEEDTL" EntitySet="SPFEEDTL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_STIME" Association="Self.FK_STIME">
+            <End Role="STIME" EntitySet="STIME" />
+            <End Role="CTTMST" EntitySet="CTTMST" />
+          </AssociationSet>
+          <AssociationSet Name="FK_STIMEDTL" Association="Self.FK_STIMEDTL">
+            <End Role="STIME" EntitySet="STIME" />
+            <End Role="STIMEDTL" EntitySet="STIMEDTL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SUBJECT_TRNNO" Association="Self.FK_SUBJECT_TRNNO">
+            <End Role="SUBJECT" EntitySet="SUBJECT" />
+            <End Role="MARKTOTALDTL" EntitySet="MARKTOTALDTL" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EMSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BP">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+          </Key>
+          <Property Name="TRNNO" Type="Double" Nullable="false" />
+          <Property Name="BPNAME" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="STATUS" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="CLASS">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+          </Key>
+          <Property Name="TRNNO" Type="Double" Nullable="false" />
+          <Property Name="CNAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CABR" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CLFEEMSTs" Relationship="Self.FK_CLFEE" FromRole="CLASS" ToRole="CLFEEMST" />
+          <NavigationProperty Name="CTTDTLs" Relationship="Self.FK_CTTDTL_CLASS" FromRole="CLASS" ToRole="CTTDTL" />
+          <NavigationProperty Name="LSCHOOLMSTs" Relationship="Self.FK_LSCHOOLMST" FromRole="CLASS" ToRole="LSCHOOLMST" />
+          <NavigationProperty Name="MARKSMSTOLDs" Relationship="Self.FK_MMST" FromRole="CLASS" ToRole="MARKSMSTOLD" />
+          <NavigationProperty Name="SECMSTs" Relationship="Self.FK_SECMST" FromRole="CLASS" ToRole="SECMST" />
+        </EntityType>
+        <EntityType Name="CLFEEDTL">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+            <PropertyRef Name="SR" />
+          </Key>
+          <Property Name="TRNNO" Type="Double" Nullable="false" />
+          <Property Name="SR" Type="Double" Nullable="false" />
+          <Property Name="FEE" Type="Double" />
+          <Property Name="ADT" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="CLFEEMST" Relationship="Self.FK_CLFEEDTL" FromRole="CLFEEDTL" ToRole="CLFEEMST" />
+        </EntityType>
+        <EntityType Name="CLFEEMST">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+          </Key>
+          <Property Name="TRNNO" Type="Double" Nullable="false" />
+          <Property Name="CLASS_TRNNO" Type="Double" />
+          <NavigationProperty Name="CLASS" Relationship="Self.FK_CLFEE" FromRole="CLFEEMST" ToRole="CLASS" />
+          <NavigationProperty Name="CLFEEDTLs" Relationship="Self.FK_CLFEEDTL" FromRole="CLFEEMST" ToRole="CLFEEDTL" />
+        </EntityType>
+        <EntityType Name="COUTLINE">
+          <Key>
+            <PropertyRef Name="CODE" />
+          </Key>
+          <Property Name="CODE" Type="Double" Nullable="false" />
+          <Property Name="CNAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="REF_ID" Type="Double" />
+        </EntityType>
+        <EntityType Name="CST">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+          </Key>
+          <Property Name="TRNNO" Type="Double" Nullable="false" />
+          <Property Name="CDESC" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="STATUS" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="EMs" Relationship="Self.FK_CST" FromRole="CST" ToRole="EM" />
+        </EntityType>
+        <EntityType Name="CTTDTL">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+            <PropertyRef Name="SR" />
+          </Key>
+          <Property Name="TRNNO" Type="Double" Nullable="false" />
+          <Property Name="SR" Type="Double" Nullable="false" />
+          <Property Name="SUBJECT_TRNNO" Type="Double" />
+          <Property Name="CLASS_TRNNO" Type="Double" />
+          <Property Name="STIMEDTL_SR" Type="Double" />
+          <Property Name="STIMEDTL_TRNNO" Type="Double" />
+          <NavigationProperty Name="CLASS" Relationship="Self.FK_CTTDTL_CLASS" FromRole="CTTDTL" ToRole="CLASS" />
+          <NavigationProperty Name="STIMEDTL" Relationship="Self.FK_CTT_STIME" FromRole="CTTDTL" ToRole="STIMEDTL" />
+          <NavigationProperty Name="CTTMST" Relationship="Self.FK_CTTDTL" FromRole="CTTDTL" ToRole="CTTMST" />
+          <NavigationProperty Name="SUBJECT" Relationship="Self.FK_CTTDTL_SUBJECT" FromRole="CTTDTL" ToRole="SUBJECT" />
+        </EntityType>
+        <EntityType Name="CTTMST">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+          </Key>
+          <Property Name="TRNNO" Type="Double" Nullable="false" />
+          <Property Name="TIME_TRNNO" Type="Double" />
+          <Property Name="EM_TRNNO" Type="Double" Nullable="false" />
+          <NavigationProperty Name="CTTDTLs" Relationship="Self.FK_CTTDTL" FromRole="CTTMST" ToRole="CTTDTL" />
+          <NavigationProperty Name="EM" Relationship="Self.FK_CTTMST_EM" FromRole="CTTMST" ToRole="EM" />
+          <NavigationProperty Name="STIME" Relationship="Self.FK_STIME" FromRole="CTTMST" ToRole="STIME" />
+        </EntityType>
+        <EntityType Name="DEPT">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+          </Key>
+          <Property Name="TRNNO" Type="Double" Nullable="false" />
+          <Property Name="ABR" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DESCRIP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="STATUS" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="SUBDEPTs" Relationship="Self.FK_DEPT" FromRole="DEPT" ToRole="SUBDEPT" />
+        </EntityType>
+        <EntityType Name="EDUCATION">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+          </Key>
+          <Property Name="TRNNO" Type="Double" Nullable="false" />
+          <Property Name="DNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DABRV" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="STATUS" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="EMDTL2" Relationship="Self.FK_EMDTL2_EDU" FromRole="EDUCATION" ToRole="EMDTL2" />
+        </EntityType>
+        <EntityType Name="EM">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+          </Key>
+          <Property Name="TRNNO" Type="Double" Nullable="false" />
+          <Property Name="EMP_ID" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EMP_NAME" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DOB" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DOJ" Type="DateTime" Precision="0" />
+          <Property Name="CST_TRNNO" Type="Double" />
+          <Property Name="EMP_F_NAME" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="COMP_TRNNO" Type="Double" />
+          <Property Name="BP_TRNNO" Type="Double" />
+          <Property Name="ETYPE" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="CL_TRNNO" Type="Double" />
+          <Property Name="CL_TRNNO1" Type="Double" />
+          <Property Name="CERTIFICATE" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="PSCHDT" Type="DateTime" Precision="0" />
+          <Property Name="EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ADT" Type="DateTime" Precision="0" />
+          <Property Name="FTYPE" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="FEE" Type="Double" />
+          <Property Name="EMAILST" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="GRPMST_TRNNO" Type="Double" />
+          <Property Name="CNIC" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="SECMST_TRNNO" Type="Double" />
+          <Property Name="SECDTL_SR" Type="Double" />
+          <Property Name="SEX" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="BSAL" Type="Double" />
+          <Property Name="FCNIC" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="ADIMNO" Type="Double" />
+          <Property Name="STYPE" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CST" Relationship="Self.FK_CST" FromRole="EM" ToRole="CST" />
+          <NavigationProperty Name="CTTMSTs" Relationship="Self.FK_CTTMST_EM" FromRole="EM" ToRole="CTTMST" />
+          <NavigationProperty Name="PROMDTLs" Relationship="Self.FK_EM_PROMDTL" FromRole="EM" ToRole="PROMDTL" />
+          <NavigationProperty Name="SECMST" Relationship="Self.FK_EM_SECMST" FromRole="EM" ToRole="SECMST" />
+          <NavigationProperty Name="EMDTLs" Relationship="Self.FK_EMDTL" FromRole="EM" ToRole="EMDTL" />
+          <NavigationProperty Name="EMDTL1" Relationship="Self.FK_EMDTL1" FromRole="EM" ToRole="EMDTL1" />
+          <NavigationProperty Name="EMDTL2" Relationship="Self.FK_EMDTL2" FromRole="EM" ToRole="EMDTL2" />
+          <NavigationProperty Name="FEECOLLECTMSTs" Relationship="Self.FK_FEECOLLECTMST" FromRole="EM" ToRole="FEECOLLECTMST" />
+          <NavigationProperty Name="LEAVECERTMSTs" Relationship="Self.FK_LEAVECERTMST" FromRole="EM" ToRole="LEAVECERTMST" />
+          <NavigationProperty Name="MARKSDTLs" Relationship="Self.FK_MARKS_EM" FromRole="EM" ToRole="MARKSDTL" />
+          <NavigationProperty Name="SECCHANGEs" Relationship="Self.FK_SECCHAGE_EM" FromRole="EM" ToRole="SECCHANGE" />
+          <NavigationProperty Name="SPFEEDTLs" Relationship="Self.FK_SPDTL_EM" FromRole="EM" ToRole="SPFEEDTL" />
+        </EntityType>
+        <EntityType Name="EMDTL">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+            <PropertyRef Name="SR" />
+          </Key>
+          <Property Name="TRNNO" Type="Double" Nullable="false" />
+          <Property Name="SR" Type="Double" Nullable="false" />
+          <Property Name="ADDDESC" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="ADDTYPE" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="EM" Relationship="Self.FK_EMDTL" FromRole="EMDTL" ToRole="EM" />
+        </EntityType>
+        <EntityType Name="EMDTL1">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+            <PropertyRef Name="SR" />
+          </Key>
+          <Property Name="TRNNO" Type="Double" Nullable="false" />
+          <Property Name="SR" Type="Double" Nullable="false" />
+          <Property Name="PHNO" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="PHTYPE" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="RELTION" Type="Double" />
+          <NavigationProperty Name="EM" Relationship="Self.FK_EMDTL1" FromRole="EMDTL1" ToRole="EM" />
+        </EntityType>
+        <EntityType Name="EMDTL2">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+            <PropertyRef Name="SR" />
+          </Key>
+          <Property Name="TRNNO" Type="Double" Nullable="false" />
+          <Property Name="SR" Type="Double" Nullable="false" />
+          <Property Name="EDU_TRNNO" Type="Double" />
+          <Property Name="PTYPE" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="YEAR" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+          <Property Name="GRD" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="PERCENT" Type="Double" />
+          <NavigationProperty Name="EDUCATION" Relationship="Self.FK_EMDTL2_EDU" FromRole="EMDTL2" ToRole="EDUCATION" />
+          <NavigationProperty Name="EM" Relationship="Self.FK_EMDTL2" FromRole="EMDTL2" ToRole="EM" />
+        </EntityType>
+        <EntityType Name="EXAM">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+          </Key>
+          <Property Name="TRNNO" Type="Double" Nullable="false" />
+          <Property Name="ETYPE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="STATUS" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="FEECOLLECTDTL">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+            <PropertyRef Name="SR" />
+          </Key>
+          <Property Name="TRNNO" Type="Double" Nullable="false" />
+          <Property Name="FMONTH" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="FEETYPE_TRNNO" Type="Double" />
+          <Property Name="SR" Type="Double" Nullable="false" />
+          <Property Name="AMT" Type="Double" />
+          <Property Name="FEEMON" Type="Double" />
+          <NavigationProperty Name="FEECOLLECTMST" Relationship="Self.FK_FEEDTL" FromRole="FEECOLLECTDTL" ToRole="FEECOLLECTMST" />
+          <NavigationProperty Name="FEETYPE" Relationship="Self.FK_FEETYPE" FromRole="FEECOLLECTDTL" ToRole="FEETYPES" />
+        </EntityType>
+        <EntityType Name="FEECOLLECTMST">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+          </Key>
+          <Property Name="TRNNO" Type="Double" Nullable="false" />
+          <Property Name="RDATE" Type="DateTime" Precision="0" />
+          <Property Name="EM_TRNNO" Type="Double" />
+          <Property Name="FMONTH" Type="Double" />
+          <Property Name="DDATE" Type="DateTime" Precision="0" />
+          <Property Name="LDATE" Type="DateTime" Precision="0" />
+          <Property Name="FSTATUS" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="DISCOUNT" Type="Double" />
+          <Property Name="DISCOUNTTYPE" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="CLASS_TRNNO" Type="Double" />
+          <Property Name="SECDTL_TRNNO" Type="Double" />
+          <Property Name="SECDTL_SR" Type="Double" />
+          <Property Name="PDATE" Type="DateTime" Precision="0" />
+          <Property Name="ARRFLG" Type="Double" />
+          <NavigationProperty Name="EM" Relationship="Self.FK_FEECOLLECTMST" FromRole="FEECOLLECTMST" ToRole="EM" />
+          <NavigationProperty Name="FEECOLLECTDTLs" Relationship="Self.FK_FEEDTL" FromRole="FEECOLLECTMST" ToRole="FEECOLLECTDTL" />
+        </EntityType>
+        <EntityType Name="FEETYPE">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+          </Key>
+          <Property Name="TRNNO" Type="Double" Nullable="false" />
+          <Property Name="FTYPE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="STATUS" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="FEECOLLECTDTLs" Relationship="Self.FK_FEETYPE" FromRole="FEETYPES" ToRole="FEECOLLECTDTL" />
+        </EntityType>
+        <EntityType Name="FISCAL_YEAR">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+          </Key>
+          <Property Name="TRNNO" Type="Double" Nullable="false" />
+          <Property Name="FDATE" Type="DateTime" Precision="0" />
+          <Property Name="TDATE" Type="DateTime" Precision="0" />
+          <Property Name="YEAR_DESC" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="ACTIVE" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="GRPCHANGE">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+          </Key>
+          <Property Name="TRNNO" Type="Double" Nullable="false" />
+          <Property Name="GRPMST_TRNNO" Type="Double" />
+          <Property Name="EM_TRNNO" Type="Double" />
+          <Property Name="CHDATE" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="GRPMST">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+          </Key>
+          <Property Name="TRNNO" Type="Double" Nullable="false" />
+          <Property Name="GRPNAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DT" Type="DateTime" Precision="0" />
+          <Property Name="COMPDTL_TRNNO" Type="Double" />
+          <NavigationProperty Name="GRPDTLs" Relationship="Self.FK_GRPDTL" FromRole="GRPMST" ToRole="GRPDTL" />
+          <NavigationProperty Name="MARKSMSTOLDs" Relationship="Self.FK_GRPMST_MARKS" FromRole="GRPMST" ToRole="MARKSMSTOLD" />
+          <NavigationProperty Name="PROMMSTs" Relationship="Self.FK_PROMMST_GRP" FromRole="GRPMST" ToRole="PROMMST" />
+        </EntityType>
+        <EntityType Name="LEAVECAL">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+          </Key>
+          <Property Name="TRNNO" Type="Double" Nullable="false" />
+          <Property Name="FDT" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="TDT" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="STATUS" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LEAVECERTMST">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+          </Key>
+          <Property Name="TRNNO" Type="Double" Nullable="false" />
+          <Property Name="EM_TRNNO" Type="Double" />
+          <Property Name="LDATE" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="LCOND" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="REMARK" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="DPAIDDT" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="EM" Relationship="Self.FK_LEAVECERTMST" FromRole="LEAVECERTMST" ToRole="EM" />
+        </EntityType>
+        <EntityType Name="LEAVETYPE">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+          </Key>
+          <Property Name="TRNNO" Type="Double" Nullable="false" />
+          <Property Name="LDESC" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LWEIGHT" Type="Double" />
+          <Property Name="STATUS" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="LABRV" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="LSCHOOLDTL">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+            <PropertyRef Name="SR" />
+          </Key>
+          <Property Name="TRNNO" Type="Double" Nullable="false" />
+          <Property Name="SR" Type="Double" Nullable="false" />
+          <Property Name="EM_TRNNO" Type="Double" Nullable="false" />
+          <NavigationProperty Name="LSCHOOLMST" Relationship="Self.FK_LSCOOLDTL" FromRole="LSCHOOLDTL" ToRole="LSCHOOLMST" />
+        </EntityType>
+        <EntityType Name="LSCHOOLMST">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+          </Key>
+          <Property Name="TRNNO" Type="Double" Nullable="false" />
+          <Property Name="CLASS_TRNNO" Type="Double" />
+          <Property Name="LDATE" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="CLASS" Relationship="Self.FK_LSCHOOLMST" FromRole="LSCHOOLMST" ToRole="CLASS" />
+          <NavigationProperty Name="LSCHOOLDTLs" Relationship="Self.FK_LSCOOLDTL" FromRole="LSCHOOLMST" ToRole="LSCHOOLDTL" />
+        </EntityType>
+        <EntityType Name="MARKSDTL">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+            <PropertyRef Name="SR" />
+          </Key>
+          <Property Name="TRNNO" Type="Double" Nullable="false" />
+          <Property Name="SR" Type="Double" Nullable="false" />
+          <Property Name="EM_TRNNO" Type="Double" />
+          <NavigationProperty Name="EM" Relationship="Self.FK_MARKS_EM" FromRole="MARKSDTL" ToRole="EM" />
+          <NavigationProperty Name="MARKSMST" Relationship="Self.FK_MARKSDTL" FromRole="MARKSDTL" ToRole="MARKSMST" />
+          <NavigationProperty Name="MARKSDTL1" Relationship="Self.FK_MARKSDTL1" FromRole="MARKSDTL" ToRole="MARKSDTL1" />
+        </EntityType>
+        <EntityType Name="MARKSDTL1">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+            <PropertyRef Name="SR" />
+            <PropertyRef Name="SR1" />
+          </Key>
+          <Property Name="TRNNO" Type="Double" Nullable="false" />
+          <Property Name="SR" Type="Double" Nullable="false" />
+          <Property Name="SR1" Type="Double" Nullable="false" />
+          <Property Name="GMARKS" Type="Double" />
+          <Property Name="MARKTOTALDTL_TRNNO" Type="Double" />
+          <Property Name="MARKTOTALDTL_SR" Type="Double" />
+          <NavigationProperty Name="MARKSDTL" Relationship="Self.FK_MARKSDTL1" FromRole="MARKSDTL1" ToRole="MARKSDTL" />
+        </EntityType>
+        <EntityType Name="MARKSMST">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+          </Key>
+          <Property Name="TRNNO" Type="Double" Nullable="false" />
+          <Property Name="MDT" Type="DateTime" Precision="0" />
+          <Property Name="EXAM_TRNNO" Type="Double" />
+          <Property Name="CLASS_TRNNO" Type="Double" />
+          <Property Name="GRPMST_TRNNO" Type="Double" />
+          <Property Name="EM_TRNNO" Type="Double" />
+          <NavigationProperty Name="MARKSDTLs" Relationship="Self.FK_MARKSDTL" FromRole="MARKSMST" ToRole="MARKSDTL" />
+        </EntityType>
+        <EntityType Name="MARKSMSTOLD">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+          </Key>
+          <Property Name="TRNNO" Type="Double" Nullable="false" />
+          <Property Name="MDT" Type="DateTime" Precision="0" />
+          <Property Name="EXAM_TRNNO" Type="Double" />
+          <Property Name="CLASS_TRNNO" Type="Double" />
+          <Property Name="GRPMST_TRNNO" Type="Double" />
+          <Property Name="EM_TRNNO" Type="Double" />
+          <NavigationProperty Name="CLASS" Relationship="Self.FK_MMST" FromRole="MARKSMSTOLD" ToRole="CLASS" />
+          <NavigationProperty Name="GRPMST" Relationship="Self.FK_GRPMST_MARKS" FromRole="MARKSMSTOLD" ToRole="GRPMST" />
+        </EntityType>
+        <EntityType Name="MARKTOTAL">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+          </Key>
+          <Property Name="TRNNO" Type="Double" Nullable="false" />
+          <Property Name="CLASS_TRNNO" Type="Double" />
+          <Property Name="EXAM_TRNNO" Type="Double" />
+          <Property Name="GRPMST_TRNNO" Type="Double" />
+          <Property Name="MDT" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="MARKTOTALDTLs" Relationship="Self.FK_MARKTOTALDTL" FromRole="MARKTOTAL" ToRole="MARKTOTALDTL" />
+        </EntityType>
+        <EntityType Name="MARKTOTALDTL">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+            <PropertyRef Name="SR" />
+          </Key>
+          <Property Name="TRNNO" Type="Double" Nullable="false" />
+          <Property Name="SR" Type="Double" Nullable="false" />
+          <Property Name="SUBJECT_TRNNO" Type="Double" />
+          <Property Name="TOTMARKS" Type="Double" Nullable="false" />
+          <NavigationProperty Name="MARKTOTAL" Relationship="Self.FK_MARKTOTALDTL" FromRole="MARKTOTALDTL" ToRole="MARKTOTAL" />
+          <NavigationProperty Name="SUBJECT" Relationship="Self.FK_SUBJECT_TRNNO" FromRole="MARKTOTALDTL" ToRole="SUBJECT" />
+        </EntityType>
+        <EntityType Name="MODULE">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+          </Key>
+          <Property Name="TRNNO" Type="Double" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="STATUS" Type="Decimal" Precision="1" Scale="0" />
+          <Property Name="MODULEID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="OBJECTMST">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+          </Key>
+          <Property Name="TRNNO" Type="Double" Nullable="false" />
+          <Property Name="TYPE" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="UCODE" Type="Double" />
+          <Property Name="MODULE_TRNNO" Type="Double" />
+          <Property Name="COMPANY_TRNNO" Type="Double" />
+        </EntityType>
+        <EntityType Name="PROMDTL">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+            <PropertyRef Name="SR" />
+          </Key>
+          <Property Name="TRNNO" Type="Double" Nullable="false" />
+          <Property Name="SR" Type="Double" Nullable="false" />
+          <Property Name="EM_TRNNO" Type="Double" />
+          <Property Name="STATUS" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="ADIMNO" Type="Double" />
+          <NavigationProperty Name="EM" Relationship="Self.FK_EM_PROMDTL" FromRole="PROMDTL" ToRole="EM" />
+          <NavigationProperty Name="PROMMST" Relationship="Self.FK_PROMDTL" FromRole="PROMDTL" ToRole="PROMMST" />
+        </EntityType>
+        <EntityType Name="PROMMST">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+          </Key>
+          <Property Name="TRNNO" Type="Double" Nullable="false" />
+          <Property Name="PDT" Type="DateTime" Precision="0" />
+          <Property Name="GRPMST_TRNNO" Type="Double" />
+          <Property Name="CLASS_TRNNO" Type="Double" />
+          <Property Name="FCLASS_TRNNO" Type="Double" />
+          <Property Name="SECDTL_TRNNO" Type="Double" />
+          <Property Name="SECDTL_SR" Type="Double" />
+          <NavigationProperty Name="GRPMST" Relationship="Self.FK_PROMMST_GRP" FromRole="PROMMST" ToRole="GRPMST" />
+          <NavigationProperty Name="PROMDTLs" Relationship="Self.FK_PROMDTL" FromRole="PROMMST" ToRole="PROMDTL" />
+        </EntityType>
+        <EntityType Name="SECCHANGE">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+          </Key>
+          <Property Name="TRNNO" Type="Double" Nullable="false" />
+          <Property Name="EM_TRNNO" Type="Double" />
+          <Property Name="CHDATE" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="SECDTL_TRNNO" Type="Double" />
+          <Property Name="SECDTL_SR" Type="Double" />
+          <Property Name="EDATE" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="EM" Relationship="Self.FK_SECCHAGE_EM" FromRole="SECCHANGE" ToRole="EM" />
+        </EntityType>
+        <EntityType Name="SECDTL">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+            <PropertyRef Name="SR" />
+          </Key>
+          <Property Name="TRNNO" Type="Double" Nullable="false" />
+          <Property Name="SR" Type="Double" Nullable="false" />
+          <Property Name="SNAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="STATUS" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="SECMST" Relationship="Self.FK_SECDTL" FromRole="SECDTL" ToRole="SECMST" />
+        </EntityType>
+        <EntityType Name="SECMST">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+          </Key>
+          <Property Name="TRNNO" Type="Double" Nullable="false" />
+          <Property Name="CLASS_TRNNO" Type="Double" />
+          <NavigationProperty Name="CLASS" Relationship="Self.FK_SECMST" FromRole="SECMST" ToRole="CLASS" />
+          <NavigationProperty Name="EMs" Relationship="Self.FK_EM_SECMST" FromRole="SECMST" ToRole="EM" />
+          <NavigationProperty Name="SECDTLs" Relationship="Self.FK_SECDTL" FromRole="SECMST" ToRole="SECDTL" />
+        </EntityType>
+        <EntityType Name="SPFEEDTL">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+            <PropertyRef Name="SR" />
+          </Key>
+          <Property Name="TRNNO" Type="Double" Nullable="false" />
+          <Property Name="SR" Type="Double" Nullable="false" />
+          <Property Name="EM_TRNNO" Type="Double" />
+          <Property Name="SPFEE" Type="Double" Nullable="false" />
+          <NavigationProperty Name="EM" Relationship="Self.FK_SPDTL_EM" FromRole="SPFEEDTL" ToRole="EM" />
+          <NavigationProperty Name="SPFEEMST" Relationship="Self.FK_SPDTL" FromRole="SPFEEDTL" ToRole="SPFEEMST" />
+        </EntityType>
+        <EntityType Name="SPFEEMST">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+          </Key>
+          <Property Name="TRNNO" Type="Double" Nullable="false" />
+          <Property Name="SPDATE" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="CLASS_TRNNO" Type="Double" Nullable="false" />
+          <NavigationProperty Name="SPFEEDTLs" Relationship="Self.FK_SPDTL" FromRole="SPFEEMST" ToRole="SPFEEDTL" />
+        </EntityType>
+        <EntityType Name="STIME">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+          </Key>
+          <Property Name="TRNNO" Type="Double" Nullable="false" />
+          <Property Name="STIME1" Type="DateTime" Precision="0" />
+          <Property Name="ETIME" Type="DateTime" Precision="0" />
+          <Property Name="SDATE" Type="DateTime" Precision="0" />
+          <Property Name="TDATE" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="CTTMSTs" Relationship="Self.FK_STIME" FromRole="STIME" ToRole="CTTMST" />
+          <NavigationProperty Name="STIMEDTLs" Relationship="Self.FK_STIMEDTL" FromRole="STIME" ToRole="STIMEDTL" />
+        </EntityType>
+        <EntityType Name="STIMEDTL">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+            <PropertyRef Name="SR" />
+          </Key>
+          <Property Name="TRNNO" Type="Double" Nullable="false" />
+          <Property Name="SR" Type="Double" Nullable="false" />
+          <Property Name="LECSTIME" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="LECETIME" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="CTTDTLs" Relationship="Self.FK_CTT_STIME" FromRole="STIMEDTL" ToRole="CTTDTL" />
+          <NavigationProperty Name="STIME" Relationship="Self.FK_STIMEDTL" FromRole="STIMEDTL" ToRole="STIME" />
+        </EntityType>
+        <EntityType Name="SUBDEPT">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+          </Key>
+          <Property Name="TRNNO" Type="Double" Nullable="false" />
+          <Property Name="ABR" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DESCRIP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="STATUS" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DEPT_TRNNO" Type="Double" />
+          <NavigationProperty Name="DEPT" Relationship="Self.FK_DEPT" FromRole="SUBDEPT" ToRole="DEPT" />
+        </EntityType>
+        <EntityType Name="SUBJECT">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+          </Key>
+          <Property Name="TRNNO" Type="Double" Nullable="false" />
+          <Property Name="SNAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SCODE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CTTDTLs" Relationship="Self.FK_CTTDTL_SUBJECT" FromRole="SUBJECT" ToRole="CTTDTL" />
+          <NavigationProperty Name="MARKTOTALDTLs" Relationship="Self.FK_SUBJECT_TRNNO" FromRole="SUBJECT" ToRole="MARKTOTALDTL" />
+          <NavigationProperty Name="GRPDTLs" Relationship="Self.FK_GRPDTL1" FromRole="SUBJECT" ToRole="GRPDTL" />
+        </EntityType>
+        <EntityType Name="TMST">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+          </Key>
+          <Property Name="TRNNO" Type="Double" Nullable="false" />
+          <Property Name="COMP_TRNNO" Type="Double" />
+          <Property Name="CLASS_TRNNO" Type="Double" />
+          <Property Name="SUB_TRNNO" Type="Double" />
+          <Property Name="CHNAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="CIO">
+          <Key>
+            <PropertyRef Name="ROWID" />
+          </Key>
+          <Property Name="EMP_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="I_DT" Type="DateTime" Precision="0" />
+          <Property Name="O_DT" Type="DateTime" Precision="0" />
+          <Property Name="ATT_DATE" Type="DateTime" Precision="0" />
+          <Property Name="ROWID" Type="Guid" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GRPDTL">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+            <PropertyRef Name="SUBJECT_TRNNO" />
+          </Key>
+          <Property Name="TRNNO" Type="Double" Nullable="false" />
+          <Property Name="SUBJECT_TRNNO" Type="Double" Nullable="false" />
+          <Property Name="id" Type="Double" />
+          <NavigationProperty Name="GRPMST" Relationship="Self.FK_GRPDTL" FromRole="GRPDTL" ToRole="GRPMST" />
+          <NavigationProperty Name="SUBJECT" Relationship="Self.FK_GRPDTL1" FromRole="GRPDTL" ToRole="SUBJECT" />
+        </EntityType>
+        <Association Name="FK_CLFEE">
+          <End Role="CLASS" Type="Self.CLASS" Multiplicity="0..1" />
+          <End Role="CLFEEMST" Type="Self.CLFEEMST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLASS">
+              <PropertyRef Name="TRNNO" />
+            </Principal>
+            <Dependent Role="CLFEEMST">
+              <PropertyRef Name="CLASS_TRNNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CTTDTL_CLASS">
+          <End Role="CLASS" Type="Self.CLASS" Multiplicity="0..1" />
+          <End Role="CTTDTL" Type="Self.CTTDTL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLASS">
+              <PropertyRef Name="TRNNO" />
+            </Principal>
+            <Dependent Role="CTTDTL">
+              <PropertyRef Name="CLASS_TRNNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LSCHOOLMST">
+          <End Role="CLASS" Type="Self.CLASS" Multiplicity="0..1" />
+          <End Role="LSCHOOLMST" Type="Self.LSCHOOLMST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLASS">
+              <PropertyRef Name="TRNNO" />
+            </Principal>
+            <Dependent Role="LSCHOOLMST">
+              <PropertyRef Name="CLASS_TRNNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MMST">
+          <End Role="CLASS" Type="Self.CLASS" Multiplicity="0..1" />
+          <End Role="MARKSMSTOLD" Type="Self.MARKSMSTOLD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLASS">
+              <PropertyRef Name="TRNNO" />
+            </Principal>
+            <Dependent Role="MARKSMSTOLD">
+              <PropertyRef Name="CLASS_TRNNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SECMST">
+          <End Role="CLASS" Type="Self.CLASS" Multiplicity="0..1" />
+          <End Role="SECMST" Type="Self.SECMST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLASS">
+              <PropertyRef Name="TRNNO" />
+            </Principal>
+            <Dependent Role="SECMST">
+              <PropertyRef Name="CLASS_TRNNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CLFEEDTL">
+          <End Role="CLFEEMST" Type="Self.CLFEEMST" Multiplicity="1" />
+          <End Role="CLFEEDTL" Type="Self.CLFEEDTL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLFEEMST">
+              <PropertyRef Name="TRNNO" />
+            </Principal>
+            <Dependent Role="CLFEEDTL">
+              <PropertyRef Name="TRNNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CST">
+          <End Role="CST" Type="Self.CST" Multiplicity="0..1" />
+          <End Role="EM" Type="Self.EM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CST">
+              <PropertyRef Name="TRNNO" />
+            </Principal>
+            <Dependent Role="EM">
+              <PropertyRef Name="CST_TRNNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CTT_STIME">
+          <End Role="STIMEDTL" Type="Self.STIMEDTL" Multiplicity="0..1" />
+          <End Role="CTTDTL" Type="Self.CTTDTL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STIMEDTL">
+              <PropertyRef Name="TRNNO" />
+              <PropertyRef Name="SR" />
+            </Principal>
+            <Dependent Role="CTTDTL">
+              <PropertyRef Name="STIMEDTL_TRNNO" />
+              <PropertyRef Name="STIMEDTL_SR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CTTDTL">
+          <End Role="CTTMST" Type="Self.CTTMST" Multiplicity="1" />
+          <End Role="CTTDTL" Type="Self.CTTDTL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CTTMST">
+              <PropertyRef Name="TRNNO" />
+            </Principal>
+            <Dependent Role="CTTDTL">
+              <PropertyRef Name="TRNNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CTTDTL_SUBJECT">
+          <End Role="SUBJECT" Type="Self.SUBJECT" Multiplicity="0..1" />
+          <End Role="CTTDTL" Type="Self.CTTDTL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SUBJECT">
+              <PropertyRef Name="TRNNO" />
+            </Principal>
+            <Dependent Role="CTTDTL">
+              <PropertyRef Name="SUBJECT_TRNNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CTTMST_EM">
+          <End Role="EM" Type="Self.EM" Multiplicity="1" />
+          <End Role="CTTMST" Type="Self.CTTMST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EM">
+              <PropertyRef Name="TRNNO" />
+            </Principal>
+            <Dependent Role="CTTMST">
+              <PropertyRef Name="EM_TRNNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_STIME">
+          <End Role="STIME" Type="Self.STIME" Multiplicity="0..1" />
+          <End Role="CTTMST" Type="Self.CTTMST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STIME">
+              <PropertyRef Name="TRNNO" />
+            </Principal>
+            <Dependent Role="CTTMST">
+              <PropertyRef Name="TIME_TRNNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DEPT">
+          <End Role="DEPT" Type="Self.DEPT" Multiplicity="0..1" />
+          <End Role="SUBDEPT" Type="Self.SUBDEPT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DEPT">
+              <PropertyRef Name="TRNNO" />
+            </Principal>
+            <Dependent Role="SUBDEPT">
+              <PropertyRef Name="DEPT_TRNNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EMDTL2_EDU">
+          <End Role="EDUCATION" Type="Self.EDUCATION" Multiplicity="0..1" />
+          <End Role="EMDTL2" Type="Self.EMDTL2" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EDUCATION">
+              <PropertyRef Name="TRNNO" />
+            </Principal>
+            <Dependent Role="EMDTL2">
+              <PropertyRef Name="EDU_TRNNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EM_PROMDTL">
+          <End Role="EM" Type="Self.EM" Multiplicity="0..1" />
+          <End Role="PROMDTL" Type="Self.PROMDTL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EM">
+              <PropertyRef Name="TRNNO" />
+            </Principal>
+            <Dependent Role="PROMDTL">
+              <PropertyRef Name="EM_TRNNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EM_SECMST">
+          <End Role="SECMST" Type="Self.SECMST" Multiplicity="0..1" />
+          <End Role="EM" Type="Self.EM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SECMST">
+              <PropertyRef Name="TRNNO" />
+            </Principal>
+            <Dependent Role="EM">
+              <PropertyRef Name="SECMST_TRNNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EMDTL">
+          <End Role="EM" Type="Self.EM" Multiplicity="1" />
+          <End Role="EMDTL" Type="Self.EMDTL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EM">
+              <PropertyRef Name="TRNNO" />
+            </Principal>
+            <Dependent Role="EMDTL">
+              <PropertyRef Name="TRNNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EMDTL1">
+          <End Role="EM" Type="Self.EM" Multiplicity="1" />
+          <End Role="EMDTL1" Type="Self.EMDTL1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EM">
+              <PropertyRef Name="TRNNO" />
+            </Principal>
+            <Dependent Role="EMDTL1">
+              <PropertyRef Name="TRNNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EMDTL2">
+          <End Role="EM" Type="Self.EM" Multiplicity="1" />
+          <End Role="EMDTL2" Type="Self.EMDTL2" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EM">
+              <PropertyRef Name="TRNNO" />
+            </Principal>
+            <Dependent Role="EMDTL2">
+              <PropertyRef Name="TRNNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FEECOLLECTMST">
+          <End Role="EM" Type="Self.EM" Multiplicity="0..1" />
+          <End Role="FEECOLLECTMST" Type="Self.FEECOLLECTMST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EM">
+              <PropertyRef Name="TRNNO" />
+            </Principal>
+            <Dependent Role="FEECOLLECTMST">
+              <PropertyRef Name="EM_TRNNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LEAVECERTMST">
+          <End Role="EM" Type="Self.EM" Multiplicity="0..1" />
+          <End Role="LEAVECERTMST" Type="Self.LEAVECERTMST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EM">
+              <PropertyRef Name="TRNNO" />
+            </Principal>
+            <Dependent Role="LEAVECERTMST">
+              <PropertyRef Name="EM_TRNNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MARKS_EM">
+          <End Role="EM" Type="Self.EM" Multiplicity="0..1" />
+          <End Role="MARKSDTL" Type="Self.MARKSDTL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EM">
+              <PropertyRef Name="TRNNO" />
+            </Principal>
+            <Dependent Role="MARKSDTL">
+              <PropertyRef Name="EM_TRNNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SECCHAGE_EM">
+          <End Role="EM" Type="Self.EM" Multiplicity="0..1" />
+          <End Role="SECCHANGE" Type="Self.SECCHANGE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EM">
+              <PropertyRef Name="TRNNO" />
+            </Principal>
+            <Dependent Role="SECCHANGE">
+              <PropertyRef Name="EM_TRNNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SPDTL_EM">
+          <End Role="EM" Type="Self.EM" Multiplicity="0..1" />
+          <End Role="SPFEEDTL" Type="Self.SPFEEDTL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EM">
+              <PropertyRef Name="TRNNO" />
+            </Principal>
+            <Dependent Role="SPFEEDTL">
+              <PropertyRef Name="EM_TRNNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FEEDTL">
+          <End Role="FEECOLLECTMST" Type="Self.FEECOLLECTMST" Multiplicity="1" />
+          <End Role="FEECOLLECTDTL" Type="Self.FEECOLLECTDTL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FEECOLLECTMST">
+              <PropertyRef Name="TRNNO" />
+            </Principal>
+            <Dependent Role="FEECOLLECTDTL">
+              <PropertyRef Name="TRNNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FEETYPE">
+          <End Role="FEETYPES" Type="Self.FEETYPE" Multiplicity="0..1" />
+          <End Role="FEECOLLECTDTL" Type="Self.FEECOLLECTDTL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FEETYPES">
+              <PropertyRef Name="TRNNO" />
+            </Principal>
+            <Dependent Role="FEECOLLECTDTL">
+              <PropertyRef Name="FEETYPE_TRNNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GRPDTL">
+          <End Role="GRPMST" Type="Self.GRPMST" Multiplicity="1" />
+          <End Role="GRPDTL" Type="Self.GRPDTL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GRPMST">
+              <PropertyRef Name="TRNNO" />
+            </Principal>
+            <Dependent Role="GRPDTL">
+              <PropertyRef Name="TRNNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GRPMST_MARKS">
+          <End Role="GRPMST" Type="Self.GRPMST" Multiplicity="0..1" />
+          <End Role="MARKSMSTOLD" Type="Self.MARKSMSTOLD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GRPMST">
+              <PropertyRef Name="TRNNO" />
+            </Principal>
+            <Dependent Role="MARKSMSTOLD">
+              <PropertyRef Name="GRPMST_TRNNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PROMMST_GRP">
+          <End Role="GRPMST" Type="Self.GRPMST" Multiplicity="0..1" />
+          <End Role="PROMMST" Type="Self.PROMMST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GRPMST">
+              <PropertyRef Name="TRNNO" />
+            </Principal>
+            <Dependent Role="PROMMST">
+              <PropertyRef Name="GRPMST_TRNNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LSCOOLDTL">
+          <End Role="LSCHOOLMST" Type="Self.LSCHOOLMST" Multiplicity="1" />
+          <End Role="LSCHOOLDTL" Type="Self.LSCHOOLDTL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LSCHOOLMST">
+              <PropertyRef Name="TRNNO" />
+            </Principal>
+            <Dependent Role="LSCHOOLDTL">
+              <PropertyRef Name="TRNNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MARKSDTL">
+          <End Role="MARKSMST" Type="Self.MARKSMST" Multiplicity="1" />
+          <End Role="MARKSDTL" Type="Self.MARKSDTL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MARKSMST">
+              <PropertyRef Name="TRNNO" />
+            </Principal>
+            <Dependent Role="MARKSDTL">
+              <PropertyRef Name="TRNNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MARKSDTL1">
+          <End Role="MARKSDTL" Type="Self.MARKSDTL" Multiplicity="1" />
+          <End Role="MARKSDTL1" Type="Self.MARKSDTL1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MARKSDTL">
+              <PropertyRef Name="TRNNO" />
+              <PropertyRef Name="SR" />
+            </Principal>
+            <Dependent Role="MARKSDTL1">
+              <PropertyRef Name="TRNNO" />
+              <PropertyRef Name="SR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MARKTOTALDTL">
+          <End Role="MARKTOTAL" Type="Self.MARKTOTAL" Multiplicity="1" />
+          <End Role="MARKTOTALDTL" Type="Self.MARKTOTALDTL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MARKTOTAL">
+              <PropertyRef Name="TRNNO" />
+            </Principal>
+            <Dependent Role="MARKTOTALDTL">
+              <PropertyRef Name="TRNNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SUBJECT_TRNNO">
+          <End Role="SUBJECT" Type="Self.SUBJECT" Multiplicity="0..1" />
+          <End Role="MARKTOTALDTL" Type="Self.MARKTOTALDTL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SUBJECT">
+              <PropertyRef Name="TRNNO" />
+            </Principal>
+            <Dependent Role="MARKTOTALDTL">
+              <PropertyRef Name="SUBJECT_TRNNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PROMDTL">
+          <End Role="PROMMST" Type="Self.PROMMST" Multiplicity="1" />
+          <End Role="PROMDTL" Type="Self.PROMDTL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROMMST">
+              <PropertyRef Name="TRNNO" />
+            </Principal>
+            <Dependent Role="PROMDTL">
+              <PropertyRef Name="TRNNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SECDTL">
+          <End Role="SECMST" Type="Self.SECMST" Multiplicity="1" />
+          <End Role="SECDTL" Type="Self.SECDTL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SECMST">
+              <PropertyRef Name="TRNNO" />
+            </Principal>
+            <Dependent Role="SECDTL">
+              <PropertyRef Name="TRNNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SPDTL">
+          <End Role="SPFEEMST" Type="Self.SPFEEMST" Multiplicity="1" />
+          <End Role="SPFEEDTL" Type="Self.SPFEEDTL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SPFEEMST">
+              <PropertyRef Name="TRNNO" />
+            </Principal>
+            <Dependent Role="SPFEEDTL">
+              <PropertyRef Name="TRNNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_STIMEDTL">
+          <End Role="STIME" Type="Self.STIME" Multiplicity="1" />
+          <End Role="STIMEDTL" Type="Self.STIMEDTL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STIME">
+              <PropertyRef Name="TRNNO" />
+            </Principal>
+            <Dependent Role="STIMEDTL">
+              <PropertyRef Name="TRNNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GRPDTL1">
+          <End Role="SUBJECT" Type="Self.SUBJECT" Multiplicity="1" />
+          <End Role="GRPDTL" Type="Self.GRPDTL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SUBJECT">
+              <PropertyRef Name="TRNNO" />
+            </Principal>
+            <Dependent Role="GRPDTL">
+              <PropertyRef Name="SUBJECT_TRNNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EMSEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BPs" EntityType="Self.BP" />
+          <EntitySet Name="CLASSes" EntityType="Self.CLASS" />
+          <EntitySet Name="CLFEEDTLs" EntityType="Self.CLFEEDTL" />
+          <EntitySet Name="CLFEEMSTs" EntityType="Self.CLFEEMST" />
+          <EntitySet Name="COUTLINEs" EntityType="Self.COUTLINE" />
+          <EntitySet Name="CSTs" EntityType="Self.CST" />
+          <EntitySet Name="CTTDTLs" EntityType="Self.CTTDTL" />
+          <EntitySet Name="CTTMSTs" EntityType="Self.CTTMST" />
+          <EntitySet Name="DEPTs" EntityType="Self.DEPT" />
+          <EntitySet Name="EDUCATIONs" EntityType="Self.EDUCATION" />
+          <EntitySet Name="EMs" EntityType="Self.EM" />
+          <EntitySet Name="EMDTLs" EntityType="Self.EMDTL" />
+          <EntitySet Name="EMDTL1" EntityType="Self.EMDTL1" />
+          <EntitySet Name="EMDTL2" EntityType="Self.EMDTL2" />
+          <EntitySet Name="EXAMs" EntityType="Self.EXAM" />
+          <EntitySet Name="FEECOLLECTDTLs" EntityType="Self.FEECOLLECTDTL" />
+          <EntitySet Name="FEECOLLECTMSTs" EntityType="Self.FEECOLLECTMST" />
+          <EntitySet Name="FEETYPES" EntityType="Self.FEETYPE" />
+          <EntitySet Name="FISCAL_YEAR" EntityType="Self.FISCAL_YEAR" />
+          <EntitySet Name="GRPCHANGEs" EntityType="Self.GRPCHANGE" />
+          <EntitySet Name="GRPMSTs" EntityType="Self.GRPMST" />
+          <EntitySet Name="LEAVECALs" EntityType="Self.LEAVECAL" />
+          <EntitySet Name="LEAVECERTMSTs" EntityType="Self.LEAVECERTMST" />
+          <EntitySet Name="LEAVETYPEs" EntityType="Self.LEAVETYPE" />
+          <EntitySet Name="LSCHOOLDTLs" EntityType="Self.LSCHOOLDTL" />
+          <EntitySet Name="LSCHOOLMSTs" EntityType="Self.LSCHOOLMST" />
+          <EntitySet Name="MARKSDTLs" EntityType="Self.MARKSDTL" />
+          <EntitySet Name="MARKSDTL1" EntityType="Self.MARKSDTL1" />
+          <EntitySet Name="MARKSMSTs" EntityType="Self.MARKSMST" />
+          <EntitySet Name="MARKSMSTOLDs" EntityType="Self.MARKSMSTOLD" />
+          <EntitySet Name="MARKTOTALs" EntityType="Self.MARKTOTAL" />
+          <EntitySet Name="MARKTOTALDTLs" EntityType="Self.MARKTOTALDTL" />
+          <EntitySet Name="MODULES" EntityType="Self.MODULE" />
+          <EntitySet Name="OBJECTMSTs" EntityType="Self.OBJECTMST" />
+          <EntitySet Name="PROMDTLs" EntityType="Self.PROMDTL" />
+          <EntitySet Name="PROMMSTs" EntityType="Self.PROMMST" />
+          <EntitySet Name="SECCHANGEs" EntityType="Self.SECCHANGE" />
+          <EntitySet Name="SECDTLs" EntityType="Self.SECDTL" />
+          <EntitySet Name="SECMSTs" EntityType="Self.SECMST" />
+          <EntitySet Name="SPFEEDTLs" EntityType="Self.SPFEEDTL" />
+          <EntitySet Name="SPFEEMSTs" EntityType="Self.SPFEEMST" />
+          <EntitySet Name="STIMEs" EntityType="Self.STIME" />
+          <EntitySet Name="STIMEDTLs" EntityType="Self.STIMEDTL" />
+          <EntitySet Name="SUBDEPTs" EntityType="Self.SUBDEPT" />
+          <EntitySet Name="SUBJECTs" EntityType="Self.SUBJECT" />
+          <EntitySet Name="TMSTs" EntityType="Self.TMST" />
+          <EntitySet Name="CIOs" EntityType="Self.CIO" />
+          <EntitySet Name="GRPDTLs" EntityType="Self.GRPDTL" />
+          <AssociationSet Name="FK_CLFEE" Association="Self.FK_CLFEE">
+            <End Role="CLASS" EntitySet="CLASSes" />
+            <End Role="CLFEEMST" EntitySet="CLFEEMSTs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CTTDTL_CLASS" Association="Self.FK_CTTDTL_CLASS">
+            <End Role="CLASS" EntitySet="CLASSes" />
+            <End Role="CTTDTL" EntitySet="CTTDTLs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LSCHOOLMST" Association="Self.FK_LSCHOOLMST">
+            <End Role="CLASS" EntitySet="CLASSes" />
+            <End Role="LSCHOOLMST" EntitySet="LSCHOOLMSTs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MMST" Association="Self.FK_MMST">
+            <End Role="CLASS" EntitySet="CLASSes" />
+            <End Role="MARKSMSTOLD" EntitySet="MARKSMSTOLDs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SECMST" Association="Self.FK_SECMST">
+            <End Role="CLASS" EntitySet="CLASSes" />
+            <End Role="SECMST" EntitySet="SECMSTs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CLFEEDTL" Association="Self.FK_CLFEEDTL">
+            <End Role="CLFEEMST" EntitySet="CLFEEMSTs" />
+            <End Role="CLFEEDTL" EntitySet="CLFEEDTLs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CST" Association="Self.FK_CST">
+            <End Role="CST" EntitySet="CSTs" />
+            <End Role="EM" EntitySet="EMs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CTT_STIME" Association="Self.FK_CTT_STIME">
+            <End Role="STIMEDTL" EntitySet="STIMEDTLs" />
+            <End Role="CTTDTL" EntitySet="CTTDTLs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CTTDTL" Association="Self.FK_CTTDTL">
+            <End Role="CTTMST" EntitySet="CTTMSTs" />
+            <End Role="CTTDTL" EntitySet="CTTDTLs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CTTDTL_SUBJECT" Association="Self.FK_CTTDTL_SUBJECT">
+            <End Role="SUBJECT" EntitySet="SUBJECTs" />
+            <End Role="CTTDTL" EntitySet="CTTDTLs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CTTMST_EM" Association="Self.FK_CTTMST_EM">
+            <End Role="EM" EntitySet="EMs" />
+            <End Role="CTTMST" EntitySet="CTTMSTs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_STIME" Association="Self.FK_STIME">
+            <End Role="STIME" EntitySet="STIMEs" />
+            <End Role="CTTMST" EntitySet="CTTMSTs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DEPT" Association="Self.FK_DEPT">
+            <End Role="DEPT" EntitySet="DEPTs" />
+            <End Role="SUBDEPT" EntitySet="SUBDEPTs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EMDTL2_EDU" Association="Self.FK_EMDTL2_EDU">
+            <End Role="EDUCATION" EntitySet="EDUCATIONs" />
+            <End Role="EMDTL2" EntitySet="EMDTL2" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EM_PROMDTL" Association="Self.FK_EM_PROMDTL">
+            <End Role="EM" EntitySet="EMs" />
+            <End Role="PROMDTL" EntitySet="PROMDTLs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EM_SECMST" Association="Self.FK_EM_SECMST">
+            <End Role="SECMST" EntitySet="SECMSTs" />
+            <End Role="EM" EntitySet="EMs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EMDTL" Association="Self.FK_EMDTL">
+            <End Role="EM" EntitySet="EMs" />
+            <End Role="EMDTL" EntitySet="EMDTLs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EMDTL1" Association="Self.FK_EMDTL1">
+            <End Role="EM" EntitySet="EMs" />
+            <End Role="EMDTL1" EntitySet="EMDTL1" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EMDTL2" Association="Self.FK_EMDTL2">
+            <End Role="EM" EntitySet="EMs" />
+            <End Role="EMDTL2" EntitySet="EMDTL2" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FEECOLLECTMST" Association="Self.FK_FEECOLLECTMST">
+            <End Role="EM" EntitySet="EMs" />
+            <End Role="FEECOLLECTMST" EntitySet="FEECOLLECTMSTs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LEAVECERTMST" Association="Self.FK_LEAVECERTMST">
+            <End Role="EM" EntitySet="EMs" />
+            <End Role="LEAVECERTMST" EntitySet="LEAVECERTMSTs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MARKS_EM" Association="Self.FK_MARKS_EM">
+            <End Role="EM" EntitySet="EMs" />
+            <End Role="MARKSDTL" EntitySet="MARKSDTLs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SECCHAGE_EM" Association="Self.FK_SECCHAGE_EM">
+            <End Role="EM" EntitySet="EMs" />
+            <End Role="SECCHANGE" EntitySet="SECCHANGEs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SPDTL_EM" Association="Self.FK_SPDTL_EM">
+            <End Role="EM" EntitySet="EMs" />
+            <End Role="SPFEEDTL" EntitySet="SPFEEDTLs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FEEDTL" Association="Self.FK_FEEDTL">
+            <End Role="FEECOLLECTMST" EntitySet="FEECOLLECTMSTs" />
+            <End Role="FEECOLLECTDTL" EntitySet="FEECOLLECTDTLs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FEETYPE" Association="Self.FK_FEETYPE">
+            <End Role="FEETYPES" EntitySet="FEETYPES" />
+            <End Role="FEECOLLECTDTL" EntitySet="FEECOLLECTDTLs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GRPDTL" Association="Self.FK_GRPDTL">
+            <End Role="GRPMST" EntitySet="GRPMSTs" />
+            <End Role="GRPDTL" EntitySet="GRPDTLs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GRPMST_MARKS" Association="Self.FK_GRPMST_MARKS">
+            <End Role="GRPMST" EntitySet="GRPMSTs" />
+            <End Role="MARKSMSTOLD" EntitySet="MARKSMSTOLDs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PROMMST_GRP" Association="Self.FK_PROMMST_GRP">
+            <End Role="GRPMST" EntitySet="GRPMSTs" />
+            <End Role="PROMMST" EntitySet="PROMMSTs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LSCOOLDTL" Association="Self.FK_LSCOOLDTL">
+            <End Role="LSCHOOLMST" EntitySet="LSCHOOLMSTs" />
+            <End Role="LSCHOOLDTL" EntitySet="LSCHOOLDTLs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MARKSDTL" Association="Self.FK_MARKSDTL">
+            <End Role="MARKSMST" EntitySet="MARKSMSTs" />
+            <End Role="MARKSDTL" EntitySet="MARKSDTLs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MARKSDTL1" Association="Self.FK_MARKSDTL1">
+            <End Role="MARKSDTL" EntitySet="MARKSDTLs" />
+            <End Role="MARKSDTL1" EntitySet="MARKSDTL1" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MARKTOTALDTL" Association="Self.FK_MARKTOTALDTL">
+            <End Role="MARKTOTAL" EntitySet="MARKTOTALs" />
+            <End Role="MARKTOTALDTL" EntitySet="MARKTOTALDTLs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SUBJECT_TRNNO" Association="Self.FK_SUBJECT_TRNNO">
+            <End Role="SUBJECT" EntitySet="SUBJECTs" />
+            <End Role="MARKTOTALDTL" EntitySet="MARKTOTALDTLs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PROMDTL" Association="Self.FK_PROMDTL">
+            <End Role="PROMMST" EntitySet="PROMMSTs" />
+            <End Role="PROMDTL" EntitySet="PROMDTLs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SECDTL" Association="Self.FK_SECDTL">
+            <End Role="SECMST" EntitySet="SECMSTs" />
+            <End Role="SECDTL" EntitySet="SECDTLs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SPDTL" Association="Self.FK_SPDTL">
+            <End Role="SPFEEMST" EntitySet="SPFEEMSTs" />
+            <End Role="SPFEEDTL" EntitySet="SPFEEDTLs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_STIMEDTL" Association="Self.FK_STIMEDTL">
+            <End Role="STIME" EntitySet="STIMEs" />
+            <End Role="STIMEDTL" EntitySet="STIMEDTLs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GRPDTL1" Association="Self.FK_GRPDTL1">
+            <End Role="SUBJECT" EntitySet="SUBJECTs" />
+            <End Role="GRPDTL" EntitySet="GRPDTLs" />
+          </AssociationSet>
+          <FunctionImport Name="ALLCLASSVOUCHERS">
+            <Parameter Name="PRDATE" Mode="In" Type="DateTime" />
+            <Parameter Name="PTRNNO" Mode="In" Type="Double" />
+            <Parameter Name="PDDATE" Mode="In" Type="DateTime" />
+            <Parameter Name="PFMONTH" Mode="In" Type="Double" />
+            <Parameter Name="PLDATE" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <EntitySet Name="COMPANies" EntityType="EMSModel.COMPANY" />
+          <EntitySet Name="COMPANYDTLs" EntityType="EMSModel.COMPANYDTL" />
+          <AssociationSet Name="FK_COMP" Association="EMSModel.FK_COMP">
+            <End Role="COMPANY" EntitySet="COMPANies" />
+            <End Role="COMPANYDTL" EntitySet="COMPANYDTLs" />
+          </AssociationSet>
+          <FunctionImport Name="SPECIFICCLASSVOUCHERS">
+            <Parameter Name="PRDATE" Mode="In" Type="DateTime" />
+            <Parameter Name="PTRNNO" Mode="In" Type="Double" />
+            <Parameter Name="PDDATE" Mode="In" Type="DateTime" />
+            <Parameter Name="PFMONTH" Mode="In" Type="Double" />
+            <Parameter Name="PEMTRNNO" Mode="In" Type="Double" />
+            <Parameter Name="PLDATE" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <EntitySet Name="USERS" EntityType="EMSModel.USER" />
+        </EntityContainer>
+        <EntityType Name="COMPANY">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+          </Key>
+          <Property Name="TRNNO" Type="Double" Nullable="false" />
+          <Property Name="CNAME" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PIC" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="COMPANYDTLs" Relationship="EMSModel.FK_COMP" FromRole="COMPANY" ToRole="COMPANYDTL" />
+        </EntityType>
+        <EntityType Name="COMPANYDTL">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+          </Key>
+          <Property Name="TRNNO" Type="Double" Nullable="false" />
+          <Property Name="BNAME" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="C_TRNNO" Type="Double" />
+          <NavigationProperty Name="COMPANY" Relationship="EMSModel.FK_COMP" FromRole="COMPANYDTL" ToRole="COMPANY" />
+        </EntityType>
+        <Association Name="FK_COMP">
+          <End Type="EMSModel.COMPANY" Role="COMPANY" Multiplicity="0..1" />
+          <End Type="EMSModel.COMPANYDTL" Role="COMPANYDTL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COMPANY">
+              <PropertyRef Name="TRNNO" />
+            </Principal>
+            <Dependent Role="COMPANYDTL">
+              <PropertyRef Name="C_TRNNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="USER">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Double" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="STATUS" Type="Decimal" Precision="1" Scale="0" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EMSModelStoreContainer" CdmEntityContainer="EMSEntities">
+          <EntitySetMapping Name="BPs">
+            <EntityTypeMapping TypeName="EMSModel.BP">
+              <MappingFragment StoreEntitySet="BP">
+                <ScalarProperty Name="TRNNO" ColumnName="TRNNO" />
+                <ScalarProperty Name="BPNAME" ColumnName="BPNAME" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CLASSes">
+            <EntityTypeMapping TypeName="EMSModel.CLASS">
+              <MappingFragment StoreEntitySet="CLASS">
+                <ScalarProperty Name="TRNNO" ColumnName="TRNNO" />
+                <ScalarProperty Name="CNAME" ColumnName="CNAME" />
+                <ScalarProperty Name="CABR" ColumnName="CABR" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CLFEEDTLs">
+            <EntityTypeMapping TypeName="EMSModel.CLFEEDTL">
+              <MappingFragment StoreEntitySet="CLFEEDTL">
+                <ScalarProperty Name="TRNNO" ColumnName="TRNNO" />
+                <ScalarProperty Name="SR" ColumnName="SR" />
+                <ScalarProperty Name="FEE" ColumnName="FEE" />
+                <ScalarProperty Name="ADT" ColumnName="ADT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CLFEEMSTs">
+            <EntityTypeMapping TypeName="EMSModel.CLFEEMST">
+              <MappingFragment StoreEntitySet="CLFEEMST">
+                <ScalarProperty Name="TRNNO" ColumnName="TRNNO" />
+                <ScalarProperty Name="CLASS_TRNNO" ColumnName="CLASS_TRNNO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COUTLINEs">
+            <EntityTypeMapping TypeName="EMSModel.COUTLINE">
+              <MappingFragment StoreEntitySet="COUTLINE">
+                <ScalarProperty Name="CODE" ColumnName="CODE" />
+                <ScalarProperty Name="CNAME" ColumnName="CNAME" />
+                <ScalarProperty Name="REF_ID" ColumnName="REF_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CSTs">
+            <EntityTypeMapping TypeName="EMSModel.CST">
+              <MappingFragment StoreEntitySet="CST">
+                <ScalarProperty Name="TRNNO" ColumnName="TRNNO" />
+                <ScalarProperty Name="CDESC" ColumnName="CDESC" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CTTDTLs">
+            <EntityTypeMapping TypeName="EMSModel.CTTDTL">
+              <MappingFragment StoreEntitySet="CTTDTL">
+                <ScalarProperty Name="TRNNO" ColumnName="TRNNO" />
+                <ScalarProperty Name="SR" ColumnName="SR" />
+                <ScalarProperty Name="SUBJECT_TRNNO" ColumnName="SUBJECT_TRNNO" />
+                <ScalarProperty Name="CLASS_TRNNO" ColumnName="CLASS_TRNNO" />
+                <ScalarProperty Name="STIMEDTL_SR" ColumnName="STIMEDTL_SR" />
+                <ScalarProperty Name="STIMEDTL_TRNNO" ColumnName="STIMEDTL_TRNNO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CTTMSTs">
+            <EntityTypeMapping TypeName="EMSModel.CTTMST">
+              <MappingFragment StoreEntitySet="CTTMST">
+                <ScalarProperty Name="TRNNO" ColumnName="TRNNO" />
+                <ScalarProperty Name="TIME_TRNNO" ColumnName="TIME_TRNNO" />
+                <ScalarProperty Name="EM_TRNNO" ColumnName="EM_TRNNO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DEPTs">
+            <EntityTypeMapping TypeName="EMSModel.DEPT">
+              <MappingFragment StoreEntitySet="DEPT">
+                <ScalarProperty Name="TRNNO" ColumnName="TRNNO" />
+                <ScalarProperty Name="ABR" ColumnName="ABR" />
+                <ScalarProperty Name="DESCRIP" ColumnName="DESCRIP" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EDUCATIONs">
+            <EntityTypeMapping TypeName="EMSModel.EDUCATION">
+              <MappingFragment StoreEntitySet="EDUCATION">
+                <ScalarProperty Name="TRNNO" ColumnName="TRNNO" />
+                <ScalarProperty Name="DNAME" ColumnName="DNAME" />
+                <ScalarProperty Name="DABRV" ColumnName="DABRV" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EMs">
+            <EntityTypeMapping TypeName="EMSModel.EM">
+              <MappingFragment StoreEntitySet="EM">
+                <ScalarProperty Name="TRNNO" ColumnName="TRNNO" />
+                <ScalarProperty Name="EMP_ID" ColumnName="EMP_ID" />
+                <ScalarProperty Name="EMP_NAME" ColumnName="EMP_NAME" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="DOJ" ColumnName="DOJ" />
+                <ScalarProperty Name="CST_TRNNO" ColumnName="CST_TRNNO" />
+                <ScalarProperty Name="EMP_F_NAME" ColumnName="EMP_F_NAME" />
+                <ScalarProperty Name="COMP_TRNNO" ColumnName="COMP_TRNNO" />
+                <ScalarProperty Name="BP_TRNNO" ColumnName="BP_TRNNO" />
+                <ScalarProperty Name="ETYPE" ColumnName="ETYPE" />
+                <ScalarProperty Name="CL_TRNNO" ColumnName="CL_TRNNO" />
+                <ScalarProperty Name="CL_TRNNO1" ColumnName="CL_TRNNO1" />
+                <ScalarProperty Name="CERTIFICATE" ColumnName="CERTIFICATE" />
+                <ScalarProperty Name="PSCHDT" ColumnName="PSCHDT" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="ADT" ColumnName="ADT" />
+                <ScalarProperty Name="FTYPE" ColumnName="FTYPE" />
+                <ScalarProperty Name="FEE" ColumnName="FEE" />
+                <ScalarProperty Name="EMAILST" ColumnName="EMAILST" />
+                <ScalarProperty Name="GRPMST_TRNNO" ColumnName="GRPMST_TRNNO" />
+                <ScalarProperty Name="CNIC" ColumnName="CNIC" />
+                <ScalarProperty Name="SECMST_TRNNO" ColumnName="SECMST_TRNNO" />
+                <ScalarProperty Name="SECDTL_SR" ColumnName="SECDTL_SR" />
+                <ScalarProperty Name="SEX" ColumnName="SEX" />
+                <ScalarProperty Name="BSAL" ColumnName="BSAL" />
+                <ScalarProperty Name="FCNIC" ColumnName="FCNIC" />
+                <ScalarProperty Name="ADIMNO" ColumnName="ADIMNO" />
+                <ScalarProperty Name="STYPE" ColumnName="STYPE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EMDTLs">
+            <EntityTypeMapping TypeName="EMSModel.EMDTL">
+              <MappingFragment StoreEntitySet="EMDTL">
+                <ScalarProperty Name="TRNNO" ColumnName="TRNNO" />
+                <ScalarProperty Name="SR" ColumnName="SR" />
+                <ScalarProperty Name="ADDDESC" ColumnName="ADDDESC" />
+                <ScalarProperty Name="ADDTYPE" ColumnName="ADDTYPE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EMDTL1">
+            <EntityTypeMapping TypeName="EMSModel.EMDTL1">
+              <MappingFragment StoreEntitySet="EMDTL1">
+                <ScalarProperty Name="TRNNO" ColumnName="TRNNO" />
+                <ScalarProperty Name="SR" ColumnName="SR" />
+                <ScalarProperty Name="PHNO" ColumnName="PHNO" />
+                <ScalarProperty Name="PHTYPE" ColumnName="PHTYPE" />
+                <ScalarProperty Name="RELTION" ColumnName="RELTION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EMDTL2">
+            <EntityTypeMapping TypeName="EMSModel.EMDTL2">
+              <MappingFragment StoreEntitySet="EMDTL2">
+                <ScalarProperty Name="TRNNO" ColumnName="TRNNO" />
+                <ScalarProperty Name="SR" ColumnName="SR" />
+                <ScalarProperty Name="EDU_TRNNO" ColumnName="EDU_TRNNO" />
+                <ScalarProperty Name="PTYPE" ColumnName="PTYPE" />
+                <ScalarProperty Name="YEAR" ColumnName="YEAR" />
+                <ScalarProperty Name="GRD" ColumnName="GRD" />
+                <ScalarProperty Name="PERCENT" ColumnName="PERCENT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EXAMs">
+            <EntityTypeMapping TypeName="EMSModel.EXAM">
+              <MappingFragment StoreEntitySet="EXAM">
+                <ScalarProperty Name="TRNNO" ColumnName="TRNNO" />
+                <ScalarProperty Name="ETYPE" ColumnName="ETYPE" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FEECOLLECTDTLs">
+            <EntityTypeMapping TypeName="EMSModel.FEECOLLECTDTL">
+              <MappingFragment StoreEntitySet="FEECOLLECTDTL">
+                <ScalarProperty Name="TRNNO" ColumnName="TRNNO" />
+                <ScalarProperty Name="FMONTH" ColumnName="FMONTH" />
+                <ScalarProperty Name="FEETYPE_TRNNO" ColumnName="FEETYPE_TRNNO" />
+                <ScalarProperty Name="SR" ColumnName="SR" />
+                <ScalarProperty Name="AMT" ColumnName="AMT" />
+                <ScalarProperty Name="FEEMON" ColumnName="FEEMON" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FEECOLLECTMSTs">
+            <EntityTypeMapping TypeName="EMSModel.FEECOLLECTMST">
+              <MappingFragment StoreEntitySet="FEECOLLECTMST">
+                <ScalarProperty Name="TRNNO" ColumnName="TRNNO" />
+                <ScalarProperty Name="RDATE" ColumnName="RDATE" />
+                <ScalarProperty Name="EM_TRNNO" ColumnName="EM_TRNNO" />
+                <ScalarProperty Name="FMONTH" ColumnName="FMONTH" />
+                <ScalarProperty Name="DDATE" ColumnName="DDATE" />
+                <ScalarProperty Name="LDATE" ColumnName="LDATE" />
+                <ScalarProperty Name="FSTATUS" ColumnName="FSTATUS" />
+                <ScalarProperty Name="DISCOUNT" ColumnName="DISCOUNT" />
+                <ScalarProperty Name="DISCOUNTTYPE" ColumnName="DISCOUNTTYPE" />
+                <ScalarProperty Name="CLASS_TRNNO" ColumnName="CLASS_TRNNO" />
+                <ScalarProperty Name="SECDTL_TRNNO" ColumnName="SECDTL_TRNNO" />
+                <ScalarProperty Name="SECDTL_SR" ColumnName="SECDTL_SR" />
+                <ScalarProperty Name="PDATE" ColumnName="PDATE" />
+                <ScalarProperty Name="ARRFLG" ColumnName="ARRFLG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FEETYPES">
+            <EntityTypeMapping TypeName="EMSModel.FEETYPE">
+              <MappingFragment StoreEntitySet="FEETYPES">
+                <ScalarProperty Name="TRNNO" ColumnName="TRNNO" />
+                <ScalarProperty Name="FTYPE" ColumnName="FTYPE" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FISCAL_YEAR">
+            <EntityTypeMapping TypeName="EMSModel.FISCAL_YEAR">
+              <MappingFragment StoreEntitySet="FISCAL_YEAR">
+                <ScalarProperty Name="TRNNO" ColumnName="TRNNO" />
+                <ScalarProperty Name="FDATE" ColumnName="FDATE" />
+                <ScalarProperty Name="TDATE" ColumnName="TDATE" />
+                <ScalarProperty Name="YEAR_DESC" ColumnName="YEAR_DESC" />
+                <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GRPCHANGEs">
+            <EntityTypeMapping TypeName="EMSModel.GRPCHANGE">
+              <MappingFragment StoreEntitySet="GRPCHANGE">
+                <ScalarProperty Name="TRNNO" ColumnName="TRNNO" />
+                <ScalarProperty Name="GRPMST_TRNNO" ColumnName="GRPMST_TRNNO" />
+                <ScalarProperty Name="EM_TRNNO" ColumnName="EM_TRNNO" />
+                <ScalarProperty Name="CHDATE" ColumnName="CHDATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GRPMSTs">
+            <EntityTypeMapping TypeName="EMSModel.GRPMST">
+              <MappingFragment StoreEntitySet="GRPMST">
+                <ScalarProperty Name="TRNNO" ColumnName="TRNNO" />
+                <ScalarProperty Name="GRPNAME" ColumnName="GRPNAME" />
+                <ScalarProperty Name="DT" ColumnName="DT" />
+                <ScalarProperty Name="COMPDTL_TRNNO" ColumnName="COMPDTL_TRNNO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LEAVECALs">
+            <EntityTypeMapping TypeName="EMSModel.LEAVECAL">
+              <MappingFragment StoreEntitySet="LEAVECAL">
+                <ScalarProperty Name="TRNNO" ColumnName="TRNNO" />
+                <ScalarProperty Name="FDT" ColumnName="FDT" />
+                <ScalarProperty Name="TDT" ColumnName="TDT" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LEAVECERTMSTs">
+            <EntityTypeMapping TypeName="EMSModel.LEAVECERTMST">
+              <MappingFragment StoreEntitySet="LEAVECERTMST">
+                <ScalarProperty Name="TRNNO" ColumnName="TRNNO" />
+                <ScalarProperty Name="EM_TRNNO" ColumnName="EM_TRNNO" />
+                <ScalarProperty Name="LDATE" ColumnName="LDATE" />
+                <ScalarProperty Name="LCOND" ColumnName="LCOND" />
+                <ScalarProperty Name="REMARK" ColumnName="REMARK" />
+                <ScalarProperty Name="DPAIDDT" ColumnName="DPAIDDT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LEAVETYPEs">
+            <EntityTypeMapping TypeName="EMSModel.LEAVETYPE">
+              <MappingFragment StoreEntitySet="LEAVETYPE">
+                <ScalarProperty Name="TRNNO" ColumnName="TRNNO" />
+                <ScalarProperty Name="LDESC" ColumnName="LDESC" />
+                <ScalarProperty Name="LWEIGHT" ColumnName="LWEIGHT" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="LABRV" ColumnName="LABRV" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LSCHOOLDTLs">
+            <EntityTypeMapping TypeName="EMSModel.LSCHOOLDTL">
+              <MappingFragment StoreEntitySet="LSCHOOLDTL">
+                <ScalarProperty Name="TRNNO" ColumnName="TRNNO" />
+                <ScalarProperty Name="SR" ColumnName="SR" />
+                <ScalarProperty Name="EM_TRNNO" ColumnName="EM_TRNNO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LSCHOOLMSTs">
+            <EntityTypeMapping TypeName="EMSModel.LSCHOOLMST">
+              <MappingFragment StoreEntitySet="LSCHOOLMST">
+                <ScalarProperty Name="TRNNO" ColumnName="TRNNO" />
+                <ScalarProperty Name="CLASS_TRNNO" ColumnName="CLASS_TRNNO" />
+                <ScalarProperty Name="LDATE" ColumnName="LDATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MARKSDTLs">
+            <EntityTypeMapping TypeName="EMSModel.MARKSDTL">
+              <MappingFragment StoreEntitySet="MARKSDTL">
+                <ScalarProperty Name="TRNNO" ColumnName="TRNNO" />
+                <ScalarProperty Name="SR" ColumnName="SR" />
+                <ScalarProperty Name="EM_TRNNO" ColumnName="EM_TRNNO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MARKSDTL1">
+            <EntityTypeMapping TypeName="EMSModel.MARKSDTL1">
+              <MappingFragment StoreEntitySet="MARKSDTL1">
+                <ScalarProperty Name="TRNNO" ColumnName="TRNNO" />
+                <ScalarProperty Name="SR" ColumnName="SR" />
+                <ScalarProperty Name="SR1" ColumnName="SR1" />
+                <ScalarProperty Name="GMARKS" ColumnName="GMARKS" />
+                <ScalarProperty Name="MARKTOTALDTL_TRNNO" ColumnName="MARKTOTALDTL_TRNNO" />
+                <ScalarProperty Name="MARKTOTALDTL_SR" ColumnName="MARKTOTALDTL_SR" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MARKSMSTs">
+            <EntityTypeMapping TypeName="EMSModel.MARKSMST">
+              <MappingFragment StoreEntitySet="MARKSMST">
+                <ScalarProperty Name="TRNNO" ColumnName="TRNNO" />
+                <ScalarProperty Name="MDT" ColumnName="MDT" />
+                <ScalarProperty Name="EXAM_TRNNO" ColumnName="EXAM_TRNNO" />
+                <ScalarProperty Name="CLASS_TRNNO" ColumnName="CLASS_TRNNO" />
+                <ScalarProperty Name="GRPMST_TRNNO" ColumnName="GRPMST_TRNNO" />
+                <ScalarProperty Name="EM_TRNNO" ColumnName="EM_TRNNO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MARKSMSTOLDs">
+            <EntityTypeMapping TypeName="EMSModel.MARKSMSTOLD">
+              <MappingFragment StoreEntitySet="MARKSMSTOLD">
+                <ScalarProperty Name="TRNNO" ColumnName="TRNNO" />
+                <ScalarProperty Name="MDT" ColumnName="MDT" />
+                <ScalarProperty Name="EXAM_TRNNO" ColumnName="EXAM_TRNNO" />
+                <ScalarProperty Name="CLASS_TRNNO" ColumnName="CLASS_TRNNO" />
+                <ScalarProperty Name="GRPMST_TRNNO" ColumnName="GRPMST_TRNNO" />
+                <ScalarProperty Name="EM_TRNNO" ColumnName="EM_TRNNO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MARKTOTALs">
+            <EntityTypeMapping TypeName="EMSModel.MARKTOTAL">
+              <MappingFragment StoreEntitySet="MARKTOTAL">
+                <ScalarProperty Name="TRNNO" ColumnName="TRNNO" />
+                <ScalarProperty Name="CLASS_TRNNO" ColumnName="CLASS_TRNNO" />
+                <ScalarProperty Name="EXAM_TRNNO" ColumnName="EXAM_TRNNO" />
+                <ScalarProperty Name="GRPMST_TRNNO" ColumnName="GRPMST_TRNNO" />
+                <ScalarProperty Name="MDT" ColumnName="MDT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MARKTOTALDTLs">
+            <EntityTypeMapping TypeName="EMSModel.MARKTOTALDTL">
+              <MappingFragment StoreEntitySet="MARKTOTALDTL">
+                <ScalarProperty Name="TRNNO" ColumnName="TRNNO" />
+                <ScalarProperty Name="SR" ColumnName="SR" />
+                <ScalarProperty Name="SUBJECT_TRNNO" ColumnName="SUBJECT_TRNNO" />
+                <ScalarProperty Name="TOTMARKS" ColumnName="TOTMARKS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MODULES">
+            <EntityTypeMapping TypeName="EMSModel.MODULE">
+              <MappingFragment StoreEntitySet="MODULES">
+                <ScalarProperty Name="TRNNO" ColumnName="TRNNO" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="MODULEID" ColumnName="MODULEID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OBJECTMSTs">
+            <EntityTypeMapping TypeName="EMSModel.OBJECTMST">
+              <MappingFragment StoreEntitySet="OBJECTMST">
+                <ScalarProperty Name="TRNNO" ColumnName="TRNNO" />
+                <ScalarProperty Name="TYPE" ColumnName="TYPE" />
+                <ScalarProperty Name="UCODE" ColumnName="UCODE" />
+                <ScalarProperty Name="MODULE_TRNNO" ColumnName="MODULE_TRNNO" />
+                <ScalarProperty Name="COMPANY_TRNNO" ColumnName="COMPANY_TRNNO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PROMDTLs">
+            <EntityTypeMapping TypeName="EMSModel.PROMDTL">
+              <MappingFragment StoreEntitySet="PROMDTL">
+                <ScalarProperty Name="TRNNO" ColumnName="TRNNO" />
+                <ScalarProperty Name="SR" ColumnName="SR" />
+                <ScalarProperty Name="EM_TRNNO" ColumnName="EM_TRNNO" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="ADIMNO" ColumnName="ADIMNO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PROMMSTs">
+            <EntityTypeMapping TypeName="EMSModel.PROMMST">
+              <MappingFragment StoreEntitySet="PROMMST">
+                <ScalarProperty Name="TRNNO" ColumnName="TRNNO" />
+                <ScalarProperty Name="PDT" ColumnName="PDT" />
+                <ScalarProperty Name="GRPMST_TRNNO" ColumnName="GRPMST_TRNNO" />
+                <ScalarProperty Name="CLASS_TRNNO" ColumnName="CLASS_TRNNO" />
+                <ScalarProperty Name="FCLASS_TRNNO" ColumnName="FCLASS_TRNNO" />
+                <ScalarProperty Name="SECDTL_TRNNO" ColumnName="SECDTL_TRNNO" />
+                <ScalarProperty Name="SECDTL_SR" ColumnName="SECDTL_SR" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SECCHANGEs">
+            <EntityTypeMapping TypeName="EMSModel.SECCHANGE">
+              <MappingFragment StoreEntitySet="SECCHANGE">
+                <ScalarProperty Name="TRNNO" ColumnName="TRNNO" />
+                <ScalarProperty Name="EM_TRNNO" ColumnName="EM_TRNNO" />
+                <ScalarProperty Name="CHDATE" ColumnName="CHDATE" />
+                <ScalarProperty Name="SECDTL_TRNNO" ColumnName="SECDTL_TRNNO" />
+                <ScalarProperty Name="SECDTL_SR" ColumnName="SECDTL_SR" />
+                <ScalarProperty Name="EDATE" ColumnName="EDATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SECDTLs">
+            <EntityTypeMapping TypeName="EMSModel.SECDTL">
+              <MappingFragment StoreEntitySet="SECDTL">
+                <ScalarProperty Name="TRNNO" ColumnName="TRNNO" />
+                <ScalarProperty Name="SR" ColumnName="SR" />
+                <ScalarProperty Name="SNAME" ColumnName="SNAME" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SECMSTs">
+            <EntityTypeMapping TypeName="EMSModel.SECMST">
+              <MappingFragment StoreEntitySet="SECMST">
+                <ScalarProperty Name="TRNNO" ColumnName="TRNNO" />
+                <ScalarProperty Name="CLASS_TRNNO" ColumnName="CLASS_TRNNO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SPFEEDTLs">
+            <EntityTypeMapping TypeName="EMSModel.SPFEEDTL">
+              <MappingFragment StoreEntitySet="SPFEEDTL">
+                <ScalarProperty Name="TRNNO" ColumnName="TRNNO" />
+                <ScalarProperty Name="SR" ColumnName="SR" />
+                <ScalarProperty Name="EM_TRNNO" ColumnName="EM_TRNNO" />
+                <ScalarProperty Name="SPFEE" ColumnName="SPFEE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SPFEEMSTs">
+            <EntityTypeMapping TypeName="EMSModel.SPFEEMST">
+              <MappingFragment StoreEntitySet="SPFEEMST">
+                <ScalarProperty Name="TRNNO" ColumnName="TRNNO" />
+                <ScalarProperty Name="SPDATE" ColumnName="SPDATE" />
+                <ScalarProperty Name="CLASS_TRNNO" ColumnName="CLASS_TRNNO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="STIMEs">
+            <EntityTypeMapping TypeName="EMSModel.STIME">
+              <MappingFragment StoreEntitySet="STIME">
+                <ScalarProperty Name="TRNNO" ColumnName="TRNNO" />
+                <ScalarProperty Name="STIME1" ColumnName="STIME" />
+                <ScalarProperty Name="ETIME" ColumnName="ETIME" />
+                <ScalarProperty Name="SDATE" ColumnName="SDATE" />
+                <ScalarProperty Name="TDATE" ColumnName="TDATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="STIMEDTLs">
+            <EntityTypeMapping TypeName="EMSModel.STIMEDTL">
+              <MappingFragment StoreEntitySet="STIMEDTL">
+                <ScalarProperty Name="TRNNO" ColumnName="TRNNO" />
+                <ScalarProperty Name="SR" ColumnName="SR" />
+                <ScalarProperty Name="LECSTIME" ColumnName="LECSTIME" />
+                <ScalarProperty Name="LECETIME" ColumnName="LECETIME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SUBDEPTs">
+            <EntityTypeMapping TypeName="EMSModel.SUBDEPT">
+              <MappingFragment StoreEntitySet="SUBDEPT">
+                <ScalarProperty Name="TRNNO" ColumnName="TRNNO" />
+                <ScalarProperty Name="ABR" ColumnName="ABR" />
+                <ScalarProperty Name="DESCRIP" ColumnName="DESCRIP" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="DEPT_TRNNO" ColumnName="DEPT_TRNNO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SUBJECTs">
+            <EntityTypeMapping TypeName="EMSModel.SUBJECT">
+              <MappingFragment StoreEntitySet="SUBJECT">
+                <ScalarProperty Name="TRNNO" ColumnName="TRNNO" />
+                <ScalarProperty Name="SNAME" ColumnName="SNAME" />
+                <ScalarProperty Name="SCODE" ColumnName="SCODE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TMSTs">
+            <EntityTypeMapping TypeName="EMSModel.TMST">
+              <MappingFragment StoreEntitySet="TMST">
+                <ScalarProperty Name="TRNNO" ColumnName="TRNNO" />
+                <ScalarProperty Name="COMP_TRNNO" ColumnName="COMP_TRNNO" />
+                <ScalarProperty Name="CLASS_TRNNO" ColumnName="CLASS_TRNNO" />
+                <ScalarProperty Name="SUB_TRNNO" ColumnName="SUB_TRNNO" />
+                <ScalarProperty Name="CHNAME" ColumnName="CHNAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CIOs">
+            <EntityTypeMapping TypeName="EMSModel.CIO">
+              <MappingFragment StoreEntitySet="CIO">
+                <ScalarProperty Name="EMP_ID" ColumnName="EMP_ID" />
+                <ScalarProperty Name="I_DT" ColumnName="I_DT" />
+                <ScalarProperty Name="O_DT" ColumnName="O_DT" />
+                <ScalarProperty Name="ATT_DATE" ColumnName="ATT_DATE" />
+                <ScalarProperty Name="ROWID" ColumnName="ROWID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GRPDTLs">
+            <EntityTypeMapping TypeName="EMSModel.GRPDTL">
+              <MappingFragment StoreEntitySet="GRPDTL">
+                <ScalarProperty Name="TRNNO" ColumnName="TRNNO" />
+                <ScalarProperty Name="SUBJECT_TRNNO" ColumnName="SUBJECT_TRNNO" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="ALLCLASSVOUCHERS" FunctionName="EMSModel.Store.ALLCLASSVOUCHERS" />
+          <EntitySetMapping Name="COMPANies">
+            <EntityTypeMapping TypeName="EMSModel.COMPANY">
+              <MappingFragment StoreEntitySet="COMPANY">
+                <ScalarProperty Name="PIC" ColumnName="PIC" />
+                <ScalarProperty Name="CNAME" ColumnName="CNAME" />
+                <ScalarProperty Name="TRNNO" ColumnName="TRNNO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COMPANYDTLs">
+            <EntityTypeMapping TypeName="EMSModel.COMPANYDTL">
+              <MappingFragment StoreEntitySet="COMPANYDTL">
+                <ScalarProperty Name="C_TRNNO" ColumnName="C_TRNNO" />
+                <ScalarProperty Name="BNAME" ColumnName="BNAME" />
+                <ScalarProperty Name="TRNNO" ColumnName="TRNNO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SPECIFICCLASSVOUCHERS" FunctionName="EMSModel.Store.SPECIFICCLASSVOUCHERS" />
+          <EntitySetMapping Name="USERS">
+            <EntityTypeMapping TypeName="EMSModel.USER">
+              <MappingFragment StoreEntitySet="USERS">
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
