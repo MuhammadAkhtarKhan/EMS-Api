@@ -11,7 +11,7 @@ using System.Web.Http.Cors;
 namespace EMS.Controllers
 {
    
-    [Authorize]
+    //[Authorize]
     //[EnableCors(origins: "http://localhost:4200/", headers: "*", methods: "*")]
     public class BpController : ApiController
     {
