@@ -50,6 +50,9 @@ namespace EMS.Controllers
 
             return Ok(mks);
         }
+
+        [HttpGet]
+        [Route("markTotal/{id}")]
         public IHttpActionResult GetMarkTotalById(int id)
         {
             MarkTotalViewModel mks = null;
@@ -167,6 +170,9 @@ namespace EMS.Controllers
 
             return Ok();
         }
+
+        [HttpPut]    
+        [Route("markTotal/{id}")]
         public IHttpActionResult Put(MarkTotalViewModel mt)
         {
             if (!ModelState.IsValid)

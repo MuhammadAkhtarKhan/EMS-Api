@@ -11,8 +11,8 @@ namespace EMS
         public static void Register(HttpConfiguration config)
         {
             //Enable Cors
-           // config.EnableCors(new EnableCorsAttribute("http://localhost:4200", headers: "*", methods: "*"));
-           
+            //config.EnableCors(new EnableCorsAttribute("http://localhost:4200", headers: "*", methods: "*"));
+            //config.EnableCors();
            
             // Web API routes
             config.MapHttpAttributeRoutes();
