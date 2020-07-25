@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="EMSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="EMSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="BP">
           <Key>
             <PropertyRef Name="TRNNO" />
@@ -207,6 +207,12 @@ warning 6002: The table/view 'EMS.EMS.CIO' does not have a primary key defined. 
           <Property Name="AMT" Type="float" />
           <Property Name="FEEMON" Type="float" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'EMS.EMS.FEECOLLECTFLG' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="FEECOLLECTFLG">
+          <Property Name="FDT" Type="datetime2" Precision="0" />
+          <Property Name="FLG" Type="numeric" Precision="1" Scale="0" />
+        </EntityType>-->
         <EntityType Name="FEECOLLECTMST">
           <Key>
             <PropertyRef Name="TRNNO" />
@@ -393,6 +399,19 @@ warning 6002: The table/view 'EMS.EMS.GRPDTL' does not have a primary key define
           <Property Name="STATUS" Type="numeric" Precision="1" Scale="0" />
           <Property Name="MODULEID" Type="varchar" MaxLength="10" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'EMS.EMS.OBJECTDTL' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="OBJECTDTL">
+          <Property Name="TRNNO" Type="float" />
+          <Property Name="ACTNAME" Type="varchar" MaxLength="50" />
+          <Property Name="DISPNAME" Type="varchar" MaxLength="100" />
+          <Property Name="EDT" Type="float" />
+          <Property Name="DEL" Type="float" />
+          <Property Name="VW" Type="float" />
+          <Property Name="ADREC" Type="float" />
+          <Property Name="REF_ID" Type="float" />
+          <Property Name="CODE" Type="float" />
+        </EntityType>-->
         <EntityType Name="OBJECTMST">
           <Key>
             <PropertyRef Name="TRNNO" />
@@ -403,6 +422,11 @@ warning 6002: The table/view 'EMS.EMS.GRPDTL' does not have a primary key define
           <Property Name="MODULE_TRNNO" Type="float" />
           <Property Name="COMPANY_TRNNO" Type="float" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'EMS.EMS.PATH' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="PATH">
+          <Property Name="VPATH" Type="varchar" MaxLength="200" />
+        </EntityType>-->
         <EntityType Name="PROMDTL">
           <Key>
             <PropertyRef Name="TRNNO" />
@@ -510,6 +534,25 @@ warning 6002: The table/view 'EMS.EMS.GRPDTL' does not have a primary key define
           <Property Name="SNAME" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="SCODE" Type="varchar" MaxLength="10" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'EMS.EMS.T' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="T">
+          <Property Name="EDT" Type="datetime2" Precision="0" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'EMS.EMS.TDTL' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="TDTL">
+          <Property Name="TRNNO" Type="float" />
+          <Property Name="CNAME" Type="varchar" MaxLength="100" />
+          <Property Name="SDT" Type="datetime2" Precision="0" />
+          <Property Name="EDT" Type="datetime2" Precision="0" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'EMS.EMS.TEST' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="TEST">
+          <Property Name="ID" Type="float" />
+          <Property Name="NAME" Type="varchar" MaxLength="10" />
+        </EntityType>-->
         <EntityType Name="TMST">
           <Key>
             <PropertyRef Name="TRNNO" />
@@ -1013,31 +1056,15 @@ warning 6002: The table/view 'EMS.EMS.GRPDTL' does not have a primary key define
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Function Name="ALLCLASSVOUCHERS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="EMS">
-          <Parameter Name="PRDATE" Type="datetime2" Mode="In" />
-          <Parameter Name="PTRNNO" Type="float" Mode="In" />
-          <Parameter Name="PDDATE" Type="datetime2" Mode="In" />
-          <Parameter Name="PFMONTH" Type="float" Mode="In" />
-          <Parameter Name="PLDATE" Type="datetime2" Mode="In" />
+        <!--Errors Found During Generation:
+error 6004: The table 'EMS.EMS.TDTL' is referenced by a relationship, but cannot be found.
+        <Association Name="FK_TDTL_TRNNO" />-->
+        <Function Name="spAllCurrentStudents" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="spStudentCurrentClass" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="cl_trnno" Type="float" Mode="In" />
+          <Parameter Name="grp_trno" Type="float" Mode="In" />
         </Function>
-        <Function Name="FN_CUR_CLASS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="EMS" ReturnType="float">
-          <Parameter Name="PTNNO" Type="float" Mode="In" />
-          <Parameter Name="PDT" Type="datetime2" Mode="In" />
-        </Function>
-        <Function Name="FNCHECKVOUCHERMONTH" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="EMS" ReturnType="varchar(max)">
-          <Parameter Name="PEMTRNNO" Type="float" Mode="In" />
-          <Parameter Name="RDT" Type="datetime2" Mode="In" />
-          <Parameter Name="DDT" Type="datetime2" Mode="In" />
-          <Parameter Name="LDT" Type="datetime2" Mode="In" />
-        </Function>
-        <Function Name="SPECIFICCLASSVOUCHERS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="EMS">
-          <Parameter Name="PRDATE" Type="datetime2" Mode="In" />
-          <Parameter Name="PTRNNO" Type="float" Mode="In" />
-          <Parameter Name="PDDATE" Type="datetime2" Mode="In" />
-          <Parameter Name="PFMONTH" Type="float" Mode="In" />
-          <Parameter Name="PEMTRNNO" Type="float" Mode="In" />
-          <Parameter Name="PLDATE" Type="datetime2" Mode="In" />
-        </Function>
+        <Function Name="usp_allEm" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="EMSModelStoreContainer">
           <EntitySet Name="BP" EntityType="Self.BP" Schema="EMS" store:Type="Tables" />
           <EntitySet Name="CLASS" EntityType="Self.CLASS" Schema="EMS" store:Type="Tables" />
@@ -1265,7 +1292,8 @@ warning 6002: The table/view 'EMS.EMS.GRPDTL' does not have a primary key define
             <End Role="MARKTOTALDTL" EntitySet="MARKTOTALDTL" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="EMSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1309,6 +1337,24 @@ warning 6002: The table/view 'EMS.EMS.GRPDTL' does not have a primary key define
           <Property Name="CLASS_TRNNO" Type="Double" />
           <NavigationProperty Name="CLASS" Relationship="Self.FK_CLFEE" FromRole="CLFEEMST" ToRole="CLASS" />
           <NavigationProperty Name="CLFEEDTLs" Relationship="Self.FK_CLFEEDTL" FromRole="CLFEEMST" ToRole="CLFEEDTL" />
+        </EntityType>
+        <EntityType Name="COMPANY">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+          </Key>
+          <Property Name="TRNNO" Type="Double" Nullable="false" />
+          <Property Name="CNAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PIC" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="COMPANYDTLs" Relationship="Self.FK_COMP" FromRole="COMPANY" ToRole="COMPANYDTL" />
+        </EntityType>
+        <EntityType Name="COMPANYDTL">
+          <Key>
+            <PropertyRef Name="TRNNO" />
+          </Key>
+          <Property Name="TRNNO" Type="Double" Nullable="false" />
+          <Property Name="BNAME" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="C_TRNNO" Type="Double" />
+          <NavigationProperty Name="COMPANY" Relationship="Self.FK_COMP" FromRole="COMPANYDTL" ToRole="COMPANY" />
         </EntityType>
         <EntityType Name="COUTLINE">
           <Key>
@@ -1821,6 +1867,15 @@ warning 6002: The table/view 'EMS.EMS.GRPDTL' does not have a primary key define
           <Property Name="SUB_TRNNO" Type="Double" />
           <Property Name="CHNAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="USER">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Double" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="STATUS" Type="Decimal" Precision="1" Scale="0" />
+        </EntityType>
         <EntityType Name="CIO">
           <Key>
             <PropertyRef Name="ROWID" />
@@ -1911,6 +1966,18 @@ warning 6002: The table/view 'EMS.EMS.GRPDTL' does not have a primary key define
             </Principal>
             <Dependent Role="CLFEEDTL">
               <PropertyRef Name="TRNNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COMP">
+          <End Role="COMPANY" Type="Self.COMPANY" Multiplicity="0..1" />
+          <End Role="COMPANYDTL" Type="Self.COMPANYDTL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COMPANY">
+              <PropertyRef Name="TRNNO" />
+            </Principal>
+            <Dependent Role="COMPANYDTL">
+              <PropertyRef Name="C_TRNNO" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2314,11 +2381,13 @@ warning 6002: The table/view 'EMS.EMS.GRPDTL' does not have a primary key define
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="EMSEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="BPs" EntityType="Self.BP" />
           <EntitySet Name="CLASSes" EntityType="Self.CLASS" />
           <EntitySet Name="CLFEEDTLs" EntityType="Self.CLFEEDTL" />
           <EntitySet Name="CLFEEMSTs" EntityType="Self.CLFEEMST" />
+          <EntitySet Name="COMPANies" EntityType="Self.COMPANY" />
+          <EntitySet Name="COMPANYDTLs" EntityType="Self.COMPANYDTL" />
           <EntitySet Name="COUTLINEs" EntityType="Self.COUTLINE" />
           <EntitySet Name="CSTs" EntityType="Self.CST" />
           <EntitySet Name="CTTDTLs" EntityType="Self.CTTDTL" />
@@ -2361,6 +2430,7 @@ warning 6002: The table/view 'EMS.EMS.GRPDTL' does not have a primary key define
           <EntitySet Name="SUBDEPTs" EntityType="Self.SUBDEPT" />
           <EntitySet Name="SUBJECTs" EntityType="Self.SUBJECT" />
           <EntitySet Name="TMSTs" EntityType="Self.TMST" />
+          <EntitySet Name="USERS" EntityType="Self.USER" />
           <EntitySet Name="CIOs" EntityType="Self.CIO" />
           <EntitySet Name="GRPDTLs" EntityType="Self.GRPDTL" />
           <AssociationSet Name="FK_CLFEE" Association="Self.FK_CLFEE">
@@ -2386,6 +2456,10 @@ warning 6002: The table/view 'EMS.EMS.GRPDTL' does not have a primary key define
           <AssociationSet Name="FK_CLFEEDTL" Association="Self.FK_CLFEEDTL">
             <End Role="CLFEEMST" EntitySet="CLFEEMSTs" />
             <End Role="CLFEEDTL" EntitySet="CLFEEDTLs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COMP" Association="Self.FK_COMP">
+            <End Role="COMPANY" EntitySet="COMPANies" />
+            <End Role="COMPANYDTL" EntitySet="COMPANYDTLs" />
           </AssociationSet>
           <AssociationSet Name="FK_CST" Association="Self.FK_CST">
             <End Role="CST" EntitySet="CSTs" />
@@ -2519,74 +2593,61 @@ warning 6002: The table/view 'EMS.EMS.GRPDTL' does not have a primary key define
             <End Role="SUBJECT" EntitySet="SUBJECTs" />
             <End Role="GRPDTL" EntitySet="GRPDTLs" />
           </AssociationSet>
-          <FunctionImport Name="ALLCLASSVOUCHERS">
-            <Parameter Name="PRDATE" Mode="In" Type="DateTime" />
-            <Parameter Name="PTRNNO" Mode="In" Type="Double" />
-            <Parameter Name="PDDATE" Mode="In" Type="DateTime" />
-            <Parameter Name="PFMONTH" Mode="In" Type="Double" />
-            <Parameter Name="PLDATE" Mode="In" Type="DateTime" />
+          <FunctionImport Name="spAllCurrentStudents" ReturnType="Collection(EMSModel.spAllCurrentStudents_Result)" />
+          <FunctionImport Name="spStudentCurrentClass" ReturnType="Collection(EMSModel.spStudentCurrentClass_Result)">
+            <Parameter Name="cl_trnno" Mode="In" Type="Double" />
+            <Parameter Name="grp_trno" Mode="In" Type="Double" />
           </FunctionImport>
-          <EntitySet Name="COMPANies" EntityType="EMSModel.COMPANY" />
-          <EntitySet Name="COMPANYDTLs" EntityType="EMSModel.COMPANYDTL" />
-          <AssociationSet Name="FK_COMP" Association="EMSModel.FK_COMP">
-            <End Role="COMPANY" EntitySet="COMPANies" />
-            <End Role="COMPANYDTL" EntitySet="COMPANYDTLs" />
-          </AssociationSet>
-          <FunctionImport Name="SPECIFICCLASSVOUCHERS">
-            <Parameter Name="PRDATE" Mode="In" Type="DateTime" />
-            <Parameter Name="PTRNNO" Mode="In" Type="Double" />
-            <Parameter Name="PDDATE" Mode="In" Type="DateTime" />
-            <Parameter Name="PFMONTH" Mode="In" Type="Double" />
-            <Parameter Name="PEMTRNNO" Mode="In" Type="Double" />
-            <Parameter Name="PLDATE" Mode="In" Type="DateTime" />
-          </FunctionImport>
-          <EntitySet Name="USERS" EntityType="EMSModel.USER" />
+          <FunctionImport Name="usp_allEm" ReturnType="Collection(EMSModel.usp_allEm_Result)" />
         </EntityContainer>
-        <EntityType Name="COMPANY">
-          <Key>
-            <PropertyRef Name="TRNNO" />
-          </Key>
-          <Property Name="TRNNO" Type="Double" Nullable="false" />
-          <Property Name="CNAME" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="PIC" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <NavigationProperty Name="COMPANYDTLs" Relationship="EMSModel.FK_COMP" FromRole="COMPANY" ToRole="COMPANYDTL" />
-        </EntityType>
-        <EntityType Name="COMPANYDTL">
-          <Key>
-            <PropertyRef Name="TRNNO" />
-          </Key>
-          <Property Name="TRNNO" Type="Double" Nullable="false" />
-          <Property Name="BNAME" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="C_TRNNO" Type="Double" />
-          <NavigationProperty Name="COMPANY" Relationship="EMSModel.FK_COMP" FromRole="COMPANYDTL" ToRole="COMPANY" />
-        </EntityType>
-        <Association Name="FK_COMP">
-          <End Type="EMSModel.COMPANY" Role="COMPANY" Multiplicity="0..1" />
-          <End Type="EMSModel.COMPANYDTL" Role="COMPANYDTL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="COMPANY">
-              <PropertyRef Name="TRNNO" />
-            </Principal>
-            <Dependent Role="COMPANYDTL">
-              <PropertyRef Name="C_TRNNO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="USER">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Double" Nullable="false" />
-          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="STATUS" Type="Decimal" Precision="1" Scale="0" />
-        </EntityType>
+        <ComplexType Name="spAllCurrentStudents_Result">
+          <Property Type="Double" Name="TRNNO" Nullable="false" />
+          <Property Type="String" Name="EMP_NAME" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="EMP_F_NAME" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="EMP_ID" Nullable="false" MaxLength="15" />
+        </ComplexType>
+        <ComplexType Name="spStudentCurrentClass_Result">
+          <Property Type="Double" Name="TRNNO" Nullable="false" />
+          <Property Type="String" Name="EMP_NAME" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="EMP_F_NAME" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="EMP_ID" Nullable="false" MaxLength="15" />
+        </ComplexType>
+        <ComplexType Name="usp_allEm_Result">
+          <Property Type="Double" Name="TRNNO" Nullable="false" />
+          <Property Type="String" Name="EMP_ID" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="EMP_NAME" Nullable="false" MaxLength="200" />
+          <Property Type="DateTime" Name="DOB" Nullable="false" />
+          <Property Type="DateTime" Name="DOJ" Nullable="true" />
+          <Property Type="Double" Name="CST_TRNNO" Nullable="true" />
+          <Property Type="String" Name="EMP_F_NAME" Nullable="true" MaxLength="200" />
+          <Property Type="Double" Name="COMP_TRNNO" Nullable="true" />
+          <Property Type="Double" Name="BP_TRNNO" Nullable="true" />
+          <Property Type="String" Name="ETYPE" Nullable="true" MaxLength="1" />
+          <Property Type="Double" Name="CL_TRNNO" Nullable="true" />
+          <Property Type="Double" Name="CL_TRNNO1" Nullable="true" />
+          <Property Type="String" Name="CERTIFICATE" Nullable="true" MaxLength="1" />
+          <Property Type="DateTime" Name="PSCHDT" Nullable="true" />
+          <Property Type="String" Name="EMAIL" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="ADT" Nullable="true" />
+          <Property Type="String" Name="FTYPE" Nullable="true" MaxLength="1" />
+          <Property Type="Double" Name="FEE" Nullable="true" />
+          <Property Type="String" Name="EMAILST" Nullable="true" MaxLength="1" />
+          <Property Type="Double" Name="GRPMST_TRNNO" Nullable="true" />
+          <Property Type="String" Name="CNIC" Nullable="true" MaxLength="13" />
+          <Property Type="Double" Name="SECMST_TRNNO" Nullable="true" />
+          <Property Type="Double" Name="SECDTL_SR" Nullable="true" />
+          <Property Type="String" Name="SEX" Nullable="true" MaxLength="1" />
+          <Property Type="Double" Name="BSAL" Nullable="true" />
+          <Property Type="String" Name="FCNIC" Nullable="true" MaxLength="13" />
+          <Property Type="Double" Name="ADIMNO" Nullable="true" />
+          <Property Type="String" Name="STYPE" Nullable="true" MaxLength="2" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="EMSModelStoreContainer" CdmEntityContainer="EMSEntities">
+        <EntityContainerMapping StorageEntityContainer="EMSModelStoreContainer" CdmEntityContainer="Entities">
           <EntitySetMapping Name="BPs">
             <EntityTypeMapping TypeName="EMSModel.BP">
               <MappingFragment StoreEntitySet="BP">
@@ -2620,6 +2681,24 @@ warning 6002: The table/view 'EMS.EMS.GRPDTL' does not have a primary key define
               <MappingFragment StoreEntitySet="CLFEEMST">
                 <ScalarProperty Name="TRNNO" ColumnName="TRNNO" />
                 <ScalarProperty Name="CLASS_TRNNO" ColumnName="CLASS_TRNNO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COMPANies">
+            <EntityTypeMapping TypeName="EMSModel.COMPANY">
+              <MappingFragment StoreEntitySet="COMPANY">
+                <ScalarProperty Name="TRNNO" ColumnName="TRNNO" />
+                <ScalarProperty Name="CNAME" ColumnName="CNAME" />
+                <ScalarProperty Name="PIC" ColumnName="PIC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COMPANYDTLs">
+            <EntityTypeMapping TypeName="EMSModel.COMPANYDTL">
+              <MappingFragment StoreEntitySet="COMPANYDTL">
+                <ScalarProperty Name="TRNNO" ColumnName="TRNNO" />
+                <ScalarProperty Name="BNAME" ColumnName="BNAME" />
+                <ScalarProperty Name="C_TRNNO" ColumnName="C_TRNNO" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -3094,6 +3173,16 @@ warning 6002: The table/view 'EMS.EMS.GRPDTL' does not have a primary key define
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="USERS">
+            <EntityTypeMapping TypeName="EMSModel.USER">
+              <MappingFragment StoreEntitySet="USERS">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="CIOs">
             <EntityTypeMapping TypeName="EMSModel.CIO">
               <MappingFragment StoreEntitySet="CIO">
@@ -3114,36 +3203,60 @@ warning 6002: The table/view 'EMS.EMS.GRPDTL' does not have a primary key define
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="ALLCLASSVOUCHERS" FunctionName="EMSModel.Store.ALLCLASSVOUCHERS" />
-          <EntitySetMapping Name="COMPANies">
-            <EntityTypeMapping TypeName="EMSModel.COMPANY">
-              <MappingFragment StoreEntitySet="COMPANY">
-                <ScalarProperty Name="PIC" ColumnName="PIC" />
-                <ScalarProperty Name="CNAME" ColumnName="CNAME" />
+          <FunctionImportMapping FunctionImportName="spAllCurrentStudents" FunctionName="EMSModel.Store.spAllCurrentStudents">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EMSModel.spAllCurrentStudents_Result">
                 <ScalarProperty Name="TRNNO" ColumnName="TRNNO" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="COMPANYDTLs">
-            <EntityTypeMapping TypeName="EMSModel.COMPANYDTL">
-              <MappingFragment StoreEntitySet="COMPANYDTL">
-                <ScalarProperty Name="C_TRNNO" ColumnName="C_TRNNO" />
-                <ScalarProperty Name="BNAME" ColumnName="BNAME" />
+                <ScalarProperty Name="EMP_NAME" ColumnName="EMP_NAME" />
+                <ScalarProperty Name="EMP_F_NAME" ColumnName="EMP_F_NAME" />
+                <ScalarProperty Name="EMP_ID" ColumnName="EMP_ID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spStudentCurrentClass" FunctionName="EMSModel.Store.spStudentCurrentClass">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EMSModel.spStudentCurrentClass_Result">
                 <ScalarProperty Name="TRNNO" ColumnName="TRNNO" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="SPECIFICCLASSVOUCHERS" FunctionName="EMSModel.Store.SPECIFICCLASSVOUCHERS" />
-          <EntitySetMapping Name="USERS">
-            <EntityTypeMapping TypeName="EMSModel.USER">
-              <MappingFragment StoreEntitySet="USERS">
-                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
+                <ScalarProperty Name="EMP_NAME" ColumnName="EMP_NAME" />
+                <ScalarProperty Name="EMP_F_NAME" ColumnName="EMP_F_NAME" />
+                <ScalarProperty Name="EMP_ID" ColumnName="EMP_ID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_allEm" FunctionName="EMSModel.Store.usp_allEm">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EMSModel.usp_allEm_Result">
+                <ScalarProperty Name="TRNNO" ColumnName="TRNNO" />
+                <ScalarProperty Name="EMP_ID" ColumnName="EMP_ID" />
+                <ScalarProperty Name="EMP_NAME" ColumnName="EMP_NAME" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="DOJ" ColumnName="DOJ" />
+                <ScalarProperty Name="CST_TRNNO" ColumnName="CST_TRNNO" />
+                <ScalarProperty Name="EMP_F_NAME" ColumnName="EMP_F_NAME" />
+                <ScalarProperty Name="COMP_TRNNO" ColumnName="COMP_TRNNO" />
+                <ScalarProperty Name="BP_TRNNO" ColumnName="BP_TRNNO" />
+                <ScalarProperty Name="ETYPE" ColumnName="ETYPE" />
+                <ScalarProperty Name="CL_TRNNO" ColumnName="CL_TRNNO" />
+                <ScalarProperty Name="CL_TRNNO1" ColumnName="CL_TRNNO1" />
+                <ScalarProperty Name="CERTIFICATE" ColumnName="CERTIFICATE" />
+                <ScalarProperty Name="PSCHDT" ColumnName="PSCHDT" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="ADT" ColumnName="ADT" />
+                <ScalarProperty Name="FTYPE" ColumnName="FTYPE" />
+                <ScalarProperty Name="FEE" ColumnName="FEE" />
+                <ScalarProperty Name="EMAILST" ColumnName="EMAILST" />
+                <ScalarProperty Name="GRPMST_TRNNO" ColumnName="GRPMST_TRNNO" />
+                <ScalarProperty Name="CNIC" ColumnName="CNIC" />
+                <ScalarProperty Name="SECMST_TRNNO" ColumnName="SECMST_TRNNO" />
+                <ScalarProperty Name="SECDTL_SR" ColumnName="SECDTL_SR" />
+                <ScalarProperty Name="SEX" ColumnName="SEX" />
+                <ScalarProperty Name="BSAL" ColumnName="BSAL" />
+                <ScalarProperty Name="FCNIC" ColumnName="FCNIC" />
+                <ScalarProperty Name="ADIMNO" ColumnName="ADIMNO" />
+                <ScalarProperty Name="STYPE" ColumnName="STYPE" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

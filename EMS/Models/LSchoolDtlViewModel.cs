@@ -10,7 +10,7 @@ namespace EMS.Models
         public double TRNNO { get; set; }
         public double SR { get; set; }
         public double EM_TRNNO { get; set; }
-
+        public bool isLeft { get; set; }
         public virtual LSCHOOLMST LSCHOOLMST { get; set; }
     }
 }

@@ -86,8 +86,9 @@ namespace EMS.Controllers
         }
         [HttpPost]
         [Route("lschool")]
-        public IHttpActionResult PostNewLs(LSchoolViewModel bp)
+        public IHttpActionResult PostNewLs(LSchoolViewModel ls)
         {
+            int _sr = 1;
             if (!ModelState.IsValid)
                 return BadRequest("Invalid data.");
 
@@ -96,7 +97,7 @@ namespace EMS.Controllers
                 int _trnno;
                 //int _sr = 1;
                 //db.Users.OrderByDescending(u => u.UserId).FirstOrDefault();
-                if (bp.TRNNO == 0)
+                if (ls.TRNNO == 0)
                 {
                     _trnno = Convert.ToInt32(ctx.LSCHOOLMSTs.OrderByDescending(t => t.TRNNO).FirstOrDefault().TRNNO);
                     _trnno = _trnno + 1;
@@ -104,16 +105,29 @@ namespace EMS.Controllers
                 }
                 else
                 {
-                    _trnno = Convert.ToInt32(bp.TRNNO) + 1;
+                    _trnno = Convert.ToInt32(ls.TRNNO) + 1;
                 }
                // int totalConunt = ctx.LSCHOOLMSTs.Count<LSCHOOLMST>();
-                bp.TRNNO = _trnno;
+                ls.TRNNO = _trnno;
                 ctx.LSCHOOLMSTs.Add(new LSCHOOLMST()
                 {
-                    TRNNO = bp.TRNNO,
-                    CLASS_TRNNO = bp.CLASS_TRNNO,
-                    LDATE = bp.LDATE
+                    TRNNO = ls.TRNNO,
+                    CLASS_TRNNO = ls.CLASS_TRNNO,
+                    LDATE = ls.LDATE
                 });
+                foreach (var dtls in ls.LSCHOOLDTLs)
+                {
+                    if (dtls.isLeft == true) { 
+                    var LSdetail = new LSCHOOLDTL
+                    {
+                        TRNNO = _trnno,
+                        SR = _sr,
+                        EM_TRNNO = dtls.EM_TRNNO                       
+                    };
+                    ctx.LSCHOOLDTLs.Add(LSdetail);
+                    _sr++;
+                    }
+                }
                 try
                 {
                     ctx.SaveChanges();

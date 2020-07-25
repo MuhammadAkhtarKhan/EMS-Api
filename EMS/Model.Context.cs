@@ -31,6 +31,8 @@ namespace EMS
         public virtual DbSet<CLASS> CLASSes { get; set; }
         public virtual DbSet<CLFEEDTL> CLFEEDTLs { get; set; }
         public virtual DbSet<CLFEEMST> CLFEEMSTs { get; set; }
+        public virtual DbSet<COMPANY> COMPANies { get; set; }
+        public virtual DbSet<COMPANYDTL> COMPANYDTLs { get; set; }
         public virtual DbSet<COUTLINE> COUTLINEs { get; set; }
         public virtual DbSet<CST> CSTs { get; set; }
         public virtual DbSet<CTTDTL> CTTDTLs { get; set; }
@@ -73,64 +75,31 @@ namespace EMS
         public virtual DbSet<SUBDEPT> SUBDEPTs { get; set; }
         public virtual DbSet<SUBJECT> SUBJECTs { get; set; }
         public virtual DbSet<TMST> TMSTs { get; set; }
+        public virtual DbSet<USER> USERS { get; set; }
         public virtual DbSet<CIO> CIOs { get; set; }
         public virtual DbSet<GRPDTL> GRPDTLs { get; set; }
-        public virtual DbSet<COMPANY> COMPANies { get; set; }
-        public virtual DbSet<COMPANYDTL> COMPANYDTLs { get; set; }
-        public virtual DbSet<USER> USERS { get; set; }
     
-        public virtual int ALLCLASSVOUCHERS(Nullable<System.DateTime> pRDATE, Nullable<double> pTRNNO, Nullable<System.DateTime> pDDATE, Nullable<double> pFMONTH, Nullable<System.DateTime> pLDATE)
+        public virtual ObjectResult<spAllCurrentStudents_Result> spAllCurrentStudents()
         {
-            var pRDATEParameter = pRDATE.HasValue ?
-                new ObjectParameter("PRDATE", pRDATE) :
-                new ObjectParameter("PRDATE", typeof(System.DateTime));
-    
-            var pTRNNOParameter = pTRNNO.HasValue ?
-                new ObjectParameter("PTRNNO", pTRNNO) :
-                new ObjectParameter("PTRNNO", typeof(double));
-    
-            var pDDATEParameter = pDDATE.HasValue ?
-                new ObjectParameter("PDDATE", pDDATE) :
-                new ObjectParameter("PDDATE", typeof(System.DateTime));
-    
-            var pFMONTHParameter = pFMONTH.HasValue ?
-                new ObjectParameter("PFMONTH", pFMONTH) :
-                new ObjectParameter("PFMONTH", typeof(double));
-    
-            var pLDATEParameter = pLDATE.HasValue ?
-                new ObjectParameter("PLDATE", pLDATE) :
-                new ObjectParameter("PLDATE", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ALLCLASSVOUCHERS", pRDATEParameter, pTRNNOParameter, pDDATEParameter, pFMONTHParameter, pLDATEParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spAllCurrentStudents_Result>("spAllCurrentStudents");
         }
     
-        public virtual int SPECIFICCLASSVOUCHERS(Nullable<System.DateTime> pRDATE, Nullable<double> pTRNNO, Nullable<System.DateTime> pDDATE, Nullable<double> pFMONTH, Nullable<double> pEMTRNNO, Nullable<System.DateTime> pLDATE)
+        public virtual ObjectResult<spStudentCurrentClass_Result> spStudentCurrentClass(Nullable<double> cl_trnno, Nullable<double> grp_trno)
         {
-            var pRDATEParameter = pRDATE.HasValue ?
-                new ObjectParameter("PRDATE", pRDATE) :
-                new ObjectParameter("PRDATE", typeof(System.DateTime));
+            var cl_trnnoParameter = cl_trnno.HasValue ?
+                new ObjectParameter("cl_trnno", cl_trnno) :
+                new ObjectParameter("cl_trnno", typeof(double));
     
-            var pTRNNOParameter = pTRNNO.HasValue ?
-                new ObjectParameter("PTRNNO", pTRNNO) :
-                new ObjectParameter("PTRNNO", typeof(double));
+            var grp_trnoParameter = grp_trno.HasValue ?
+                new ObjectParameter("grp_trno", grp_trno) :
+                new ObjectParameter("grp_trno", typeof(double));
     
-            var pDDATEParameter = pDDATE.HasValue ?
-                new ObjectParameter("PDDATE", pDDATE) :
-                new ObjectParameter("PDDATE", typeof(System.DateTime));
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spStudentCurrentClass_Result>("spStudentCurrentClass", cl_trnnoParameter, grp_trnoParameter);
+        }
     
-            var pFMONTHParameter = pFMONTH.HasValue ?
-                new ObjectParameter("PFMONTH", pFMONTH) :
-                new ObjectParameter("PFMONTH", typeof(double));
-    
-            var pEMTRNNOParameter = pEMTRNNO.HasValue ?
-                new ObjectParameter("PEMTRNNO", pEMTRNNO) :
-                new ObjectParameter("PEMTRNNO", typeof(double));
-    
-            var pLDATEParameter = pLDATE.HasValue ?
-                new ObjectParameter("PLDATE", pLDATE) :
-                new ObjectParameter("PLDATE", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPECIFICCLASSVOUCHERS", pRDATEParameter, pTRNNOParameter, pDDATEParameter, pFMONTHParameter, pEMTRNNOParameter, pLDATEParameter);
+        public virtual ObjectResult<usp_allEm_Result> usp_allEm()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_allEm_Result>("usp_allEm");
         }
     }
 }

@@ -542,10 +542,16 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Services\UserService.cs" />
+    <Compile Include="spAllCurrentStudents_Result.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="SPFEEDTL.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="SPFEEMST.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="spStudentCurrentClass_Result.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
@@ -565,6 +571,9 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="USER.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_allEm_Result.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
   </ItemGroup>

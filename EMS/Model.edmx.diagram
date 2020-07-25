@@ -4,11 +4,13 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="ffd8b5e64fef434786b6d4b82acc2da3" Name="Diagram1">
+      <Diagram DiagramId="8497b945a1824896943ac45826d7ff4e" Name="Diagram1">
         <EntityTypeShape EntityType="EMSModel.BP" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="EMSModel.CLASS" Width="1.5" PointX="0.75" PointY="25.25" IsExpanded="true" />
         <EntityTypeShape EntityType="EMSModel.CLFEEDTL" Width="1.5" PointX="5.25" PointY="22.875" IsExpanded="true" />
         <EntityTypeShape EntityType="EMSModel.CLFEEMST" Width="1.5" PointX="3" PointY="22.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EMSModel.COMPANY" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EMSModel.COMPANYDTL" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
         <EntityTypeShape EntityType="EMSModel.COUTLINE" Width="1.5" PointX="5.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="EMSModel.CST" Width="1.5" PointX="3" PointY="32.375" IsExpanded="true" />
         <EntityTypeShape EntityType="EMSModel.CTTDTL" Width="1.5" PointX="8" PointY="25.125" IsExpanded="true" />
@@ -51,6 +53,7 @@
         <EntityTypeShape EntityType="EMSModel.SUBDEPT" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
         <EntityTypeShape EntityType="EMSModel.SUBJECT" Width="1.5" PointX="5.75" PointY="15.75" IsExpanded="true" />
         <EntityTypeShape EntityType="EMSModel.TMST" Width="1.5" PointX="9.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EMSModel.USER" Width="1.5" PointX="4.75" PointY="9.75" IsExpanded="true" />
         <EntityTypeShape EntityType="EMSModel.CIO" Width="1.5" PointX="9.75" PointY="6.75" IsExpanded="true" />
         <EntityTypeShape EntityType="EMSModel.GRPDTL" Width="1.5" PointX="11" PointY="17.75" IsExpanded="true" />
         <AssociationConnector Association="EMSModel.FK_CLFEE" ManuallyRouted="false" />
@@ -59,6 +62,7 @@
         <AssociationConnector Association="EMSModel.FK_MMST" ManuallyRouted="false" />
         <AssociationConnector Association="EMSModel.FK_SECMST" ManuallyRouted="false" />
         <AssociationConnector Association="EMSModel.FK_CLFEEDTL" ManuallyRouted="false" />
+        <AssociationConnector Association="EMSModel.FK_COMP" ManuallyRouted="false" />
         <AssociationConnector Association="EMSModel.FK_CST" ManuallyRouted="false" />
         <AssociationConnector Association="EMSModel.FK_CTT_STIME" ManuallyRouted="false" />
         <AssociationConnector Association="EMSModel.FK_CTTDTL" ManuallyRouted="false" />
@@ -92,10 +96,6 @@
         <AssociationConnector Association="EMSModel.FK_SPDTL" ManuallyRouted="false" />
         <AssociationConnector Association="EMSModel.FK_STIMEDTL" ManuallyRouted="false" />
         <AssociationConnector Association="EMSModel.FK_GRPDTL1" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="EMSModel.COMPANY" Width="1.5" PointX="7.375" PointY="9.875" />
-        <EntityTypeShape EntityType="EMSModel.COMPANYDTL" Width="1.5" PointX="9.625" PointY="9.875" />
-        <AssociationConnector Association="EMSModel.FK_COMP" />
-        <EntityTypeShape EntityType="EMSModel.USER" Width="1.5" PointX="0.75" PointY="4.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -200,7 +200,7 @@ namespace EMS.Controllers
             using (var ctx = new EMSEntities())
             {
 
-               var result= ctx.ALLCLASSVOUCHERS(fc.RDATE, fc.TRNNO, fc.DDATE, fc.FMONTH, fc.LDATE);
+               //var result= ctx.ALLCLASSVOUCHERS(fc.RDATE, fc.TRNNO, fc.DDATE, fc.FMONTH, fc.LDATE);
                 try
                 {
                     ctx.SaveChanges();
