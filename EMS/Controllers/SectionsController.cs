@@ -9,6 +9,7 @@ using EMS.Models;
 
 namespace EMS.Controllers
 {
+    [Authorize]
     [RoutePrefix("api")]
     public class SectionsController : ApiController
     {
@@ -108,6 +109,8 @@ namespace EMS.Controllers
 
         //    return Ok(secs);
         //}
+        [HttpPost]
+        [Route("sections")]
         public IHttpActionResult PostNewSection(SectionViewModel sec)
         {
             if (!ModelState.IsValid)

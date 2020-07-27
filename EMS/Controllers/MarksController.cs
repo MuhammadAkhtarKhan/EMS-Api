@@ -9,8 +9,11 @@ using System.Web.Http;
 
 namespace EMS.Controllers
 {
+    [RoutePrefix("api")]
     public class MarksController : ApiController
     {
+        [HttpGet]
+        [Route("marksmst")]
         public IHttpActionResult GetAllMarks()
         {
             IList<MarksViewModel> mkss = null;
@@ -36,6 +39,60 @@ namespace EMS.Controllers
 
             return Ok(mkss);
         }
+
+        [HttpGet]
+        [Route("marksdtl")]
+        public IHttpActionResult GetAllMarksdtl()
+        {
+            IList<MarksDtlViewModel> mkdtl = null;
+
+            using (var ctx = new EMSEntities())
+            {
+                mkdtl = ctx.MARKSDTLs
+                            .Select(s => new MarksDtlViewModel()
+                            {
+                                TRNNO = s.TRNNO,                                
+                                SR= s.SR,
+                                EM_TRNNO = s.EM_TRNNO                                
+                            }).ToList<MarksDtlViewModel>();
+            }
+
+            if (mkdtl.Count == 0)
+            {
+                return NotFound();
+            }
+
+            return Ok(mkdtl);
+        }
+        [HttpGet]
+        [Route("marksdtl1")]
+        public IHttpActionResult GetAllMarksdtl1()
+        {
+            IList<MarksDtl1ViewModel> mkdtl = null;
+
+            using (var ctx = new EMSEntities())
+            {
+                mkdtl = ctx.MARKSDTL1
+                            .Select(s => new MarksDtl1ViewModel()
+                            {
+                                TRNNO = s.TRNNO,
+                                SR = s.SR,
+                                SR1 = s.SR1,
+                                GMARKS=s.GMARKS,
+                                MARKTOTALDTL_TRNNO=s.MARKTOTALDTL_TRNNO,
+                                MARKTOTALDTL_SR=s.MARKTOTALDTL_SR
+                            }).ToList<MarksDtl1ViewModel>();
+            }
+
+            if (mkdtl.Count == 0)
+            {
+                return NotFound();
+            }
+
+            return Ok(mkdtl);
+        }
+        [HttpGet]
+        [Route("marksmst/{id}")]
         public IHttpActionResult GetMarksById(int id)
         {
             MarksViewModel mkss = null;

@@ -499,6 +499,8 @@
     <Compile Include="Models\LeaveTypeViewModel.cs" />
     <Compile Include="Models\LSchoolDtlViewModel.cs" />
     <Compile Include="Models\LSchoolViewModel.cs" />
+    <Compile Include="Models\MarksDtl1ViewModel.cs" />
+    <Compile Include="Models\MarksDtlViewModel.cs" />
     <Compile Include="Models\MarksViewModel.cs" />
     <Compile Include="Models\MarkTotalViewModel.cs" />
     <Compile Include="Models\PromotionDtlViewModel.cs" />
