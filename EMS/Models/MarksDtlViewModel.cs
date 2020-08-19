@@ -10,6 +10,6 @@ namespace EMS.Models
         public double TRNNO { get; set; }
         public double SR { get; set; }
         public Nullable<double> EM_TRNNO { get; set; }
-        public  IList<MARKSDTL1> MARKSDTL1 { get; set; }
+        public  IList<MarksDtl1ViewModel> MARKSDTL1 { get; set; }
     }
 }

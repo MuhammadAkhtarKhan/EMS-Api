@@ -371,6 +371,7 @@
     <Compile Include="Controllers\SpFeeController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Controllers\SubjectController.cs" />
+    <Compile Include="Controllers\TeachersController.cs" />
     <Compile Include="Controllers\TotalMarkdtlController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
@@ -512,6 +513,7 @@
     <Compile Include="Models\SpFeeViewModel.cs" />
     <Compile Include="Models\StudentViewModel.cs" />
     <Compile Include="Models\SubjectViewModel.cs" />
+    <Compile Include="Models\TeacherViewModel.cs" />
     <Compile Include="Models\TotalMarkDtlSubjectViewModel.cs" />
     <Compile Include="Models\TotalMarkDtlViewModel.cs" />
     <Compile Include="Models\UserViewModel.cs" />

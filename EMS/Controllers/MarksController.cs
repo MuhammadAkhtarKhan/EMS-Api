@@ -26,9 +26,9 @@ namespace EMS.Controllers
                                 TRNNO = s.TRNNO,
                                 CLASS_TRNNO = s.CLASS_TRNNO,
                                 EM_TRNNO = s.EM_TRNNO,
-                                MDT=s.MDT,
-                                 EXAM_TRNNO=s.EXAM_TRNNO,
-                                 GRPMST_TRNNO=s.GRPMST_TRNNO
+                                MDT = s.MDT,
+                                EXAM_TRNNO = s.EXAM_TRNNO,
+                                GRPMST_TRNNO = s.GRPMST_TRNNO
                             }).ToList<MarksViewModel>();
             }
 
@@ -51,9 +51,9 @@ namespace EMS.Controllers
                 mkdtl = ctx.MARKSDTLs
                             .Select(s => new MarksDtlViewModel()
                             {
-                                TRNNO = s.TRNNO,                                
-                                SR= s.SR,
-                                EM_TRNNO = s.EM_TRNNO                                
+                                TRNNO = s.TRNNO,
+                                SR = s.SR,
+                                EM_TRNNO = s.EM_TRNNO
                             }).ToList<MarksDtlViewModel>();
             }
 
@@ -78,9 +78,9 @@ namespace EMS.Controllers
                                 TRNNO = s.TRNNO,
                                 SR = s.SR,
                                 SR1 = s.SR1,
-                                GMARKS=s.GMARKS,
-                                MARKTOTALDTL_TRNNO=s.MARKTOTALDTL_TRNNO,
-                                MARKTOTALDTL_SR=s.MARKTOTALDTL_SR
+                                GMARKS = s.GMARKS,
+                                MARKTOTALDTL_TRNNO = s.MARKTOTALDTL_TRNNO,
+                                MARKTOTALDTL_SR = s.MARKTOTALDTL_SR
                             }).ToList<MarksDtl1ViewModel>();
             }
 
@@ -105,7 +105,7 @@ namespace EMS.Controllers
                     {
                         TRNNO = s.TRNNO,
                         CLASS_TRNNO = s.CLASS_TRNNO,
-                         EM_TRNNO = s.EM_TRNNO
+                        EM_TRNNO = s.EM_TRNNO
                     }).FirstOrDefault<MarksViewModel>();
             }
 
@@ -141,6 +141,8 @@ namespace EMS.Controllers
 
         //    //return Ok(mkss);
         //}
+        [HttpPost]
+        [Route("marks")]
         public IHttpActionResult PostNewMarks(MarksViewModel mks)
         {
             if (!ModelState.IsValid)
@@ -148,14 +150,59 @@ namespace EMS.Controllers
 
             using (var ctx = new EMSEntities())
             {
-                int totalConunt = ctx.MARKSMSTs.Count<MARKSMST>();
-                mks.TRNNO = totalConunt + 1;
-                ctx.MARKSMSTs.Add(new MARKSMST()
+                int _trnno;
+                int _sr1 = 1;
+                int _sr = 1;
+                //int _oldTrnno = 0;
+              var  _oldTrnno = ctx.MARKSMSTs.Where(s => s.MDT == mks.MDT && s.EXAM_TRNNO == mks.EXAM_TRNNO && s.CLASS_TRNNO == mks.CLASS_TRNNO && s.GRPMST_TRNNO == mks.GRPMST_TRNNO && s.EM_TRNNO == mks.EM_TRNNO).FirstOrDefault();
+                if (_oldTrnno != null)
                 {
-                    TRNNO = mks.TRNNO,
-                    CLASS_TRNNO = mks.CLASS_TRNNO,
-                    EM_TRNNO = mks.EM_TRNNO
-                });
+                   _trnno = Convert.ToInt32( _oldTrnno.TRNNO);
+                }
+                else
+                {
+                    _trnno = Convert.ToInt32(ctx.MARKSMSTs.OrderByDescending(t => t.TRNNO).FirstOrDefault().TRNNO);
+                    _trnno = _trnno + 1;
+                }
+               
+                    mks.TRNNO = _trnno;
+                    ctx.MARKSMSTs.Add(new MARKSMST()
+                    {
+                        TRNNO = mks.TRNNO,
+                        MDT = mks.MDT,
+                        EXAM_TRNNO = mks.EXAM_TRNNO,
+                        CLASS_TRNNO = mks.CLASS_TRNNO,
+                        GRPMST_TRNNO = mks.GRPMST_TRNNO,
+                        EM_TRNNO = mks.EM_TRNNO,
+                        
+                    });
+                    foreach (var dtls in mks.MARKSDTLs)
+                    {
+                        var markdetail = new MARKSDTL
+                        {
+                            TRNNO = _trnno,
+                            SR = _sr,
+                            EM_TRNNO = dtls.EM_TRNNO
+                        };
+                        ctx.MARKSDTLs.Add(markdetail);
+                        
+                    foreach (var dt1 in dtls.MARKSDTL1)
+                    {
+                        var markdtl1 = new MARKSDTL1
+                        {
+                            TRNNO = _trnno,
+                            SR = _sr,
+                            SR1 = dt1.SR1,
+                            GMARKS = dt1.GMARKS,
+                            MARKTOTALDTL_TRNNO = dt1.MARKTOTALDTL_TRNNO,
+                            MARKTOTALDTL_SR = dt1.MARKTOTALDTL_SR
+                        };
+                        ctx.MARKSDTL1.Add(markdtl1);
+                        _sr1++;
+                    }
+                    _sr++;
+                }
+                  
                 try
                 {
                     ctx.SaveChanges();

@@ -8,12 +8,12 @@ using System.Web.Http;
 
 namespace EMS.Controllers
 {
-    //[RoutePrefix("api")]
+    [RoutePrefix("api")]
     public class StudentController : ApiController
     {
 
         [HttpGet]
-        //[Route("allstudents")]
+        [Route("student")]
         public IHttpActionResult GetAllLs()
         {
             IList<StudentViewModel> lss = null;
@@ -62,7 +62,7 @@ namespace EMS.Controllers
             return Ok(lss);
         }
         [HttpGet]
-       // [Route("allstudents/{id}")]
+       [Route("student/{id}")]
         public IHttpActionResult GetStudentByClassId(int? id)
         {
             IList<StudentViewModel> lss = null;
@@ -111,8 +111,8 @@ namespace EMS.Controllers
 
         //    return Ok(lsdtl);
         //}
-        //[HttpPost]
-        //[Route("currClStud")]
+        [HttpPost]
+        [Route("student")]
         public IHttpActionResult PostStudentsByClIdandGrpId(PromotionViewModel st)
         {
             if (!ModelState.IsValid)

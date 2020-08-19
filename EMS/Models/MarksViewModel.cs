@@ -13,6 +13,8 @@ namespace EMS.Models
         public Nullable<double> CLASS_TRNNO { get; set; }
         public Nullable<double> GRPMST_TRNNO { get; set; }
         public Nullable<double> EM_TRNNO { get; set; }        
-        public virtual IList<MARKSDTL> MARKSDTLs { get; set; }
+        public  IList<MarksDtlViewModel> MARKSDTLs { get; set; }
+       
     }
+    
 }
