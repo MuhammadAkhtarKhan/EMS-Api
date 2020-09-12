@@ -1,17 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity.Validation;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Data.Entity.Core.Objects;
 using EMS.Models;
 
 namespace EMS.Controllers
 {
+    [RoutePrefix("api")]
     public class SpFeeController : ApiController
     {
+        [HttpGet]
+        [Route("spfee")]
         public IHttpActionResult GetAllSpFee()
         {
             IList<SpFeeViewModel> bps = null;
@@ -34,6 +39,8 @@ namespace EMS.Controllers
 
             return Ok(bps);
         }
+        [HttpGet]
+        [Route("spfee/{id}")]
         public IHttpActionResult GetSpFeeClassId(int id)
         {
            IList <SpFeeUpdateViewModel> bps = null;
@@ -75,21 +82,70 @@ namespace EMS.Controllers
 
         //    return Ok(bps);
         //}
+        [HttpPost]
+        [Route("getspfee")]
         public IHttpActionResult PostNewSpFee(SpFeeViewModel spfee)
-        {
+        {           
+          
+            ObjectParameter FEE1 = new System.Data.Entity.Core.Objects.ObjectParameter("FEE1", typeof(double));
+            
             if (!ModelState.IsValid)
                 return BadRequest("Invalid data.");
 
             using (var ctx = new EMSEntities())
             {
-                //int totalConunt = ctx.SPFEEMSTs.Count<SPFEEMST>();
-                //spfee.TRNNO = totalConunt + 1;
+                                
+               ctx.spStudentCurrentFee(spfee.SPFEEDTLs[0].TRNNO, FEE1, spfee.CLASS_TRNNO);
+               var res= FEE1.Value;     
+
+                if (res == null)
+                {
+                    return NotFound();
+                }
+
+                return Ok(res);
+            }
+        }
+        [HttpPost]
+        [Route("spfee")]
+        public IHttpActionResult AddNewSpFee(SpFeeViewModel spfee)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest("Invalid data.");
+            int _trnno;
+            int _sr = 1;
+
+            using (var ctx = new EMSEntities())
+            {
+                if (spfee.TRNNO == 0)
+                {
+                    _trnno = Convert.ToInt32(ctx.SPFEEMSTs.OrderByDescending(t => t.TRNNO).FirstOrDefault().TRNNO);
+                    _trnno = _trnno + 1;
+                }
+                else
+                {
+                    _trnno = Convert.ToInt32(spfee.TRNNO) + 1;
+                }
+                spfee.TRNNO = _trnno;
                 ctx.SPFEEMSTs.Add(new SPFEEMST()
                 {
                     TRNNO = spfee.TRNNO,
                     CLASS_TRNNO = spfee.CLASS_TRNNO,
-                    SPDATE = spfee.SPDATE
+                    SPDATE = spfee.SPDATE,
                 });
+                foreach (var dtls in spfee.SPFEEDTLs)
+                {                    
+                    
+                        var spdetail = new SPFEEDTL
+                        {
+                            TRNNO = _trnno,
+                            SR = _sr,
+                            EM_TRNNO = dtls.EM_TRNNO,
+                            SPFEE=Convert.ToDouble(dtls.SPFEE)
+                        };
+                        ctx.SPFEEDTLs.Add(spdetail);
+                    _sr++;
+                }
                 try
                 {
                     ctx.SaveChanges();

@@ -509,6 +509,7 @@
     <Compile Include="Models\SecDtlViewModel.cs" />
     <Compile Include="Models\SectionDetailViewModel.cs" />
     <Compile Include="Models\SectionViewModel.cs" />
+    <Compile Include="Models\SpFeeDtlViewModel.cs" />
     <Compile Include="Models\SpFeeUpdateViewModel.cs" />
     <Compile Include="Models\SpFeeViewModel.cs" />
     <Compile Include="Models\StudentViewModel.cs" />

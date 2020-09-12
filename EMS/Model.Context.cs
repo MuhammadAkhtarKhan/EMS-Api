@@ -49,6 +49,7 @@ namespace EMS
         public virtual DbSet<FEETYPE> FEETYPES { get; set; }
         public virtual DbSet<FISCAL_YEAR> FISCAL_YEAR { get; set; }
         public virtual DbSet<GRPCHANGE> GRPCHANGEs { get; set; }
+        public virtual DbSet<GRPDTL> GRPDTLs { get; set; }
         public virtual DbSet<GRPMST> GRPMSTs { get; set; }
         public virtual DbSet<LEAVECAL> LEAVECALs { get; set; }
         public virtual DbSet<LEAVECERTMST> LEAVECERTMSTs { get; set; }
@@ -77,11 +78,19 @@ namespace EMS
         public virtual DbSet<TMST> TMSTs { get; set; }
         public virtual DbSet<USER> USERS { get; set; }
         public virtual DbSet<CIO> CIOs { get; set; }
-        public virtual DbSet<GRPDTL> GRPDTLs { get; set; }
     
         public virtual ObjectResult<spAllCurrentStudents_Result> spAllCurrentStudents()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spAllCurrentStudents_Result>("spAllCurrentStudents");
+        }
+    
+        public virtual int spFindStudentClass(Nullable<double> eMP_TRNNO, ObjectParameter cL_TRNNO)
+        {
+            var eMP_TRNNOParameter = eMP_TRNNO.HasValue ?
+                new ObjectParameter("EMP_TRNNO", eMP_TRNNO) :
+                new ObjectParameter("EMP_TRNNO", typeof(double));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spFindStudentClass", eMP_TRNNOParameter, cL_TRNNO);
         }
     
         public virtual ObjectResult<spStudentCurrentClass_Result> spStudentCurrentClass(Nullable<double> cl_trnno, Nullable<double> grp_trno)
@@ -97,9 +106,56 @@ namespace EMS
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spStudentCurrentClass_Result>("spStudentCurrentClass", cl_trnnoParameter, grp_trnoParameter);
         }
     
+        public virtual int spStudentCurrentFee(Nullable<double> eMP_TRNNO, ObjectParameter fEE1, Nullable<double> cLASS_TRNNO)
+        {
+            var eMP_TRNNOParameter = eMP_TRNNO.HasValue ?
+                new ObjectParameter("EMP_TRNNO", eMP_TRNNO) :
+                new ObjectParameter("EMP_TRNNO", typeof(double));
+    
+            var cLASS_TRNNOParameter = cLASS_TRNNO.HasValue ?
+                new ObjectParameter("CLASS_TRNNO", cLASS_TRNNO) :
+                new ObjectParameter("CLASS_TRNNO", typeof(double));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spStudentCurrentFee", eMP_TRNNOParameter, fEE1, cLASS_TRNNOParameter);
+        }
+    
         public virtual ObjectResult<usp_allEm_Result> usp_allEm()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_allEm_Result>("usp_allEm");
+        }
+    
+        public virtual int ALLCLASSVOUCHERS(Nullable<System.DateTime> pRDATE, Nullable<double> pTRNNO, Nullable<System.DateTime> pDDATE, Nullable<double> pFMONTH, Nullable<System.DateTime> pLDATE)
+        {
+            var pRDATEParameter = pRDATE.HasValue ?
+                new ObjectParameter("PRDATE", pRDATE) :
+                new ObjectParameter("PRDATE", typeof(System.DateTime));
+    
+            var pTRNNOParameter = pTRNNO.HasValue ?
+                new ObjectParameter("PTRNNO", pTRNNO) :
+                new ObjectParameter("PTRNNO", typeof(double));
+    
+            var pDDATEParameter = pDDATE.HasValue ?
+                new ObjectParameter("PDDATE", pDDATE) :
+                new ObjectParameter("PDDATE", typeof(System.DateTime));
+    
+            var pFMONTHParameter = pFMONTH.HasValue ?
+                new ObjectParameter("PFMONTH", pFMONTH) :
+                new ObjectParameter("PFMONTH", typeof(double));
+    
+            var pLDATEParameter = pLDATE.HasValue ?
+                new ObjectParameter("PLDATE", pLDATE) :
+                new ObjectParameter("PLDATE", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ALLCLASSVOUCHERS", pRDATEParameter, pTRNNOParameter, pDDATEParameter, pFMONTHParameter, pLDATEParameter);
+        }
+    
+        public virtual int FEECOLLFLG(Nullable<System.DateTime> pDT)
+        {
+            var pDTParameter = pDT.HasValue ?
+                new ObjectParameter("PDT", pDT) :
+                new ObjectParameter("PDT", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("FEECOLLFLG", pDTParameter);
         }
     }
 }

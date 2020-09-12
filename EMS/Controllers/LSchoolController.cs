@@ -95,19 +95,16 @@ namespace EMS.Controllers
             using (var ctx = new EMSEntities())
             {
                 int _trnno;
-                //int _sr = 1;
-                //db.Users.OrderByDescending(u => u.UserId).FirstOrDefault();
+                
                 if (ls.TRNNO == 0)
                 {
                     _trnno = Convert.ToInt32(ctx.LSCHOOLMSTs.OrderByDescending(t => t.TRNNO).FirstOrDefault().TRNNO);
-                    _trnno = _trnno + 1;
-                    //_trnno = Convert.ToInt32(ctx.EMs.OrderByDescending(t => t.TRNNO).First().ToString());
+                    _trnno = _trnno + 1;                   
                 }
                 else
                 {
                     _trnno = Convert.ToInt32(ls.TRNNO) + 1;
-                }
-               // int totalConunt = ctx.LSCHOOLMSTs.Count<LSCHOOLMST>();
+                }              
                 ls.TRNNO = _trnno;
                 ctx.LSCHOOLMSTs.Add(new LSCHOOLMST()
                 {

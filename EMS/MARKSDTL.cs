@@ -14,19 +14,12 @@ namespace EMS
     
     public partial class MARKSDTL
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public MARKSDTL()
-        {
-            this.MARKSDTL1 = new HashSet<MARKSDTL1>();
-        }
-    
         public double TRNNO { get; set; }
         public double SR { get; set; }
         public Nullable<double> EM_TRNNO { get; set; }
+        public int Id { get; set; }
     
         public virtual EM EM { get; set; }
         public virtual MARKSMST MARKSMST { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MARKSDTL1> MARKSDTL1 { get; set; }
     }
 }

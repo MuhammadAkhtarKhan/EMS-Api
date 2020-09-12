@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="EMSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="EMSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="BP">
           <Key>
             <PropertyRef Name="TRNNO" />
@@ -207,12 +207,6 @@ warning 6002: The table/view 'EMS.EMS.CIO' does not have a primary key defined. 
           <Property Name="AMT" Type="float" />
           <Property Name="FEEMON" Type="float" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'EMS.EMS.FEECOLLECTFLG' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="FEECOLLECTFLG">
-          <Property Name="FDT" Type="datetime2" Precision="0" />
-          <Property Name="FLG" Type="numeric" Precision="1" Scale="0" />
-        </EntityType>-->
         <EntityType Name="FEECOLLECTMST">
           <Key>
             <PropertyRef Name="TRNNO" />
@@ -259,16 +253,13 @@ warning 6013: The table/view 'EMS.EMS.FEECOLLECTFLG' does not have a primary key
           <Property Name="EM_TRNNO" Type="float" />
           <Property Name="CHDATE" Type="datetime2" Precision="0" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'EMS.EMS.GRPDTL' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="GRPDTL">
           <Key>
-            <PropertyRef Name="TRNNO" />
-            <PropertyRef Name="SUBJECT_TRNNO" />
+            <PropertyRef Name="ID" />
           </Key>
           <Property Name="TRNNO" Type="float" Nullable="false" />
           <Property Name="SUBJECT_TRNNO" Type="float" Nullable="false" />
-          <Property Name="id" Type="float" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
         <EntityType Name="GRPMST">
           <Key>
@@ -328,12 +319,12 @@ warning 6002: The table/view 'EMS.EMS.GRPDTL' does not have a primary key define
         </EntityType>
         <EntityType Name="MARKSDTL">
           <Key>
-            <PropertyRef Name="TRNNO" />
-            <PropertyRef Name="SR" />
+            <PropertyRef Name="Id" />
           </Key>
           <Property Name="TRNNO" Type="float" Nullable="false" />
           <Property Name="SR" Type="float" Nullable="false" />
           <Property Name="EM_TRNNO" Type="float" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
         <EntityType Name="MARKSDTL1">
           <Key>
@@ -399,19 +390,6 @@ warning 6002: The table/view 'EMS.EMS.GRPDTL' does not have a primary key define
           <Property Name="STATUS" Type="numeric" Precision="1" Scale="0" />
           <Property Name="MODULEID" Type="varchar" MaxLength="10" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'EMS.EMS.OBJECTDTL' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="OBJECTDTL">
-          <Property Name="TRNNO" Type="float" />
-          <Property Name="ACTNAME" Type="varchar" MaxLength="50" />
-          <Property Name="DISPNAME" Type="varchar" MaxLength="100" />
-          <Property Name="EDT" Type="float" />
-          <Property Name="DEL" Type="float" />
-          <Property Name="VW" Type="float" />
-          <Property Name="ADREC" Type="float" />
-          <Property Name="REF_ID" Type="float" />
-          <Property Name="CODE" Type="float" />
-        </EntityType>-->
         <EntityType Name="OBJECTMST">
           <Key>
             <PropertyRef Name="TRNNO" />
@@ -422,11 +400,6 @@ warning 6013: The table/view 'EMS.EMS.OBJECTDTL' does not have a primary key def
           <Property Name="MODULE_TRNNO" Type="float" />
           <Property Name="COMPANY_TRNNO" Type="float" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'EMS.EMS.PATH' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="PATH">
-          <Property Name="VPATH" Type="varchar" MaxLength="200" />
-        </EntityType>-->
         <EntityType Name="PROMDTL">
           <Key>
             <PropertyRef Name="TRNNO" />
@@ -534,25 +507,6 @@ warning 6013: The table/view 'EMS.EMS.PATH' does not have a primary key defined 
           <Property Name="SNAME" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="SCODE" Type="varchar" MaxLength="10" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'EMS.EMS.T' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="T">
-          <Property Name="EDT" Type="datetime2" Precision="0" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'EMS.EMS.TDTL' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="TDTL">
-          <Property Name="TRNNO" Type="float" />
-          <Property Name="CNAME" Type="varchar" MaxLength="100" />
-          <Property Name="SDT" Type="datetime2" Precision="0" />
-          <Property Name="EDT" Type="datetime2" Precision="0" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'EMS.EMS.TEST' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="TEST">
-          <Property Name="ID" Type="float" />
-          <Property Name="NAME" Type="varchar" MaxLength="10" />
-        </EntityType>-->
         <EntityType Name="TMST">
           <Key>
             <PropertyRef Name="TRNNO" />
@@ -898,20 +852,6 @@ warning 6013: The table/view 'EMS.EMS.TEST' does not have a primary key defined 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_MARKSDTL1">
-          <End Role="MARKSDTL" Type="Self.MARKSDTL" Multiplicity="1" />
-          <End Role="MARKSDTL1" Type="Self.MARKSDTL1" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MARKSDTL">
-              <PropertyRef Name="TRNNO" />
-              <PropertyRef Name="SR" />
-            </Principal>
-            <Dependent Role="MARKSDTL1">
-              <PropertyRef Name="TRNNO" />
-              <PropertyRef Name="SR" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_MARKTOTALDTL">
           <End Role="MARKTOTAL" Type="Self.MARKTOTAL" Multiplicity="1" />
           <End Role="MARKTOTALDTL" Type="Self.MARKTOTALDTL" Multiplicity="*" />
@@ -1056,15 +996,49 @@ warning 6013: The table/view 'EMS.EMS.TEST' does not have a primary key defined 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <!--Errors Found During Generation:
-error 6004: The table 'EMS.EMS.TDTL' is referenced by a relationship, but cannot be found.
-        <Association Name="FK_TDTL_TRNNO" />-->
+        <Function Name="findStudentClassById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="float">
+          <Parameter Name="EMP_TRNNO" Type="float" Mode="In" />
+        </Function>
         <Function Name="spAllCurrentStudents" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="spFindStudentClass" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EMP_TRNNO" Type="float" Mode="In" />
+          <Parameter Name="CL_TRNNO" Type="float" Mode="InOut" />
+        </Function>
         <Function Name="spStudentCurrentClass" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="cl_trnno" Type="float" Mode="In" />
           <Parameter Name="grp_trno" Type="float" Mode="In" />
         </Function>
+        <Function Name="spStudentCurrentFee" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EMP_TRNNO" Type="float" Mode="In" />
+          <Parameter Name="FEE1" Type="float" Mode="InOut" />
+          <Parameter Name="CLASS_TRNNO" Type="float" Mode="In" />
+        </Function>
         <Function Name="usp_allEm" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="ALLCLASSVOUCHERS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="EMS">
+          <Parameter Name="PRDATE" Type="datetime2" Mode="In" />
+          <Parameter Name="PTRNNO" Type="float" Mode="In" />
+          <Parameter Name="PDDATE" Type="datetime2" Mode="In" />
+          <Parameter Name="PFMONTH" Type="float" Mode="In" />
+          <Parameter Name="PLDATE" Type="datetime2" Mode="In" />
+        </Function>
+        <Function Name="FEECOLLFLG" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="EMS">
+          <Parameter Name="PDT" Type="datetime2" Mode="In" />
+        </Function>
+        <Function Name="FNACTFEETEST" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="EMS" ReturnType="varchar(max)">
+          <Parameter Name="CLTRNNO" Type="float" Mode="In" />
+          <Parameter Name="PDT" Type="datetime2" Mode="In" />
+          <Parameter Name="EMTRNNO" Type="float" Mode="In" />
+        </Function>
+        <Function Name="FNCHECKVOUCHERMONTH" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="EMS" ReturnType="varchar(max)">
+          <Parameter Name="PEMTRNNO" Type="float" Mode="In" />
+          <Parameter Name="RDT" Type="datetime2" Mode="In" />
+          <Parameter Name="DDT" Type="datetime2" Mode="In" />
+          <Parameter Name="LDT" Type="datetime2" Mode="In" />
+        </Function>
+        <Function Name="FNCLASSFEE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="EMS" ReturnType="float">
+          <Parameter Name="CLTRNNO" Type="float" Mode="In" />
+          <Parameter Name="PDT" Type="datetime2" Mode="In" />
+        </Function>
         <EntityContainer Name="EMSModelStoreContainer">
           <EntitySet Name="BP" EntityType="Self.BP" Schema="EMS" store:Type="Tables" />
           <EntitySet Name="CLASS" EntityType="Self.CLASS" Schema="EMS" store:Type="Tables" />
@@ -1088,6 +1062,7 @@ error 6004: The table 'EMS.EMS.TDTL' is referenced by a relationship, but cannot
           <EntitySet Name="FEETYPES" EntityType="Self.FEETYPES" Schema="EMS" store:Type="Tables" />
           <EntitySet Name="FISCAL_YEAR" EntityType="Self.FISCAL_YEAR" Schema="EMS" store:Type="Tables" />
           <EntitySet Name="GRPCHANGE" EntityType="Self.GRPCHANGE" Schema="EMS" store:Type="Tables" />
+          <EntitySet Name="GRPDTL" EntityType="Self.GRPDTL" Schema="EMS" store:Type="Tables" />
           <EntitySet Name="GRPMST" EntityType="Self.GRPMST" Schema="EMS" store:Type="Tables" />
           <EntitySet Name="LEAVECAL" EntityType="Self.LEAVECAL" Schema="EMS" store:Type="Tables" />
           <EntitySet Name="LEAVECERTMST" EntityType="Self.LEAVECERTMST" Schema="EMS" store:Type="Tables" />
@@ -1123,13 +1098,6 @@ error 6004: The table 'EMS.EMS.TDTL' is referenced by a relationship, but cannot
     [CIO].[ATT_DATE] AS [ATT_DATE], 
     [CIO].[ROWID] AS [ROWID]
     FROM [EMS].[CIO] AS [CIO]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="GRPDTL" EntityType="Self.GRPDTL" store:Type="Tables" store:Schema="EMS">
-            <DefiningQuery>SELECT 
-    [GRPDTL].[TRNNO] AS [TRNNO], 
-    [GRPDTL].[SUBJECT_TRNNO] AS [SUBJECT_TRNNO], 
-    [GRPDTL].[id] AS [id]
-    FROM [EMS].[GRPDTL] AS [GRPDTL]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK_CLFEE" Association="Self.FK_CLFEE">
             <End Role="CLASS" EntitySet="CLASS" />
@@ -1239,10 +1207,6 @@ error 6004: The table 'EMS.EMS.TDTL' is referenced by a relationship, but cannot
             <End Role="MARKSMST" EntitySet="MARKSMST" />
             <End Role="MARKSDTL" EntitySet="MARKSDTL" />
           </AssociationSet>
-          <AssociationSet Name="FK_MARKSDTL1" Association="Self.FK_MARKSDTL1">
-            <End Role="MARKSDTL" EntitySet="MARKSDTL" />
-            <End Role="MARKSDTL1" EntitySet="MARKSDTL1" />
-          </AssociationSet>
           <AssociationSet Name="FK_MARKTOTALDTL" Association="Self.FK_MARKTOTALDTL">
             <End Role="MARKTOTAL" EntitySet="MARKTOTAL" />
             <End Role="MARKTOTALDTL" EntitySet="MARKTOTALDTL" />
@@ -1292,8 +1256,7 @@ error 6004: The table 'EMS.EMS.TDTL' is referenced by a relationship, but cannot
             <End Role="MARKTOTALDTL" EntitySet="MARKTOTALDTL" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="EMSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1574,6 +1537,16 @@ error 6004: The table 'EMS.EMS.TDTL' is referenced by a relationship, but cannot
           <Property Name="EM_TRNNO" Type="Double" />
           <Property Name="CHDATE" Type="DateTime" Precision="0" />
         </EntityType>
+        <EntityType Name="GRPDTL">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="TRNNO" Type="Double" Nullable="false" />
+          <Property Name="SUBJECT_TRNNO" Type="Double" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="GRPMST" Relationship="Self.FK_GRPDTL" FromRole="GRPDTL" ToRole="GRPMST" />
+          <NavigationProperty Name="SUBJECT" Relationship="Self.FK_GRPDTL1" FromRole="GRPDTL" ToRole="SUBJECT" />
+        </EntityType>
         <EntityType Name="GRPMST">
           <Key>
             <PropertyRef Name="TRNNO" />
@@ -1639,15 +1612,14 @@ error 6004: The table 'EMS.EMS.TDTL' is referenced by a relationship, but cannot
         </EntityType>
         <EntityType Name="MARKSDTL">
           <Key>
-            <PropertyRef Name="TRNNO" />
-            <PropertyRef Name="SR" />
+            <PropertyRef Name="Id" />
           </Key>
           <Property Name="TRNNO" Type="Double" Nullable="false" />
           <Property Name="SR" Type="Double" Nullable="false" />
           <Property Name="EM_TRNNO" Type="Double" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="EM" Relationship="Self.FK_MARKS_EM" FromRole="MARKSDTL" ToRole="EM" />
           <NavigationProperty Name="MARKSMST" Relationship="Self.FK_MARKSDTL" FromRole="MARKSDTL" ToRole="MARKSMST" />
-          <NavigationProperty Name="MARKSDTL1" Relationship="Self.FK_MARKSDTL1" FromRole="MARKSDTL" ToRole="MARKSDTL1" />
         </EntityType>
         <EntityType Name="MARKSDTL1">
           <Key>
@@ -1661,7 +1633,6 @@ error 6004: The table 'EMS.EMS.TDTL' is referenced by a relationship, but cannot
           <Property Name="GMARKS" Type="Double" />
           <Property Name="MARKTOTALDTL_TRNNO" Type="Double" />
           <Property Name="MARKTOTALDTL_SR" Type="Double" />
-          <NavigationProperty Name="MARKSDTL" Relationship="Self.FK_MARKSDTL1" FromRole="MARKSDTL1" ToRole="MARKSDTL" />
         </EntityType>
         <EntityType Name="MARKSMST">
           <Key>
@@ -1854,8 +1825,8 @@ error 6004: The table 'EMS.EMS.TDTL' is referenced by a relationship, but cannot
           <Property Name="SNAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="SCODE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="CTTDTLs" Relationship="Self.FK_CTTDTL_SUBJECT" FromRole="SUBJECT" ToRole="CTTDTL" />
-          <NavigationProperty Name="MARKTOTALDTLs" Relationship="Self.FK_SUBJECT_TRNNO" FromRole="SUBJECT" ToRole="MARKTOTALDTL" />
           <NavigationProperty Name="GRPDTLs" Relationship="Self.FK_GRPDTL1" FromRole="SUBJECT" ToRole="GRPDTL" />
+          <NavigationProperty Name="MARKTOTALDTLs" Relationship="Self.FK_SUBJECT_TRNNO" FromRole="SUBJECT" ToRole="MARKTOTALDTL" />
         </EntityType>
         <EntityType Name="TMST">
           <Key>
@@ -1885,17 +1856,6 @@ error 6004: The table 'EMS.EMS.TDTL' is referenced by a relationship, but cannot
           <Property Name="O_DT" Type="DateTime" Precision="0" />
           <Property Name="ATT_DATE" Type="DateTime" Precision="0" />
           <Property Name="ROWID" Type="Guid" Nullable="false" />
-        </EntityType>
-        <EntityType Name="GRPDTL">
-          <Key>
-            <PropertyRef Name="TRNNO" />
-            <PropertyRef Name="SUBJECT_TRNNO" />
-          </Key>
-          <Property Name="TRNNO" Type="Double" Nullable="false" />
-          <Property Name="SUBJECT_TRNNO" Type="Double" Nullable="false" />
-          <Property Name="id" Type="Double" />
-          <NavigationProperty Name="GRPMST" Relationship="Self.FK_GRPDTL" FromRole="GRPDTL" ToRole="GRPMST" />
-          <NavigationProperty Name="SUBJECT" Relationship="Self.FK_GRPDTL1" FromRole="GRPDTL" ToRole="SUBJECT" />
         </EntityType>
         <Association Name="FK_CLFEE">
           <End Role="CLASS" Type="Self.CLASS" Multiplicity="0..1" />
@@ -2235,6 +2195,18 @@ error 6004: The table 'EMS.EMS.TDTL' is referenced by a relationship, but cannot
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_GRPDTL1">
+          <End Role="SUBJECT" Type="Self.SUBJECT" Multiplicity="1" />
+          <End Role="GRPDTL" Type="Self.GRPDTL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SUBJECT">
+              <PropertyRef Name="TRNNO" />
+            </Principal>
+            <Dependent Role="GRPDTL">
+              <PropertyRef Name="SUBJECT_TRNNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_GRPMST_MARKS">
           <End Role="GRPMST" Type="Self.GRPMST" Multiplicity="0..1" />
           <End Role="MARKSMSTOLD" Type="Self.MARKSMSTOLD" Multiplicity="*" />
@@ -2280,20 +2252,6 @@ error 6004: The table 'EMS.EMS.TDTL' is referenced by a relationship, but cannot
             </Principal>
             <Dependent Role="MARKSDTL">
               <PropertyRef Name="TRNNO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_MARKSDTL1">
-          <End Role="MARKSDTL" Type="Self.MARKSDTL" Multiplicity="1" />
-          <End Role="MARKSDTL1" Type="Self.MARKSDTL1" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MARKSDTL">
-              <PropertyRef Name="TRNNO" />
-              <PropertyRef Name="SR" />
-            </Principal>
-            <Dependent Role="MARKSDTL1">
-              <PropertyRef Name="TRNNO" />
-              <PropertyRef Name="SR" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2369,18 +2327,6 @@ error 6004: The table 'EMS.EMS.TDTL' is referenced by a relationship, but cannot
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_GRPDTL1">
-          <End Role="SUBJECT" Type="Self.SUBJECT" Multiplicity="1" />
-          <End Role="GRPDTL" Type="Self.GRPDTL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SUBJECT">
-              <PropertyRef Name="TRNNO" />
-            </Principal>
-            <Dependent Role="GRPDTL">
-              <PropertyRef Name="SUBJECT_TRNNO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="BPs" EntityType="Self.BP" />
           <EntitySet Name="CLASSes" EntityType="Self.CLASS" />
@@ -2404,6 +2350,7 @@ error 6004: The table 'EMS.EMS.TDTL' is referenced by a relationship, but cannot
           <EntitySet Name="FEETYPES" EntityType="Self.FEETYPE" />
           <EntitySet Name="FISCAL_YEAR" EntityType="Self.FISCAL_YEAR" />
           <EntitySet Name="GRPCHANGEs" EntityType="Self.GRPCHANGE" />
+          <EntitySet Name="GRPDTLs" EntityType="Self.GRPDTL" />
           <EntitySet Name="GRPMSTs" EntityType="Self.GRPMST" />
           <EntitySet Name="LEAVECALs" EntityType="Self.LEAVECAL" />
           <EntitySet Name="LEAVECERTMSTs" EntityType="Self.LEAVECERTMST" />
@@ -2432,7 +2379,6 @@ error 6004: The table 'EMS.EMS.TDTL' is referenced by a relationship, but cannot
           <EntitySet Name="TMSTs" EntityType="Self.TMST" />
           <EntitySet Name="USERS" EntityType="Self.USER" />
           <EntitySet Name="CIOs" EntityType="Self.CIO" />
-          <EntitySet Name="GRPDTLs" EntityType="Self.GRPDTL" />
           <AssociationSet Name="FK_CLFEE" Association="Self.FK_CLFEE">
             <End Role="CLASS" EntitySet="CLASSes" />
             <End Role="CLFEEMST" EntitySet="CLFEEMSTs" />
@@ -2545,6 +2491,10 @@ error 6004: The table 'EMS.EMS.TDTL' is referenced by a relationship, but cannot
             <End Role="GRPMST" EntitySet="GRPMSTs" />
             <End Role="GRPDTL" EntitySet="GRPDTLs" />
           </AssociationSet>
+          <AssociationSet Name="FK_GRPDTL1" Association="Self.FK_GRPDTL1">
+            <End Role="SUBJECT" EntitySet="SUBJECTs" />
+            <End Role="GRPDTL" EntitySet="GRPDTLs" />
+          </AssociationSet>
           <AssociationSet Name="FK_GRPMST_MARKS" Association="Self.FK_GRPMST_MARKS">
             <End Role="GRPMST" EntitySet="GRPMSTs" />
             <End Role="MARKSMSTOLD" EntitySet="MARKSMSTOLDs" />
@@ -2560,10 +2510,6 @@ error 6004: The table 'EMS.EMS.TDTL' is referenced by a relationship, but cannot
           <AssociationSet Name="FK_MARKSDTL" Association="Self.FK_MARKSDTL">
             <End Role="MARKSMST" EntitySet="MARKSMSTs" />
             <End Role="MARKSDTL" EntitySet="MARKSDTLs" />
-          </AssociationSet>
-          <AssociationSet Name="FK_MARKSDTL1" Association="Self.FK_MARKSDTL1">
-            <End Role="MARKSDTL" EntitySet="MARKSDTLs" />
-            <End Role="MARKSDTL1" EntitySet="MARKSDTL1" />
           </AssociationSet>
           <AssociationSet Name="FK_MARKTOTALDTL" Association="Self.FK_MARKTOTALDTL">
             <End Role="MARKTOTAL" EntitySet="MARKTOTALs" />
@@ -2589,16 +2535,31 @@ error 6004: The table 'EMS.EMS.TDTL' is referenced by a relationship, but cannot
             <End Role="STIME" EntitySet="STIMEs" />
             <End Role="STIMEDTL" EntitySet="STIMEDTLs" />
           </AssociationSet>
-          <AssociationSet Name="FK_GRPDTL1" Association="Self.FK_GRPDTL1">
-            <End Role="SUBJECT" EntitySet="SUBJECTs" />
-            <End Role="GRPDTL" EntitySet="GRPDTLs" />
-          </AssociationSet>
           <FunctionImport Name="spAllCurrentStudents" ReturnType="Collection(EMSModel.spAllCurrentStudents_Result)" />
+          <FunctionImport Name="spFindStudentClass">
+            <Parameter Name="EMP_TRNNO" Mode="In" Type="Double" />
+            <Parameter Name="CL_TRNNO" Mode="InOut" Type="Double" />
+          </FunctionImport>
           <FunctionImport Name="spStudentCurrentClass" ReturnType="Collection(EMSModel.spStudentCurrentClass_Result)">
             <Parameter Name="cl_trnno" Mode="In" Type="Double" />
             <Parameter Name="grp_trno" Mode="In" Type="Double" />
           </FunctionImport>
+          <FunctionImport Name="spStudentCurrentFee">
+            <Parameter Name="EMP_TRNNO" Mode="In" Type="Double" />
+            <Parameter Name="FEE1" Mode="InOut" Type="Double" />
+            <Parameter Name="CLASS_TRNNO" Mode="In" Type="Double" />
+          </FunctionImport>
           <FunctionImport Name="usp_allEm" ReturnType="Collection(EMSModel.usp_allEm_Result)" />
+          <FunctionImport Name="ALLCLASSVOUCHERS">
+            <Parameter Name="PRDATE" Mode="In" Type="DateTime" />
+            <Parameter Name="PTRNNO" Mode="In" Type="Double" />
+            <Parameter Name="PDDATE" Mode="In" Type="DateTime" />
+            <Parameter Name="PFMONTH" Mode="In" Type="Double" />
+            <Parameter Name="PLDATE" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="FEECOLLFLG">
+          <Parameter Name="PDT" Mode="In" Type="DateTime" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="spAllCurrentStudents_Result">
           <Property Type="Double" Name="TRNNO" Nullable="false" />
@@ -2900,6 +2861,15 @@ error 6004: The table 'EMS.EMS.TDTL' is referenced by a relationship, but cannot
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="GRPDTLs">
+            <EntityTypeMapping TypeName="EMSModel.GRPDTL">
+              <MappingFragment StoreEntitySet="GRPDTL">
+                <ScalarProperty Name="TRNNO" ColumnName="TRNNO" />
+                <ScalarProperty Name="SUBJECT_TRNNO" ColumnName="SUBJECT_TRNNO" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="GRPMSTs">
             <EntityTypeMapping TypeName="EMSModel.GRPMST">
               <MappingFragment StoreEntitySet="GRPMST">
@@ -2967,6 +2937,7 @@ error 6004: The table 'EMS.EMS.TDTL' is referenced by a relationship, but cannot
                 <ScalarProperty Name="TRNNO" ColumnName="TRNNO" />
                 <ScalarProperty Name="SR" ColumnName="SR" />
                 <ScalarProperty Name="EM_TRNNO" ColumnName="EM_TRNNO" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -3194,15 +3165,6 @@ error 6004: The table 'EMS.EMS.TDTL' is referenced by a relationship, but cannot
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="GRPDTLs">
-            <EntityTypeMapping TypeName="EMSModel.GRPDTL">
-              <MappingFragment StoreEntitySet="GRPDTL">
-                <ScalarProperty Name="TRNNO" ColumnName="TRNNO" />
-                <ScalarProperty Name="SUBJECT_TRNNO" ColumnName="SUBJECT_TRNNO" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="spAllCurrentStudents" FunctionName="EMSModel.Store.spAllCurrentStudents">
             <ResultMapping>
               <ComplexTypeMapping TypeName="EMSModel.spAllCurrentStudents_Result">
@@ -3213,6 +3175,7 @@ error 6004: The table 'EMS.EMS.TDTL' is referenced by a relationship, but cannot
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spFindStudentClass" FunctionName="EMSModel.Store.spFindStudentClass" />
           <FunctionImportMapping FunctionImportName="spStudentCurrentClass" FunctionName="EMSModel.Store.spStudentCurrentClass">
             <ResultMapping>
               <ComplexTypeMapping TypeName="EMSModel.spStudentCurrentClass_Result">
@@ -3223,6 +3186,7 @@ error 6004: The table 'EMS.EMS.TDTL' is referenced by a relationship, but cannot
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spStudentCurrentFee" FunctionName="EMSModel.Store.spStudentCurrentFee" />
           <FunctionImportMapping FunctionImportName="usp_allEm" FunctionName="EMSModel.Store.usp_allEm">
             <ResultMapping>
               <ComplexTypeMapping TypeName="EMSModel.usp_allEm_Result">
@@ -3257,6 +3221,8 @@ error 6004: The table 'EMS.EMS.TDTL' is referenced by a relationship, but cannot
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ALLCLASSVOUCHERS" FunctionName="EMSModel.Store.ALLCLASSVOUCHERS" />
+          <FunctionImportMapping FunctionImportName="FEECOLLFLG" FunctionName="EMSModel.Store.FEECOLLFLG" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

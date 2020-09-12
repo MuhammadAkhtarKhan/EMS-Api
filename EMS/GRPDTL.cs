@@ -16,7 +16,7 @@ namespace EMS
     {
         public double TRNNO { get; set; }
         public double SUBJECT_TRNNO { get; set; }
-        public Nullable<double> id { get; set; }
+        public int ID { get; set; }
     
         public virtual GRPMST GRPMST { get; set; }
         public virtual SUBJECT SUBJECT { get; set; }

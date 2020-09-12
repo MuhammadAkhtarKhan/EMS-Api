@@ -18,8 +18,8 @@ namespace EMS
         public SUBJECT()
         {
             this.CTTDTLs = new HashSet<CTTDTL>();
-            this.MARKTOTALDTLs = new HashSet<MARKTOTALDTL>();
             this.GRPDTLs = new HashSet<GRPDTL>();
+            this.MARKTOTALDTLs = new HashSet<MARKTOTALDTL>();
         }
     
         public double TRNNO { get; set; }
@@ -29,8 +29,8 @@ namespace EMS
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CTTDTL> CTTDTLs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MARKTOTALDTL> MARKTOTALDTLs { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<GRPDTL> GRPDTLs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<MARKTOTALDTL> MARKTOTALDTLs { get; set; }
     }
 }

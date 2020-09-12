@@ -1,6 +1,7 @@
 ﻿using EMS.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core.Objects;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -86,31 +87,31 @@ namespace EMS.Controllers
 
             return Ok(lss);
         }
+        [HttpGet]
+        [Route("student-current-class/{id}")]
+        public IHttpActionResult GetStudentClassByEmpId(int? id)
+        {
+            ObjectParameter CL_TRNNO = new System.Data.Entity.Core.Objects.ObjectParameter("CL_TRNNO", typeof(double));
 
-        //[HttpGet]
-        //[Route("lschool/detail")]
-        //public IHttpActionResult GetAllLsDetail()
-        //{
-        //    IList<LSchoolDtlViewModel> lsdtl = null;
+            if (!ModelState.IsValid)
+                return BadRequest("Invalid data.");
 
-        //    using (var ctx = new EMSEntities())
-        //    {
-        //        lsdtl = ctx.LSCHOOLDTLs
-        //                    .Select(s => new LSchoolDtlViewModel()
-        //                    {
-        //                        TRNNO = s.TRNNO,
-        //                        EM_TRNNO = s.EM_TRNNO,
-        //                        SR = s.SR
-        //                    }).ToList<LSchoolDtlViewModel>();
-        //    }
+            using (var ctx = new EMSEntities())
+            {
 
-        //    if (lsdtl.Count == 0)
-        //    {
-        //        return NotFound();
-        //    }
+                ctx.spFindStudentClass(id, CL_TRNNO);
+                var res = CL_TRNNO.Value;
 
-        //    return Ok(lsdtl);
-        //}
+                if (res == null)
+                {
+                    return NotFound();
+                }
+
+                return Ok(res);
+            }
+        }
+
+        
         [HttpPost]
         [Route("student")]
         public IHttpActionResult PostStudentsByClIdandGrpId(PromotionViewModel st)

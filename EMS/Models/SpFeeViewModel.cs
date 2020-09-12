@@ -9,7 +9,7 @@ namespace EMS.Models
     {
         public double TRNNO { get; set; }
         public System.DateTime SPDATE { get; set; }
-        public double CLASS_TRNNO { get; set; }
-        public virtual IList<SPFEEDTL> SPFEEDTLs { get; set; }
+        public double CLASS_TRNNO { get; set; }        
+        public virtual IList<SpFeeDtlViewModel> SPFEEDTLs { get; set; }
     }
 }

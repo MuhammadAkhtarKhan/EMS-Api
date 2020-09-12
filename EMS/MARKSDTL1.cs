@@ -20,7 +20,5 @@ namespace EMS
         public Nullable<double> GMARKS { get; set; }
         public Nullable<double> MARKTOTALDTL_TRNNO { get; set; }
         public Nullable<double> MARKTOTALDTL_SR { get; set; }
-    
-        public virtual MARKSDTL MARKSDTL { get; set; }
     }
 }

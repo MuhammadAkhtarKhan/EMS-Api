@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core.Objects;
 using System.Data.Entity.Validation;
 using System.Linq;
 using System.Net;
@@ -9,9 +10,10 @@ using EMS.Models;
 
 namespace EMS.Controllers
 {
+    [RoutePrefix("api")]
     public class FeeCollectController : ApiController
     {
-       
+       [Route("feecollect")]
         public IHttpActionResult GetAllFeeCollect()
         {
             //IEnumerable<FeeCollectViewModel> markTotal = null;
@@ -57,6 +59,7 @@ namespace EMS.Controllers
 
             return Ok(fcs);
         }
+        [Route("feecollect/{id}")]
         public IHttpActionResult GetFeeCollectById(int id)
         {
             FeeCollectViewModel fcs = null;
@@ -92,26 +95,30 @@ namespace EMS.Controllers
             return Ok(fcs);
         }
 
+        [HttpPost]
+        [Route("currentfee")]
+        public IHttpActionResult getCurrentFee(FeeCollectViewModel fcCVm)
+        {
 
-        //public IHttpActionResult GetAllFeeCollects(FeeCollectViewModel mv)
-        //{
-        //    IList<MARKTOTALDTL> fcs = null;
+            ObjectParameter FEE1 = new System.Data.Entity.Core.Objects.ObjectParameter("FEE1", typeof(double));
 
-        //    using (var ctx = new EMSEntities())
-        //    {
-        //        int _trnno = Convert.ToInt32(ctx.FEECOLLECTMSTs.Where(s => s.CLASS_TRNNO == mv.CLASS_TRNNO && s.EXAM_TRNNO == mv.EXAM_TRNNO && s.GRPMST_TRNNO == mv.GRPMST_TRNNO && s.MDT == mv.MDT));
-        //        fcs = ctx.MARKTOTALDTLs
-        //            .Where(s => s.TRNNO == _trnno)
-        //            .ToList<MARKTOTALDTL>();
-        //    }
+            if (!ModelState.IsValid)
+                return BadRequest("Invalid data.");
 
-        //    if (fcs.Count == 0)
-        //    {
-        //        return NotFound();
-        //    }
+            using (var ctx = new EMSEntities())
+            {
 
-        //    return Ok(fcs);
-        //}
+                ctx.spStudentCurrentFee(fcCVm.EM_TRNNO, FEE1, fcCVm.CLASS_TRNNO);
+                var res = FEE1.Value;
+
+                if (res == null)
+                {
+                    return NotFound();
+                }
+
+                return Ok(res);
+            }
+        }
 
 
         //public IHttpActionResult PostNewFeeCollect(FeeCollectViewModel fc)
@@ -192,15 +199,63 @@ namespace EMS.Controllers
 
         //    return Ok();
         //}
+        [Route("feecollect")]
         public IHttpActionResult PostNewFeeCollect(FeeCollectViewModel fc)
         {
             if (!ModelState.IsValid)
                 return BadRequest("Invalid data.");
 
+
             using (var ctx = new EMSEntities())
             {
-
-               //var result= ctx.ALLCLASSVOUCHERS(fc.RDATE, fc.TRNNO, fc.DDATE, fc.FMONTH, fc.LDATE);
+                int _trnno;
+                int _sr = 1;
+                //db.Users.OrderByDescending(u => u.UserId).FirstOrDefault();
+                if (fc.TRNNO == 0)
+                {
+                    _trnno = Convert.ToInt32(ctx.FEECOLLECTMSTs.OrderByDescending(t => t.TRNNO).FirstOrDefault().TRNNO);
+                   // _trnno = _trnno + 1;
+                    //_trnno = Convert.ToInt32(ctx.EMs.OrderByDescending(t => t.TRNNO).First().ToString());
+                }
+                else
+                {
+                    _trnno = Convert.ToInt32(fc.TRNNO) + 1;
+                }
+                // int totalConunt = ctx.FEECOLLECTMSTs.Count<MARKTOTAL>();
+                fc.TRNNO = _trnno;
+                ctx.ALLCLASSVOUCHERS(fc.RDATE, fc.TRNNO, fc.DDATE, fc.FMONTH, fc.LDATE);
+                //ctx.FEECOLLECTMSTs.Add(new FEECOLLECTMST()
+                //{
+                //    TRNNO = fc.TRNNO,
+                //    RDATE = fc.RDATE,
+                //    EM_TRNNO = fc.EM_TRNNO,
+                //    FMONTH = fc.FMONTH,
+                //    DDATE = fc.DDATE,
+                //    LDATE = fc.LDATE,
+                //    FSTATUS = fc.FSTATUS,
+                //    DISCOUNT = fc.DISCOUNT,
+                //    DISCOUNTTYPE = fc.DISCOUNTTYPE,
+                //    CLASS_TRNNO = fc.CLASS_TRNNO,
+                //    SECDTL_TRNNO = fc.SECDTL_TRNNO,
+                //    SECDTL_SR = fc.SECDTL_SR,
+                //    PDATE = fc.PDATE,
+                //    ARRFLG = fc.ARRFLG,
+                //});
+                //foreach (var dtls in fc.FEECOLLECTDTLs)
+                //{
+                //    var fcdetail = new FEECOLLECTDTL
+                //    {
+                //        //BudgetId = Here i need to get id of the Budget table that i inserted before
+                //        TRNNO = _trnno,
+                //        FMONTH = dtls.FMONTH,
+                //        FEETYPE_TRNNO = dtls.FEETYPE_TRNNO,
+                //        SR = _sr,
+                //        AMT = dtls.AMT,
+                //        FEEMON = dtls.FEEMON,
+                //    };
+                //    ctx.FEECOLLECTDTLs.Add(fcdetail);
+                //    _sr++;
+                //}
                 try
                 {
                     ctx.SaveChanges();
